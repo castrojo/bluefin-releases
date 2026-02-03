@@ -32,6 +32,7 @@ const { categories } = Astro.props;
       <option value="">All packages</option>
       <option value="flatpak">Flatpak</option>
       <option value="homebrew">Homebrew</option>
+      <option value="os">OS Release</option>
     </select>
   </div>
   
@@ -125,6 +126,7 @@ const { categories } = Astro.props;
       let visibleCount = 0;
       let flatpakCount = 0;
       let homebrewCount = 0;
+      let osCount = 0;
       const now = new Date();
       
       allCards.forEach(card => {
@@ -181,6 +183,7 @@ const { categories } = Astro.props;
           const packageType = card.dataset.packageType || '';
           if (packageType === 'flatpak') flatpakCount++;
           else if (packageType === 'homebrew') homebrewCount++;
+          else if (packageType === 'os') osCount++;
         } else {
           card.style.display = 'none';
         }
@@ -198,6 +201,7 @@ const { categories } = Astro.props;
         const statsParts = [];
         if (flatpakCount > 0) statsParts.push(`${flatpakCount} Flatpak`);
         if (homebrewCount > 0) statsParts.push(`${homebrewCount} Homebrew`);
+        if (osCount > 0) statsParts.push(`${osCount} OS`);
         
         if (statsParts.length > 0) {
           filterStats.textContent = `(${statsParts.join(', ')})`;
@@ -207,7 +211,7 @@ const { categories } = Astro.props;
         }
       }
       
-      console.log(`[FilterBar] Filters applied: ${visibleCount}/${allCards.length} apps visible (${flatpakCount} Flatpak, ${homebrewCount} Homebrew)`);
+      console.log(`[FilterBar] Filters applied: ${visibleCount}/${allCards.length} apps visible (${flatpakCount} Flatpak, ${homebrewCount} Homebrew, ${osCount} OS)`);
     }
     
     // Update active filters display

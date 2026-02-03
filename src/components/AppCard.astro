@@ -45,6 +45,16 @@ interface AppProps {
     dependencies?: string[];
     caveats?: string;
   };
+  osInfo?: {
+    stream: string;
+    fedoraVersion: string;
+    buildNumber: string;
+    commitHash?: string;
+    kernelVersion?: string;
+    gnomeVersion?: string;
+    mesaVersion?: string;
+    majorPackages?: Record<string, string>;
+  };
 }
 
 interface Props {
@@ -69,6 +79,10 @@ function formatDate(dateStr: string) {
 
 // Get package URL based on type
 function getPackageUrl(app: AppProps): string {
+  if (app.packageType === 'os' && app.sourceRepo?.url) {
+    // For OS releases, link to the latest release on GitHub
+    return app.flathubUrl || app.sourceRepo.url;
+  }
   if (app.packageType === 'homebrew' && app.homebrewInfo?.homepage) {
     return app.homebrewInfo.homepage;
   }
@@ -81,6 +95,7 @@ function getPackageUrl(app: AppProps): string {
 // Get package type display name
 function getPackageTypeName(type: string): string {
   if (type === 'homebrew') return 'Homebrew';
+  if (type === 'os') return 'OS Release';
   return 'Flatpak';
 }
 ---
@@ -99,6 +114,9 @@ function getPackageTypeName(type: string): string {
     )}
     {!app.icon && app.packageType === 'homebrew' && (
       <div class="app-icon homebrew-icon">🍺</div>
+    )}
+    {!app.icon && app.packageType === 'os' && (
+      <div class="app-icon os-icon">🐧</div>
     )}
     <div class="app-title-section">
       <h2 class="app-name">
@@ -134,6 +152,32 @@ function getPackageTypeName(type: string): string {
         <span class="meta-label">Tap:</span>
         <span class="meta-value">{app.homebrewInfo.tap}</span>
       </div>
+    )}
+    {app.packageType === 'os' && app.osInfo && (
+      <>
+        <div class="meta-item">
+          <span class="meta-label">Stream:</span>
+          <span class="meta-value">{app.osInfo.stream.toUpperCase()}</span>
+        </div>
+        {app.osInfo.fedoraVersion && (
+          <div class="meta-item">
+            <span class="meta-label">Fedora:</span>
+            <span class="meta-value">F{app.osInfo.fedoraVersion}</span>
+          </div>
+        )}
+        {app.osInfo.kernelVersion && (
+          <div class="meta-item">
+            <span class="meta-label">Kernel:</span>
+            <span class="meta-value">{app.osInfo.kernelVersion}</span>
+          </div>
+        )}
+        {app.osInfo.gnomeVersion && (
+          <div class="meta-item">
+            <span class="meta-label">GNOME:</span>
+            <span class="meta-value">{app.osInfo.gnomeVersion}</span>
+          </div>
+        )}
+      </>
     )}
     {app.currentReleaseVersion && (
       <div class="meta-item">
@@ -265,6 +309,15 @@ function getPackageTypeName(type: string): string {
     font-size: 2rem;
   }
 
+  .app-icon.os-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #7b2ff7 0%, #4a90e2 100%);
+    border: 2px solid rgba(123, 47, 247, 0.5);
+    font-size: 2rem;
+  }
+
   .app-title-section {
     flex: 1;
     min-width: 0;
@@ -334,6 +387,12 @@ function getPackageTypeName(type: string): string {
     background: rgba(251, 191, 36, 0.15);
     color: #fbbf24;
     border: 1px solid rgba(251, 191, 36, 0.3);
+  }
+
+  .package-type-badge.os {
+    background: linear-gradient(135deg, rgba(123, 47, 247, 0.2) 0%, rgba(74, 144, 226, 0.2) 100%);
+    color: #b794f6;
+    border: 1px solid rgba(123, 47, 247, 0.4);
   }
 
   .app-summary {
