@@ -42,7 +42,7 @@ jobs:
         run: go mod download
 
       - name: Run Go pipeline (fetch Flathub data)
-        run: go run cmd/flatpak-firehose/main.go
+        run: go run cmd/bluefin-releases/main.go
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
