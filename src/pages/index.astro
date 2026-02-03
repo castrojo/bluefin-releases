@@ -658,5 +658,21 @@ const appNames = apps.map(app => app.name).sort();
       navigator = new KeyboardNavigator('.app-card', '.search-bar input');
     });
   </script>
+
+  <!-- Help button handler -->
+  <script>
+    document.getElementById('help-button')?.addEventListener('click', () => {
+      document.getElementById('keyboard-help-modal')?.classList.add('visible');
+      document.getElementById('keyboard-help-backdrop')?.classList.add('visible');
+    });
+  </script>
+
+  <!-- Home link handler - scroll to top -->
+  <script>
+    document.getElementById('home-link')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
