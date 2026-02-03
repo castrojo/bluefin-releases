@@ -617,7 +617,7 @@ const appNames = apps.map(app => app.name).sort();
         if (!item) return;
         this.items.forEach(el => el.classList.remove('kbd-focused'));
         item.classList.add('kbd-focused');
-        item.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+        item.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
       }
       
       openFocused() {
