@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/castrojo/bluefin-releases#readme",
   "dependencies": {
+    "@astrojs/rss": "^4.0.15",
     "astro": "^5.17.1",
     "marked": "^17.0.1",
     "marked-gfm-heading-id": "^4.1.3",
