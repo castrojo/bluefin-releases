@@ -242,12 +242,11 @@ function getPackageTypeName(type: string): string {
             </div>
             <h4 class="changelog-title">{release.title}</h4>
             {release.description && release.description.length > 0 && (
-              <p class="changelog-description">
-                {release.description.length > 300 
+              <div class="changelog-description" set:html={
+                release.description.length > 300 
                   ? release.description.substring(0, 300) + '...' 
                   : release.description
-                }
-              </p>
+              } />
             )}
             {release.url && (
               <a href={release.url} target="_blank" rel="noopener" class="changelog-link">
@@ -535,7 +534,20 @@ function getPackageTypeName(type: string): string {
     color: var(--color-text-secondary);
     margin: 0 0 0.75rem 0;
     line-height: 1.6;
-    white-space: pre-wrap;
+  }
+
+  .changelog-description p {
+    margin: 0 0 0.5rem 0;
+  }
+
+  .changelog-description ul,
+  .changelog-description ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .changelog-description li {
+    margin: 0.25rem 0;
   }
 
   .changelog-link {
