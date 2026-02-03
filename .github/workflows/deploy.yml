@@ -4,8 +4,8 @@ on:
   push:
     branches: [main]
   schedule:
-    # Run daily at 6 AM UTC to catch new Flathub updates
-    - cron: '0 6 * * *'
+    # Run every 6 hours to catch new Flathub updates
+    - cron: '0 */6 * * *'
   workflow_dispatch: # Allow manual triggers
 
 permissions:

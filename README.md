@@ -104,8 +104,8 @@ GITHUB_TOKEN=your_token_here go run cmd/bluefin-releases/main.go
 
 The repository includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that:
 
-1. Runs daily at 6 AM UTC to catch new Flathub updates
-2. Can be manually triggered
+1. Runs every 6 hours (0:00, 6:00, 12:00, 18:00 UTC) to catch new Flathub updates
+2. Can be manually triggered via workflow_dispatch
 3. Executes the Go pipeline with GitHub API access
 4. Builds the Astro site
 5. Deploys to GitHub Pages
