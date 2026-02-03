@@ -25,6 +25,16 @@ const { categories } = Astro.props;
     </div>
   </div>
   
+  <!-- Package Type Filter -->
+  <div class="filter-section">
+    <h3 class="filter-label">Package Type</h3>
+    <select id="filter-package-type" class="filter-select">
+      <option value="">All packages</option>
+      <option value="flatpak">Flatpak</option>
+      <option value="homebrew">Homebrew</option>
+    </select>
+  </div>
+  
   <!-- Category Filter -->
   <div class="filter-section">
     <h3 class="filter-label">Category</h3>
@@ -70,6 +80,7 @@ const { categories } = Astro.props;
   <!-- Results Count -->
   <div id="filter-results" class="filter-results">
     <span id="filter-count"></span>
+    <div id="filter-stats" class="filter-stats"></div>
   </div>
 </div>
 
@@ -79,6 +90,7 @@ const { categories } = Astro.props;
     // Get filter elements
     const verifiedCheckbox = document.getElementById('filter-verified') as HTMLInputElement;
     const unverifiedCheckbox = document.getElementById('filter-unverified') as HTMLInputElement;
+    const packageTypeSelect = document.getElementById('filter-package-type') as HTMLSelectElement;
     const categorySelect = document.getElementById('filter-category') as HTMLSelectElement;
     const appSetSelect = document.getElementById('filter-app-set') as HTMLSelectElement;
     const dateSelect = document.getElementById('filter-date') as HTMLSelectElement;
@@ -86,8 +98,9 @@ const { categories } = Astro.props;
     const activeFiltersList = document.getElementById('active-filters-list') as HTMLElement;
     const clearAllBtn = document.getElementById('clear-all-filters') as HTMLButtonElement;
     const filterCount = document.getElementById('filter-count') as HTMLElement;
+    const filterStats = document.getElementById('filter-stats') as HTMLElement;
     
-    if (!verifiedCheckbox || !unverifiedCheckbox || !categorySelect || !appSetSelect || !dateSelect) {
+    if (!verifiedCheckbox || !unverifiedCheckbox || !packageTypeSelect || !categorySelect || !appSetSelect || !dateSelect) {
       console.error('[FilterBar] Required filter elements not found');
       return;
     }
@@ -104,11 +117,14 @@ const { categories } = Astro.props;
     function applyFilters() {
       const verifiedOnly = verifiedCheckbox.checked;
       const unverifiedOnly = unverifiedCheckbox.checked;
+      const selectedPackageType = packageTypeSelect.value;
       const selectedCategory = categorySelect.value;
       const selectedAppSet = appSetSelect.value;
       const selectedDays = dateSelect.value;
       
       let visibleCount = 0;
+      let flatpakCount = 0;
+      let homebrewCount = 0;
       const now = new Date();
       
       allCards.forEach(card => {
@@ -119,6 +135,14 @@ const { categories } = Astro.props;
           const isVerified = card.dataset.verified === 'true';
           if (verifiedOnly && !isVerified) shouldShow = false;
           if (unverifiedOnly && isVerified) shouldShow = false;
+        }
+        
+        // Package Type filter
+        if (selectedPackageType && shouldShow) {
+          const packageType = card.dataset.packageType || '';
+          if (packageType !== selectedPackageType) {
+            shouldShow = false;
+          }
         }
         
         // Category filter
@@ -149,10 +173,14 @@ const { categories } = Astro.props;
           }
         }
         
-        // Show/hide card
+        // Show/hide card and count package types
         if (shouldShow) {
           card.style.display = '';
           visibleCount++;
+          
+          const packageType = card.dataset.packageType || '';
+          if (packageType === 'flatpak') flatpakCount++;
+          else if (packageType === 'homebrew') homebrewCount++;
         } else {
           card.style.display = 'none';
         }
@@ -161,12 +189,25 @@ const { categories } = Astro.props;
       // Update active filters display
       updateActiveFilters();
       
-      // Update count
+      // Update count with package type breakdown
       if (filterCount) {
-        filterCount.textContent = `Showing ${visibleCount} of ${allCards.length} apps`;
+        filterCount.textContent = `Showing ${visibleCount} of ${allCards.length} packages`;
       }
       
-      console.log(`[FilterBar] Filters applied: ${visibleCount}/${allCards.length} apps visible`);
+      if (filterStats) {
+        const statsParts = [];
+        if (flatpakCount > 0) statsParts.push(`${flatpakCount} Flatpak`);
+        if (homebrewCount > 0) statsParts.push(`${homebrewCount} Homebrew`);
+        
+        if (statsParts.length > 0) {
+          filterStats.textContent = `(${statsParts.join(', ')})`;
+          filterStats.style.display = 'block';
+        } else {
+          filterStats.style.display = 'none';
+        }
+      }
+      
+      console.log(`[FilterBar] Filters applied: ${visibleCount}/${allCards.length} apps visible (${flatpakCount} Flatpak, ${homebrewCount} Homebrew)`);
     }
     
     // Update active filters display
@@ -178,6 +219,10 @@ const { categories } = Astro.props;
       }
       if (unverifiedCheckbox.checked) {
         activeFilters.push('Unverified');
+      }
+      if (packageTypeSelect.value) {
+        const packageTypeText = packageTypeSelect.options[packageTypeSelect.selectedIndex].text;
+        activeFilters.push(`Type: ${packageTypeText}`);
       }
       if (categorySelect.value) {
         const categoryText = categorySelect.options[categorySelect.selectedIndex].text;
@@ -206,6 +251,7 @@ const { categories } = Astro.props;
     function clearAllFilters() {
       verifiedCheckbox.checked = false;
       unverifiedCheckbox.checked = false;
+      packageTypeSelect.value = '';
       categorySelect.value = '';
       appSetSelect.value = '';
       dateSelect.value = '';
@@ -228,6 +274,7 @@ const { categories } = Astro.props;
     // Event listeners
     verifiedCheckbox.addEventListener('change', handleVerificationChange);
     unverifiedCheckbox.addEventListener('change', handleVerificationChange);
+    packageTypeSelect.addEventListener('change', applyFilters);
     categorySelect.addEventListener('change', applyFilters);
     appSetSelect.addEventListener('change', applyFilters);
     dateSelect.addEventListener('change', applyFilters);
@@ -396,6 +443,14 @@ const { categories } = Astro.props;
     font-size: 0.875rem;
     color: var(--color-text-secondary);
     font-weight: 500;
+    display: block;
+  }
+  
+  .filter-stats {
+    font-size: 0.75rem;
+    color: var(--color-text-tertiary);
+    margin-top: 0.25rem;
+    display: none;
   }
   
   /* Mobile responsive */

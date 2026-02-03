@@ -10,7 +10,7 @@ interface AppProps {
   updatedAt?: string;
   currentReleaseVersion?: string;
   currentReleaseDate?: string;
-  flathubUrl: string;
+  flathubUrl?: string;
   installsLastMonth?: number;
   favoritesCount?: number;
   isVerified?: boolean;
@@ -35,6 +35,16 @@ interface AppProps {
     type: string;
   }>;
   appSet?: string;
+  packageType: string;
+  homebrewInfo?: {
+    formula: string;
+    fullName?: string;
+    tap?: string;
+    homepage?: string;
+    versions?: string[];
+    dependencies?: string[];
+    caveats?: string;
+  };
 }
 
 interface Props {
@@ -56,6 +66,23 @@ function formatDate(dateStr: string) {
     return dateStr;
   }
 }
+
+// Get package URL based on type
+function getPackageUrl(app: AppProps): string {
+  if (app.packageType === 'homebrew' && app.homebrewInfo?.homepage) {
+    return app.homebrewInfo.homepage;
+  }
+  if (app.packageType === 'homebrew') {
+    return `https://formulae.brew.sh/formula/${app.homebrewInfo?.formula}`;
+  }
+  return app.flathubUrl || '#';
+}
+
+// Get package type display name
+function getPackageTypeName(type: string): string {
+  if (type === 'homebrew') return 'Homebrew';
+  return 'Flatpak';
+}
 ---
 
 <article 
@@ -64,14 +91,18 @@ function formatDate(dateStr: string) {
   data-categories={app.categories?.join(',') || ''}
   data-updated-at={app.updatedAt || ''}
   data-app-set={app.appSet || ''}
+  data-package-type={app.packageType}
 >
   <div class="app-header">
     {app.icon && (
       <img src={app.icon} alt={`${app.name} icon`} class="app-icon" />
     )}
+    {!app.icon && app.packageType === 'homebrew' && (
+      <div class="app-icon homebrew-icon">🍺</div>
+    )}
     <div class="app-title-section">
       <h2 class="app-name">
-        <a href={app.flathubUrl} target="_blank" rel="noopener">
+        <a href={getPackageUrl(app)} target="_blank" rel="noopener">
           {app.name}
         </a>
         {app.isVerified && (
@@ -80,17 +111,28 @@ function formatDate(dateStr: string) {
           </span>
         )}
       </h2>
-      <p class="app-id">{app.id}</p>
+      <div class="app-id-row">
+        <p class="app-id">{app.id}</p>
+        <span class={`package-type-badge ${app.packageType}`}>
+          {getPackageTypeName(app.packageType)}
+        </span>
+      </div>
     </div>
   </div>
 
   <p class="app-summary">{app.summary}</p>
 
   <div class="app-meta">
-    {app.developerName && (
+    {app.packageType === 'flatpak' && app.developerName && (
       <div class="meta-item">
         <span class="meta-label">Developer:</span>
         <span class="meta-value">{app.developerName}</span>
+      </div>
+    )}
+    {app.packageType === 'homebrew' && app.homebrewInfo?.tap && (
+      <div class="meta-item">
+        <span class="meta-label">Tap:</span>
+        <span class="meta-value">{app.homebrewInfo.tap}</span>
       </div>
     )}
     {app.currentReleaseVersion && (
@@ -206,6 +248,15 @@ function formatDate(dateStr: string) {
     object-fit: contain;
   }
 
+  .app-icon.homebrew-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(251, 191, 36, 0.1);
+    border: 2px solid rgba(251, 191, 36, 0.3);
+    font-size: 2rem;
+  }
+
   .app-title-section {
     flex: 1;
     min-width: 0;
@@ -242,11 +293,39 @@ function formatDate(dateStr: string) {
     vertical-align: middle;
   }
 
+  .app-id-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
   .app-id {
     font-size: 0.75rem;
     color: var(--color-text-secondary);
-    margin: 0.25rem 0 0 0;
+    margin: 0;
     font-family: monospace;
+  }
+
+  .package-type-badge {
+    font-size: 0.625rem;
+    font-weight: 600;
+    padding: 0.125rem 0.5rem;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .package-type-badge.flatpak {
+    background: rgba(88, 166, 255, 0.15);
+    color: var(--color-primary);
+    border: 1px solid rgba(88, 166, 255, 0.3);
+  }
+
+  .package-type-badge.homebrew {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.3);
   }
 
   .app-summary {
