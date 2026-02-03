@@ -1,5 +1,6 @@
 ---
 import AppCard from '../components/AppCard.astro';
+import FilterBar from '../components/FilterBar.astro';
 import KeyboardHelp from '../components/KeyboardHelp.astro';
 import SearchBar from '../components/SearchBar.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
@@ -52,6 +53,13 @@ const appsVerified = apps.filter(app => app.isVerified).length;
 // Calculate total installs and favorites
 const totalInstalls = apps.reduce((sum, app) => sum + (app.installsLastMonth || 0), 0);
 const totalFavorites = apps.reduce((sum, app) => sum + (app.favoritesCount || 0), 0);
+
+// Extract unique categories for filter
+const allCategories = new Set<string>();
+apps.forEach(app => {
+  app.categories?.forEach(cat => allCategories.add(cat));
+});
+const categories = Array.from(allCategories);
 
 // Extract unique app names for search
 const appNames = apps.map(app => app.name).sort();
@@ -415,6 +423,9 @@ const appNames = apps.map(app => app.name).sort();
             <a href="https://github.com/castrojo/flatpak-firehose" target="_blank" rel="noopener" class="info-link">GitHub Repository</a>
           </div>
         </div>
+
+        <!-- Filters -->
+        <FilterBar categories={categories} />
 
         <!-- Stats box -->
         <div class="sidebar-section">
