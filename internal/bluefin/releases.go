@@ -180,7 +180,7 @@ func FetchBluefinOSApps() ([]models.App, error) {
 		// Create App object for this OS release
 		app := models.App{
 			ID:          fmt.Sprintf("bluefin-os-%s", ghRelease.TagName),
-			Name:        fmt.Sprintf("Bluefin OS %s", osInfo.Stream),
+			Name:        formatOSName(osInfo),
 			Summary:     extractSummary(ghRelease, osInfo),
 			Description: ghRelease.Body,
 			Icon:        "https://avatars.githubusercontent.com/u/120078124?s=200&v=4", // Bluefin logo from GitHub
@@ -291,9 +291,19 @@ func extractPackageVersion(body, packageName string) string {
 	return ""
 }
 
+// formatOSName creates a display name for the OS release
+func formatOSName(osInfo *models.OSInfo) string {
+	// For stable builds, just use "Bluefin"
+	// For GTS builds, use "Bluefin LTS"
+	if osInfo.Stream == "gts" {
+		return "Bluefin LTS"
+	}
+	return "Bluefin"
+}
+
 // extractSummary creates a concise summary for the OS release
 func extractSummary(release GitHubRelease, osInfo *models.OSInfo) string {
-	streamName := strings.Title(osInfo.Stream)
+	streamName := "Stable"
 	if osInfo.Stream == "gts" {
 		streamName = "GTS (Long-Term Support)"
 	}

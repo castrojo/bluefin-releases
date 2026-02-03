@@ -1,0 +1,435 @@
+{
+  "researchDate": "2026-02-02",
+  "totalAppsResearched": 32,
+  "summary": {
+    "gnomeApps": 22,
+    "corporateApps": 3,
+    "smallProjects": 7
+  },
+  "apps": [
+    {
+      "id": "org.gnome.Characters",
+      "name": "Characters",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/gnome-characters",
+        "owner": "GNOME",
+        "repo": "gnome-characters"
+      },
+      "notes": "Standard GNOME app hosted on GitLab"
+    },
+    {
+      "id": "org.gnome.SimpleScan",
+      "name": "Document Scanner",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/simple-scan",
+        "owner": "GNOME",
+        "repo": "simple-scan"
+      },
+      "notes": "Standard GNOME app hosted on GitLab"
+    },
+    {
+      "id": "org.gnome.font-viewer",
+      "name": "Fonts",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/gnome-font-viewer",
+        "owner": "GNOME",
+        "repo": "gnome-font-viewer"
+      },
+      "notes": "Standard GNOME app hosted on GitLab"
+    },
+    {
+      "id": "org.gnome.DejaDup",
+      "name": "Déjà Dup Backups",
+      "category": "GNOME World",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/World/deja-dup",
+        "owner": "World",
+        "repo": "deja-dup"
+      },
+      "notes": "GNOME World app (third-party but GNOME-hosted). README confirms main repo location."
+    },
+    {
+      "id": "org.gnome.SoundRecorder",
+      "name": "Sound Recorder",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/gnome-sound-recorder",
+        "owner": "GNOME",
+        "repo": "gnome-sound-recorder"
+      },
+      "notes": "Standard GNOME app hosted on GitLab"
+    },
+    {
+      "id": "org.gnome.Snapshot",
+      "name": "Camera",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/snapshot",
+        "owner": "GNOME",
+        "repo": "snapshot"
+      },
+      "notes": "Standard GNOME app hosted on GitLab"
+    },
+    {
+      "id": "org.gnome.Contacts",
+      "name": "Contacts",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/gnome-contacts",
+        "owner": "GNOME",
+        "repo": "gnome-contacts"
+      },
+      "notes": "Standard GNOME app hosted on GitLab"
+    },
+    {
+      "id": "org.gnome.Connections",
+      "name": "Connections",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/connections",
+        "owner": "GNOME",
+        "repo": "connections"
+      },
+      "notes": "Standard GNOME app hosted on GitLab"
+    },
+    {
+      "id": "org.gnome.TextEditor",
+      "name": "Text Editor",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/gnome-text-editor",
+        "owner": "GNOME",
+        "repo": "gnome-text-editor"
+      },
+      "notes": "Standard GNOME app hosted on GitLab. Note: repo is gnome-text-editor not just text-editor."
+    },
+    {
+      "id": "org.gnome.Calculator",
+      "name": "Calculator",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/gnome-calculator",
+        "owner": "GNOME",
+        "repo": "gnome-calculator"
+      },
+      "notes": "Standard GNOME app hosted on GitLab"
+    },
+    {
+      "id": "org.gnome.Firmware",
+      "name": "Firmware",
+      "category": "GNOME World",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/World/gnome-firmware",
+        "owner": "World",
+        "repo": "gnome-firmware"
+      },
+      "notes": "GNOME World app. Current apps.json already has correct GitLab URL."
+    },
+    {
+      "id": "org.gnome.Loupe",
+      "name": "Image Viewer",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/loupe",
+        "owner": "GNOME",
+        "repo": "loupe"
+      },
+      "notes": "Standard GNOME app hosted on GitLab"
+    },
+    {
+      "id": "org.gnome.baobab",
+      "name": "Disk Usage Analyzer",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/baobab",
+        "owner": "GNOME",
+        "repo": "baobab"
+      },
+      "notes": "Standard GNOME app hosted on GitLab"
+    },
+    {
+      "id": "org.gnome.Builder",
+      "name": "Builder",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/gnome-builder",
+        "owner": "GNOME",
+        "repo": "gnome-builder"
+      },
+      "notes": "Standard GNOME app hosted on GitLab"
+    },
+    {
+      "id": "org.gnome.Showtime",
+      "name": "Video Player",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/showtime",
+        "owner": "GNOME",
+        "repo": "showtime"
+      },
+      "notes": "Standard GNOME app hosted on GitLab. New video player for GNOME."
+    },
+    {
+      "id": "org.gnome.Maps",
+      "name": "Maps",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/gnome-maps",
+        "owner": "GNOME",
+        "repo": "gnome-maps"
+      },
+      "notes": "Standard GNOME app hosted on GitLab"
+    },
+    {
+      "id": "org.gnome.Papers",
+      "name": "Document Viewer",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/evince",
+        "owner": "GNOME",
+        "repo": "evince"
+      },
+      "notes": "Papers is the rebranded name for Evince. Repository is still called evince."
+    },
+    {
+      "id": "org.gnome.NautilusPreviewer",
+      "name": "Sushi",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/sushi",
+        "owner": "GNOME",
+        "repo": "sushi"
+      },
+      "notes": "File previewer for Nautilus. Current apps.json already has correct GitLab URL."
+    },
+    {
+      "id": "org.gnome.Weather",
+      "name": "Weather",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/gnome-weather",
+        "owner": "GNOME",
+        "repo": "gnome-weather"
+      },
+      "notes": "Standard GNOME app hosted on GitLab"
+    },
+    {
+      "id": "org.gnome.Calendar",
+      "name": "Calendar",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/gnome-calendar",
+        "owner": "GNOME",
+        "repo": "gnome-calendar"
+      },
+      "notes": "Standard GNOME app hosted on GitLab"
+    },
+    {
+      "id": "org.gnome.Logs",
+      "name": "Logs",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/gnome-logs",
+        "owner": "GNOME",
+        "repo": "gnome-logs"
+      },
+      "notes": "Standard GNOME app hosted on GitLab"
+    },
+    {
+      "id": "org.gnome.FileRoller",
+      "name": "File Roller",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/file-roller",
+        "owner": "GNOME",
+        "repo": "file-roller"
+      },
+      "notes": "Standard GNOME app hosted on GitLab. Archive manager."
+    },
+    {
+      "id": "org.gnome.clocks",
+      "name": "Clocks",
+      "category": "GNOME Core",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/GNOME/gnome-clocks",
+        "owner": "GNOME",
+        "repo": "gnome-clocks"
+      },
+      "notes": "Standard GNOME app hosted on GitLab"
+    },
+    {
+      "id": "com.mattjakeman.ExtensionManager",
+      "name": "Extension Manager",
+      "category": "Third-party",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/mjakeman/extension-manager",
+        "owner": "mjakeman",
+        "repo": "extension-manager"
+      },
+      "notes": "Third-party app by Matt Jakeman for managing GNOME Shell extensions"
+    },
+    {
+      "id": "it.mijorus.smile",
+      "name": "Smile",
+      "category": "Third-party",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/mijorus/smile",
+        "owner": "mijorus",
+        "repo": "smile"
+      },
+      "notes": "Third-party emoji picker app"
+    },
+    {
+      "id": "page.tesk.Refine",
+      "name": "Refine",
+      "category": "Third-party",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.gnome.org/TheEvilSkeleton/Refine",
+        "owner": "TheEvilSkeleton",
+        "repo": "Refine"
+      },
+      "notes": "Third-party tweaking tool hosted on GNOME GitLab"
+    },
+    {
+      "id": "com.github.PintaProject.Pinta",
+      "name": "Pinta",
+      "category": "Third-party",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/PintaProject/Pinta",
+        "owner": "PintaProject",
+        "repo": "Pinta"
+      },
+      "notes": "Image editor similar to Paint.NET"
+    },
+    {
+      "id": "org.mozilla.Thunderbird",
+      "name": "Thunderbird",
+      "category": "Corporate",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://hg.mozilla.org/comm-central/",
+        "vcsType": "mercurial"
+      },
+      "notes": "Mozilla Thunderbird email client. Source is in Mercurial repository at hg.mozilla.org/comm-central/. GitHub mirror may exist but official source is Mercurial. Releases tracked via Mozilla release process."
+    },
+    {
+      "id": "org.mozilla.firefox",
+      "name": "Firefox",
+      "category": "Corporate",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://hg.mozilla.org/mozilla-central/",
+        "vcsType": "mercurial"
+      },
+      "notes": "Mozilla Firefox web browser. Source is in Mercurial repository at hg.mozilla.org/mozilla-central/. GitHub mirror may exist but official source is Mercurial. Releases tracked via Mozilla release process."
+    },
+    {
+      "id": "io.podman_desktop.PodmanDesktop",
+      "name": "Podman Desktop",
+      "category": "Corporate",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/containers/podman-desktop",
+        "owner": "containers",
+        "repo": "podman-desktop"
+      },
+      "notes": "Desktop app for managing Podman containers. Part of containers organization."
+    },
+    {
+      "id": "io.missioncenter.MissionCenter",
+      "name": "Mission Center",
+      "category": "Third-party",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.com/mission-center-devs/mission-center",
+        "owner": "mission-center-devs",
+        "repo": "mission-center"
+      },
+      "notes": "System monitor app similar to Windows Task Manager. Hosted on GitLab.com."
+    },
+    {
+      "id": "io.gitlab.adhami3310.Impression",
+      "name": "Impression",
+      "category": "Third-party",
+      "sourceRepo": {
+        "type": "gitlab",
+        "url": "https://gitlab.com/adhami3310/Impression",
+        "owner": "adhami3310",
+        "repo": "Impression"
+      },
+      "notes": "USB image writer tool. Hosted on GitLab.com. Flatpak manifest uses archive releases from project uploads."
+    }
+  ],
+  "methodology": "Researched by examining Flathub manifest repositories at github.com/flathub/<app-id>, extracting source URLs from manifest JSON/YAML files, checking README files, and following GNOME naming conventions (apps.gnome.org URLs map to gitlab.gnome.org/GNOME/<repo-name>).",
+  "specialCases": [
+    {
+      "app": "org.gnome.Papers",
+      "note": "App was renamed from Evince to Papers, but repository name remains evince"
+    },
+    {
+      "app": "org.gnome.TextEditor",
+      "note": "Repository is gnome-text-editor, not just text-editor"
+    },
+    {
+      "app": "org.mozilla.Thunderbird",
+      "note": "Uses Mercurial VCS, not Git. Official repo is hg.mozilla.org"
+    },
+    {
+      "app": "org.mozilla.firefox",
+      "note": "Uses Mercurial VCS, not Git. Official repo is hg.mozilla.org"
+    },
+    {
+      "app": "org.gnome.Firmware",
+      "note": "Already had correct GitLab URL in apps.json (gitlab.gnome.org/World/gnome-firmware)"
+    },
+    {
+      "app": "org.gnome.NautilusPreviewer",
+      "note": "Already had correct GitLab URL in apps.json (gitlab.gnome.org/GNOME/sushi)"
+    }
+  ],
+  "statistics": {
+    "totalApps": 32,
+    "byPlatform": {
+      "gitlab.gnome.org": 24,
+      "github.com": 5,
+      "gitlab.com": 2,
+      "mercurial": 2
+    },
+    "byType": {
+      "github": 5,
+      "gitlab": 26,
+      "mercurial": 2
+    }
+  },
+  "recommendations": "For Phase 3.2 (override/mapping system), create a mapping table that converts apps.gnome.org URLs to gitlab.gnome.org/GNOME/<repo> URLs. GNOME apps follow a predictable pattern. For Mozilla apps, consider whether to track Mercurial repos or use alternative release tracking methods (RSS feeds, release pages, etc.)."
+}

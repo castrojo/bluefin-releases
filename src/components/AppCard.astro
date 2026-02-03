@@ -213,14 +213,18 @@ function getPackageTypeName(type: string): string {
 
   {app.sourceRepo && (
     <div class="source-repo">
-      <span class="repo-icon">
-        {app.sourceRepo.type === 'github' ? '⚙' : '🌐'}
-      </span>
       <a href={app.sourceRepo.url} target="_blank" rel="noopener" class="repo-link">
-        {app.sourceRepo.type === 'github' 
-          ? `${app.sourceRepo.owner}/${app.sourceRepo.repo}`
-          : 'Source Repository'
-        }
+        <span class="repo-icon">
+          {app.sourceRepo.type === 'github' && <i class="fab fa-github"></i>}
+          {app.sourceRepo.type === 'gitlab' && <i class="fab fa-gitlab"></i>}
+          {app.sourceRepo.type !== 'github' && app.sourceRepo.type !== 'gitlab' && <i class="fas fa-code-branch"></i>}
+        </span>
+        <span class="repo-text">
+          {app.sourceRepo.type === 'github' 
+            ? `${app.sourceRepo.owner}/${app.sourceRepo.repo}`
+            : 'Source Repository'
+          }
+        </span>
       </a>
     </div>
   )}
@@ -228,11 +232,7 @@ function getPackageTypeName(type: string): string {
   {app.releases && app.releases.length > 0 && app.releases[0].description && (
     <div class="changelog-section">
       <h3 class="changelog-header">Latest Release</h3>
-      <div class="changelog-description" set:html={
-        app.releases[0].description.length > 400 
-          ? app.releases[0].description.substring(0, 400) + '...' 
-          : app.releases[0].description
-      } />
+      <div class="changelog-description" set:html={app.releases[0].description} />
       {app.releases[0].url && (
         <a href={app.releases[0].url} target="_blank" rel="noopener" class="changelog-link">
           View Full Release →
@@ -453,19 +453,31 @@ function getPackageTypeName(type: string): string {
     margin-bottom: 1rem;
   }
 
-  .repo-icon {
-    font-size: 1.25rem;
-  }
-
   .repo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     color: var(--color-primary);
     text-decoration: none;
     font-size: 0.875rem;
     font-family: monospace;
+    flex: 1;
   }
 
   .repo-link:hover {
     text-decoration: underline;
+  }
+
+  .repo-icon {
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.25rem;
+  }
+
+  .repo-text {
+    flex: 1;
   }
 
   .changelog-section {

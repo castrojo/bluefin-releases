@@ -176,9 +176,12 @@ func isLinuxCompatible(formula HomebrewFormula) bool {
 
 // convertHomebrewFormulaToApp converts a Homebrew formula to our App model
 func convertHomebrewFormulaToApp(formula HomebrewFormula) *models.App {
+	// Clean up the name - remove "homebrew-" prefix if present
+	cleanName := strings.TrimPrefix(formula.Name, "homebrew-")
+
 	app := &models.App{
 		ID:          fmt.Sprintf("homebrew-%s", formula.Name),
-		Name:        formula.Name,
+		Name:        cleanName,
 		Summary:     formula.Desc,
 		Description: formula.Desc,
 		Version:     formula.Versions.Stable,
@@ -230,10 +233,18 @@ func extractGitHubRepoFromURL(urlStr string) *models.SourceRepo {
 
 // createMinimalHomebrewApp creates a minimal App entry for custom tap packages
 func createMinimalHomebrewApp(packageName string) *models.App {
+	// Clean up the name - remove "homebrew-" prefix if present
+	cleanName := strings.TrimPrefix(packageName, "homebrew-")
+	// For tap packages with "/", use the package name after the "/"
+	if strings.Contains(cleanName, "/") {
+		parts := strings.Split(cleanName, "/")
+		cleanName = parts[len(parts)-1]
+	}
+
 	return &models.App{
 		ID:          fmt.Sprintf("homebrew-%s", strings.ReplaceAll(packageName, "/", "-")),
-		Name:        packageName,
-		Summary:     fmt.Sprintf("Homebrew package: %s", packageName),
+		Name:        cleanName,
+		Summary:     fmt.Sprintf("Homebrew package: %s", cleanName),
 		PackageType: "homebrew",
 		FetchedAt:   time.Now(),
 		HomebrewInfo: &models.HomebrewInfo{
