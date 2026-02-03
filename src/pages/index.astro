@@ -70,8 +70,8 @@ const appNames = apps.map(app => app.name).sort();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flatpak Firehose</title>
-  <meta name="description" content="Recently updated applications from Flathub">
+  <title>Bluefin Firehose</title>
+  <meta name="description" content="Track updates for Bluefin OS, Flatpak applications, and Homebrew packages">
   
   <!-- Theme initialization script - runs before page render to prevent FOUC -->
   <script is:inline>
@@ -388,9 +388,9 @@ const appNames = apps.map(app => app.name).sort();
         <div style="display: flex; align-items: center; gap: 2rem; flex: 1;">
           <div>
             <h1 class="site-title">
-              <a href={baseUrl} id="home-link" class="home-link">🔥 Flatpak Firehose</a>
+              <a href={baseUrl} id="home-link" class="home-link">🔥 Bluefin Firehose</a>
             </h1>
-            <p class="site-subtitle">Recently updated applications from Flathub</p>
+            <p class="site-subtitle">Track updates for Bluefin OS, Flatpak apps, and Homebrew packages</p>
           </div>
           <div style="flex: 1; max-width: 600px;">
             <SearchBar apps={appNames} />
@@ -418,9 +418,9 @@ const appNames = apps.map(app => app.name).sort();
         <!-- About box -->
         <div class="info-box">
           <h3>About</h3>
-          <p>The Flatpak Firehose aggregates release notes from recently updated Flathub applications.</p>
+          <p>The Bluefin Firehose aggregates release notes and updates from Bluefin OS, Flatpak applications, and Homebrew packages.</p>
           <div class="info-links">
-            <a href="https://flathub.org" target="_blank" rel="noopener" class="info-link">Flathub Homepage</a>
+            <a href="https://projectbluefin.io" target="_blank" rel="noopener" class="info-link">Project Bluefin</a>
             <a href="https://github.com/castrojo/bluefin-releases" target="_blank" rel="noopener" class="info-link">GitHub Repository</a>
           </div>
         </div>
@@ -461,7 +461,7 @@ const appNames = apps.map(app => app.name).sort();
 
         <!-- Made with love box -->
         <div class="sidebar-section made-with-love">
-          <p>Made with <strong>&lt;3</strong> by the Flatpak community</p>
+          <p>Made with <strong>&lt;3</strong> by the Bluefin Community</p>
         </div>
       </aside>
 
