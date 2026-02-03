@@ -30,7 +30,7 @@ const { categories } = Astro.props;
     <h3 class="filter-label">Package Type</h3>
     <select id="filter-package-type" class="filter-select">
       <option value="">All packages</option>
-      <option value="flatpak">Flatpak</option>
+      <option value="flatpak">Flathub</option>
       <option value="homebrew">Homebrew</option>
       <option value="os">OS Release</option>
     </select>
@@ -199,7 +199,7 @@ const { categories } = Astro.props;
       
       if (filterStats) {
         const statsParts = [];
-        if (flatpakCount > 0) statsParts.push(`${flatpakCount} Flatpak`);
+        if (flatpakCount > 0) statsParts.push(`${flatpakCount} Flathub`);
         if (homebrewCount > 0) statsParts.push(`${homebrewCount} Homebrew`);
         if (osCount > 0) statsParts.push(`${osCount} OS`);
         
@@ -211,7 +211,7 @@ const { categories } = Astro.props;
         }
       }
       
-      console.log(`[FilterBar] Filters applied: ${visibleCount}/${allCards.length} apps visible (${flatpakCount} Flatpak, ${homebrewCount} Homebrew, ${osCount} OS)`);
+      console.log(`[FilterBar] Filters applied: ${visibleCount}/${allCards.length} apps visible (${flatpakCount} Flathub, ${homebrewCount} Homebrew, ${osCount} OS)`);
     }
     
     // Update active filters display
