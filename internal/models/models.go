@@ -60,6 +60,20 @@ type App struct {
 	FavoritesCount    int           `json:"favoritesCount,omitempty"`
 	IsVerified        bool          `json:"isVerified"`
 	VerificationInfo  *Verification `json:"verificationInfo,omitempty"`
+	AppSet            string        `json:"appSet,omitempty"` // "core" or "dx"
+	PackageType       string        `json:"packageType"`      // "flatpak" or "homebrew"
+	HomebrewInfo      *HomebrewInfo `json:"homebrewInfo,omitempty"`
+}
+
+// HomebrewInfo contains Homebrew-specific package information
+type HomebrewInfo struct {
+	Formula      string   `json:"formula"`                // Formula name (e.g., "bat", "gh")
+	FullName     string   `json:"fullName,omitempty"`     // Full formula name with tap (e.g., "homebrew/core/bat")
+	Tap          string   `json:"tap,omitempty"`          // Tap name (e.g., "homebrew/core")
+	Homepage     string   `json:"homepage,omitempty"`     // Homepage URL
+	Versions     []string `json:"versions,omitempty"`     // Available versions
+	Dependencies []string `json:"dependencies,omitempty"` // Package dependencies
+	Caveats      string   `json:"caveats,omitempty"`      // Installation caveats/notes
 }
 
 // Verification contains app verification details from Flathub

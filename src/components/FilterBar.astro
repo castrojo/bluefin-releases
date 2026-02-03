@@ -36,6 +36,16 @@ const { categories } = Astro.props;
     </select>
   </div>
   
+  <!-- App Set Filter -->
+  <div class="filter-section">
+    <h3 class="filter-label">App Set</h3>
+    <select id="filter-app-set" class="filter-select">
+      <option value="">All apps</option>
+      <option value="core">Core (37 apps)</option>
+      <option value="dx">DX (5 apps)</option>
+    </select>
+  </div>
+  
   <!-- Date Filter -->
   <div class="filter-section">
     <h3 class="filter-label">Updated</h3>
@@ -70,13 +80,14 @@ const { categories } = Astro.props;
     const verifiedCheckbox = document.getElementById('filter-verified') as HTMLInputElement;
     const unverifiedCheckbox = document.getElementById('filter-unverified') as HTMLInputElement;
     const categorySelect = document.getElementById('filter-category') as HTMLSelectElement;
+    const appSetSelect = document.getElementById('filter-app-set') as HTMLSelectElement;
     const dateSelect = document.getElementById('filter-date') as HTMLSelectElement;
     const activeFiltersContainer = document.getElementById('active-filters') as HTMLElement;
     const activeFiltersList = document.getElementById('active-filters-list') as HTMLElement;
     const clearAllBtn = document.getElementById('clear-all-filters') as HTMLButtonElement;
     const filterCount = document.getElementById('filter-count') as HTMLElement;
     
-    if (!verifiedCheckbox || !unverifiedCheckbox || !categorySelect || !dateSelect) {
+    if (!verifiedCheckbox || !unverifiedCheckbox || !categorySelect || !appSetSelect || !dateSelect) {
       console.error('[FilterBar] Required filter elements not found');
       return;
     }
@@ -94,6 +105,7 @@ const { categories } = Astro.props;
       const verifiedOnly = verifiedCheckbox.checked;
       const unverifiedOnly = unverifiedCheckbox.checked;
       const selectedCategory = categorySelect.value;
+      const selectedAppSet = appSetSelect.value;
       const selectedDays = dateSelect.value;
       
       let visibleCount = 0;
@@ -113,6 +125,14 @@ const { categories } = Astro.props;
         if (selectedCategory && shouldShow) {
           const categories = card.dataset.categories || '';
           if (!categories.includes(selectedCategory)) {
+            shouldShow = false;
+          }
+        }
+        
+        // App Set filter
+        if (selectedAppSet && shouldShow) {
+          const appSet = card.dataset.appSet || '';
+          if (appSet !== selectedAppSet) {
             shouldShow = false;
           }
         }
@@ -163,6 +183,10 @@ const { categories } = Astro.props;
         const categoryText = categorySelect.options[categorySelect.selectedIndex].text;
         activeFilters.push(`Category: ${categoryText}`);
       }
+      if (appSetSelect.value) {
+        const appSetText = appSetSelect.options[appSetSelect.selectedIndex].text;
+        activeFilters.push(`App Set: ${appSetText}`);
+      }
       if (dateSelect.value) {
         const dateText = dateSelect.options[dateSelect.selectedIndex].text;
         activeFilters.push(`Updated: ${dateText}`);
@@ -183,6 +207,7 @@ const { categories } = Astro.props;
       verifiedCheckbox.checked = false;
       unverifiedCheckbox.checked = false;
       categorySelect.value = '';
+      appSetSelect.value = '';
       dateSelect.value = '';
       applyFilters();
     }
@@ -204,6 +229,7 @@ const { categories } = Astro.props;
     verifiedCheckbox.addEventListener('change', handleVerificationChange);
     unverifiedCheckbox.addEventListener('change', handleVerificationChange);
     categorySelect.addEventListener('change', applyFilters);
+    appSetSelect.addEventListener('change', applyFilters);
     dateSelect.addEventListener('change', applyFilters);
     clearAllBtn.addEventListener('click', clearAllFilters);
     

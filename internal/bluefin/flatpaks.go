@@ -16,23 +16,46 @@ const (
 	BluefinCommonBranch = "main"
 )
 
+// AppSetInfo contains app ID and its app set classification
+type AppSetInfo struct {
+	AppID  string
+	AppSet string // "core" or "dx"
+}
+
 // FetchFlatpakList fetches the list of Flatpak app IDs that Bluefin ships with
 // by parsing the Brewfiles from projectbluefin/common repository.
 // Returns a slice of Flatpak app IDs (e.g., "org.gnome.Calculator").
 // Supports GITHUB_TOKEN environment variable for API rate limits.
 func FetchFlatpakList() ([]string, error) {
-	log.Println("Fetching Bluefin Flatpak list from Brewfiles...")
-
-	var allAppIDs []string
-
-	// List of Brewfiles containing Flatpak definitions
-	brewfiles := []string{
-		"system_files/bluefin/usr/share/ublue-os/homebrew/system-flatpaks.Brewfile",
-		"system_files/bluefin/usr/share/ublue-os/homebrew/system-dx-flatpaks.Brewfile",
+	appSetInfos, err := FetchFlatpakListWithAppSets()
+	if err != nil {
+		return nil, err
 	}
 
-	for _, brewfile := range brewfiles {
-		log.Printf("  Fetching %s...", brewfile)
+	// Extract just the app IDs for backward compatibility
+	appIDs := make([]string, len(appSetInfos))
+	for i, info := range appSetInfos {
+		appIDs[i] = info.AppID
+	}
+
+	return appIDs, nil
+}
+
+// FetchFlatpakListWithAppSets fetches the list of Flatpak app IDs with app set classification
+// Returns a slice of AppSetInfo containing app IDs and their app set (core/dx).
+func FetchFlatpakListWithAppSets() ([]AppSetInfo, error) {
+	log.Println("Fetching Bluefin Flatpak list from Brewfiles...")
+
+	var allAppSetInfos []AppSetInfo
+
+	// Map of Brewfiles to their app set classification
+	brewfiles := map[string]string{
+		"system_files/bluefin/usr/share/ublue-os/homebrew/system-flatpaks.Brewfile":    "core",
+		"system_files/bluefin/usr/share/ublue-os/homebrew/system-dx-flatpaks.Brewfile": "dx",
+	}
+
+	for brewfile, appSet := range brewfiles {
+		log.Printf("  Fetching %s (%s apps)...", brewfile, appSet)
 
 		content, err := fetchRawFile(BluefinCommonOwner, BluefinCommonRepo, BluefinCommonBranch, brewfile)
 		if err != nil {
@@ -43,14 +66,27 @@ func FetchFlatpakList() ([]string, error) {
 		appIDs := parseFlatpakBrewfile(content)
 		log.Printf("  Found %d Flatpak app IDs in %s", len(appIDs), brewfile)
 
-		allAppIDs = append(allAppIDs, appIDs...)
+		for _, appID := range appIDs {
+			allAppSetInfos = append(allAppSetInfos, AppSetInfo{
+				AppID:  appID,
+				AppSet: appSet,
+			})
+		}
 	}
 
-	// Deduplicate app IDs
-	allAppIDs = deduplicate(allAppIDs)
+	// Count by app set
+	coreCount := 0
+	dxCount := 0
+	for _, info := range allAppSetInfos {
+		if info.AppSet == "core" {
+			coreCount++
+		} else if info.AppSet == "dx" {
+			dxCount++
+		}
+	}
 
-	log.Printf("✅ Total Flatpak app IDs: %d", len(allAppIDs))
-	return allAppIDs, nil
+	log.Printf("✅ Total Flatpak app IDs: %d (Core: %d, DX: %d)", len(allAppSetInfos), coreCount, dxCount)
+	return allAppSetInfos, nil
 }
 
 // fetchRawFile fetches a raw file from GitHub using raw.githubusercontent.com

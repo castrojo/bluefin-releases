@@ -166,6 +166,7 @@ func enrichApp(flathubApp models.FlathubApp) models.App {
 		FavoritesCount:    flathubApp.FavoritesCount,
 		IsVerified:        flathubApp.VerificationVerified,
 		VerificationInfo:  verificationInfo,
+		PackageType:       "flatpak", // All apps from Flathub are Flatpaks
 	}
 
 	if details != nil {

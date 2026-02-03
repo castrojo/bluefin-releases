@@ -34,6 +34,7 @@ interface AppProps {
     url?: string;
     type: string;
   }>;
+  appSet?: string;
 }
 
 interface Props {
@@ -62,6 +63,7 @@ function formatDate(dateStr: string) {
   data-verified={app.isVerified ? 'true' : 'false'}
   data-categories={app.categories?.join(',') || ''}
   data-updated-at={app.updatedAt || ''}
+  data-app-set={app.appSet || ''}
 >
   <div class="app-header">
     {app.icon && (

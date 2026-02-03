@@ -41,12 +41,28 @@ func main() {
 	} else {
 		// Bluefin mode: fetch specific apps from Bluefin Brewfiles
 		log.Println("Fetching Bluefin app list...")
-		appIDs, err := bluefin.FetchFlatpakList()
+		appSetInfos, err := bluefin.FetchFlatpakListWithAppSets()
 		if err != nil {
 			log.Fatalf("Failed to fetch Bluefin app list: %v", err)
 		}
+
+		// Create app set map for lookup
+		appSetMap := make(map[string]string)
+		appIDs := make([]string, len(appSetInfos))
+		for i, info := range appSetInfos {
+			appIDs[i] = info.AppID
+			appSetMap[info.AppID] = info.AppSet
+		}
+
 		log.Printf("Fetching %d Bluefin-curated apps from Flathub...", len(appIDs))
 		results = flathub.FetchAllApps(appIDs...)
+
+		// Add app set information to each app
+		for i := range results.Apps {
+			if appSet, ok := appSetMap[results.Apps[i].ID]; ok {
+				results.Apps[i].AppSet = appSet
+			}
+		}
 	}
 
 	flathubDuration := time.Since(flathubStart)
