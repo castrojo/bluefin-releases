@@ -1,0 +1,331 @@
+---
+interface Props {
+  app: any;
+}
+
+const { app } = Astro.props;
+
+// Format date for display
+function formatDate(dateStr: string) {
+  try {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'short', 
+      day: 'numeric' 
+    });
+  } catch {
+    return dateStr;
+  }
+}
+---
+
+<article class="app-card">
+  <div class="app-header">
+    {app.icon && (
+      <img src={app.icon} alt={`${app.name} icon`} class="app-icon" />
+    )}
+    <div class="app-title-section">
+      <h2 class="app-name">
+        <a href={app.flathubUrl} target="_blank" rel="noopener">
+          {app.name}
+        </a>
+      </h2>
+      <p class="app-id">{app.id}</p>
+    </div>
+  </div>
+
+  <p class="app-summary">{app.summary}</p>
+
+  <div class="app-meta">
+    {app.developerName && (
+      <div class="meta-item">
+        <span class="meta-label">Developer:</span>
+        <span class="meta-value">{app.developerName}</span>
+      </div>
+    )}
+    {app.currentReleaseVersion && (
+      <div class="meta-item">
+        <span class="meta-label">Version:</span>
+        <span class="meta-value">{app.currentReleaseVersion}</span>
+      </div>
+    )}
+    {app.currentReleaseDate && (
+      <div class="meta-item">
+        <span class="meta-label">Released:</span>
+        <span class="meta-value">{formatDate(app.currentReleaseDate)}</span>
+      </div>
+    )}
+  </div>
+
+  {app.categories && app.categories.length > 0 && (
+    <div class="app-categories">
+      {app.categories.slice(0, 3).map((cat: string) => (
+        <span class="category-tag">{cat}</span>
+      ))}
+    </div>
+  )}
+
+  {app.sourceRepo && (
+    <div class="source-repo">
+      <span class="repo-icon">
+        {app.sourceRepo.type === 'github' ? '🔗' : '🌐'}
+      </span>
+      <a href={app.sourceRepo.url} target="_blank" rel="noopener" class="repo-link">
+        {app.sourceRepo.type === 'github' 
+          ? `${app.sourceRepo.owner}/${app.sourceRepo.repo}`
+          : 'Source Repository'
+        }
+      </a>
+    </div>
+  )}
+
+  {app.releases && app.releases.length > 0 && (
+    <details class="changelog-section">
+      <summary class="changelog-header">
+        📝 {app.releases.length} Release{app.releases.length !== 1 ? 's' : ''} Available
+      </summary>
+      <div class="changelog-list">
+        {app.releases.slice(0, 5).map((release: any) => (
+          <div class="changelog-entry">
+            <div class="changelog-meta">
+              <span class="changelog-version">{release.version}</span>
+              <span class="changelog-date">{formatDate(release.date)}</span>
+              {release.type === 'github-release' && (
+                <span class="changelog-badge">GitHub</span>
+              )}
+            </div>
+            <h4 class="changelog-title">{release.title}</h4>
+            {release.description && release.description.length > 0 && (
+              <p class="changelog-description">
+                {release.description.length > 200 
+                  ? release.description.substring(0, 200) + '...' 
+                  : release.description
+                }
+              </p>
+            )}
+            {release.url && (
+              <a href={release.url} target="_blank" rel="noopener" class="changelog-link">
+                View Full Release →
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </details>
+  )}
+</article>
+
+<style>
+  .app-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .app-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .app-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .app-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  .app-title-section {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .app-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .app-name a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .app-name a:hover {
+    color: var(--color-primary);
+  }
+
+  .app-id {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    margin: 0.25rem 0 0 0;
+    font-family: monospace;
+  }
+
+  .app-summary {
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .app-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+  }
+
+  .meta-item {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .meta-label {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+  }
+
+  .meta-value {
+    color: var(--color-text);
+  }
+
+  .app-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .category-tag {
+    background: rgba(88, 166, 255, 0.1);
+    color: var(--color-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    border: 1px solid rgba(88, 166, 255, 0.2);
+  }
+
+  .source-repo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: rgba(88, 166, 255, 0.05);
+    border: 1px solid rgba(88, 166, 255, 0.2);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
+
+  .repo-icon {
+    font-size: 1.25rem;
+  }
+
+  .repo-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-family: monospace;
+  }
+
+  .repo-link:hover {
+    text-decoration: underline;
+  }
+
+  .changelog-section {
+    border-top: 1px solid var(--color-border);
+    padding-top: 1rem;
+    margin-top: 1rem;
+  }
+
+  .changelog-header {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--color-text);
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+    user-select: none;
+  }
+
+  .changelog-header:hover {
+    background: rgba(88, 166, 255, 0.1);
+  }
+
+  .changelog-list {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .changelog-entry {
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+  }
+
+  .changelog-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .changelog-version {
+    font-family: monospace;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .changelog-date {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .changelog-badge {
+    background: var(--color-success);
+    color: var(--color-bg);
+    padding: 0.125rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .changelog-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: var(--color-text);
+  }
+
+  .changelog-description {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.5;
+  }
+
+  .changelog-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    display: inline-block;
+  }
+
+  .changelog-link:hover {
+    text-decoration: underline;
+  }
+</style>

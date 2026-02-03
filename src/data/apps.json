@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2024-01-01T00:00:00Z",
+    "generatedBy": "flatpak-firehose v1.0.0",
+    "buildDuration": "0s",
+    "stats": {
+      "appsTotal": 0,
+      "appsWithGitHubRepo": 0,
+      "appsWithChangelogs": 0,
+      "totalReleases": 0
+    },
+    "performance": {
+      "flathubFetchDuration": "0s",
+      "detailsFetchDuration": "0s",
+      "githubFetchDuration": "0s",
+      "outputDuration": "0s"
+    }
+  },
+  "apps": []
+}
