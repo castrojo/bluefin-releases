@@ -1,5 +1,5 @@
 ---
-import AppCard from '../components/AppCard.astro';
+import ReleaseCard from '../components/ReleaseCard.astro';
 import FeaturedAppBanner from '../components/FeaturedAppBanner.astro';
 import FilterBar from '../components/FilterBar.astro';
 import KeyboardHelp from '../components/KeyboardHelp.astro';
@@ -22,15 +22,20 @@ interface App {
   categories?: string[];
   currentReleaseVersion?: string;
   currentReleaseDate?: string;
-  flathubUrl: string;
+  flathubUrl?: string;
   installsLastMonth?: number;
   favoritesCount?: number;
   isVerified?: boolean;
+  packageType: string;
   sourceRepo?: {
     type: string;
     url: string;
     owner?: string;
     repo?: string;
+  };
+  homebrewInfo?: {
+    formula: string;
+    homepage?: string;
   };
   releases?: Array<{
     version: string;
@@ -42,9 +47,93 @@ interface App {
   }>;
 }
 
+interface ReleaseWithApp {
+  version: string;
+  date: string;
+  title: string;
+  description?: string;
+  url?: string;
+  type: string;
+  app: {
+    id: string;
+    name: string;
+    icon?: string;
+    packageType: string;
+    summary: string;
+    flathubUrl?: string;
+    sourceRepo?: {
+      type: string;
+      url: string;
+      owner?: string;
+      repo?: string;
+    };
+    homebrewInfo?: {
+      formula: string;
+      homepage?: string;
+    };
+  };
+}
+
 // Extract apps from the JSON structure
 const apps = (appsData.apps as App[]) || [];
 const metadata = appsData.metadata;
+
+// Extract all releases and attach app info
+const allReleases: ReleaseWithApp[] = [];
+apps.forEach(app => {
+  if (app.releases && app.releases.length > 0) {
+    app.releases.forEach(release => {
+      allReleases.push({
+        ...release,
+        app: {
+          id: app.id,
+          name: app.name,
+          icon: app.icon,
+          packageType: app.packageType,
+          summary: app.summary,
+          flathubUrl: app.flathubUrl,
+          sourceRepo: app.sourceRepo,
+          homebrewInfo: app.homebrewInfo,
+        }
+      });
+    });
+  }
+});
+
+// Sort releases by date (newest first)
+allReleases.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+// Group releases by date
+interface DateGroup {
+  date: string;
+  displayDate: string;
+  releases: ReleaseWithApp[];
+}
+
+const releasesByDate = new Map<string, DateGroup>();
+allReleases.forEach(release => {
+  const date = new Date(release.date);
+  const dateKey = date.toISOString().split('T')[0]; // YYYY-MM-DD
+  const displayDate = date.toLocaleDateString('en-US', { 
+    weekday: 'long',
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+  
+  if (!releasesByDate.has(dateKey)) {
+    releasesByDate.set(dateKey, {
+      date: dateKey,
+      displayDate,
+      releases: []
+    });
+  }
+  releasesByDate.get(dateKey)!.releases.push(release);
+});
+
+// Convert to array and sort by date (newest first)
+const groupedReleases = Array.from(releasesByDate.values())
+  .sort((a, b) => b.date.localeCompare(a.date));
 
 // Count statistics
 const appsWithGitHub = apps.filter(app => app.sourceRepo && app.sourceRepo.type === 'github').length;
@@ -286,12 +375,38 @@ const appNames = apps.map(app => app.name).sort();
       min-width: 0;
     }
 
-    .apps-grid {
+    .releases-timeline {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 2.5rem;
       margin-bottom: 3rem;
       max-width: 100%;
+    }
+
+    .date-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .date-header {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin: 0;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--color-border-default);
+      position: sticky;
+      top: 0;
+      background: var(--color-bg-secondary);
+      z-index: 10;
+      backdrop-filter: blur(8px);
+    }
+
+    .releases-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
     .site-footer {
@@ -328,7 +443,7 @@ const appNames = apps.map(app => app.name).sort();
     }
 
     /* Keyboard navigation focus styles */
-    :global(.app-card.kbd-focused) {
+    :global(.release-card.kbd-focused) {
       box-shadow: 0 0 0 2px rgba(9, 105, 218, 0.15), 0 4px 12px rgba(0, 0, 0, 0.08);
       border-color: #0969da;
     }
@@ -499,9 +614,16 @@ const appNames = apps.map(app => app.name).sort();
 
       <!-- Main content area -->
       <div class="main-content">
-        <div class="apps-grid">
-          {apps.map((app: any) => (
-            <AppCard app={app} />
+        <div class="releases-timeline">
+          {groupedReleases.map((dateGroup) => (
+            <div class="date-group">
+              <h2 class="date-header">{dateGroup.displayDate}</h2>
+              <div class="releases-list">
+                {dateGroup.releases.map((release) => (
+                  <ReleaseCard release={release} />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -699,7 +821,7 @@ const appNames = apps.map(app => app.name).sort();
 
     let navigator = null;
     document.addEventListener('DOMContentLoaded', () => {
-      navigator = new KeyboardNavigator('.app-card', '.search-bar input');
+      navigator = new KeyboardNavigator('.release-card', '.search-bar input');
     });
   </script>
 
