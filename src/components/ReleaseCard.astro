@@ -53,12 +53,9 @@ function getPackageTypeName(type: string): string {
   return 'Flatpak';
 }
 
-// Format version display (OS releases don't need 'v' prefix)
+// Format version display (no 'v' prefix for any package type)
 function formatVersion(version: string, packageType: string): string {
-  if (packageType === 'os') {
-    return version; // OS releases like "stable-20260203" already have a prefix
-  }
-  return `v${version}`; // Other packages get "v1.2.3" format
+  return version;
 }
 ---
 

@@ -124,7 +124,7 @@ function getPackageTypeName(type: string): string {
           <a href={getPackageUrl(app)} target="_blank" rel="noopener">
             {app.name}
             {app.currentReleaseVersion && (
-              <span class="version-inline">v{app.currentReleaseVersion}</span>
+              <span class="version-inline">{app.currentReleaseVersion}</span>
             )}
           </a>
           {app.isVerified && (
