@@ -10,6 +10,15 @@ interface AppProps {
   currentReleaseVersion?: string;
   currentReleaseDate?: string;
   flathubUrl: string;
+  installsLastMonth?: number;
+  favoritesCount?: number;
+  isVerified?: boolean;
+  verificationInfo?: {
+    method: string;
+    loginName?: string;
+    loginProvider?: string;
+    website?: string;
+  };
   sourceRepo?: {
     type: string;
     url: string;
@@ -57,6 +66,11 @@ function formatDate(dateStr: string) {
         <a href={app.flathubUrl} target="_blank" rel="noopener">
           {app.name}
         </a>
+        {app.isVerified && (
+          <span class="verified-badge" title={`Verified via ${app.verificationInfo?.method}`}>
+            ✓
+          </span>
+        )}
       </h2>
       <p class="app-id">{app.id}</p>
     </div>
@@ -81,6 +95,18 @@ function formatDate(dateStr: string) {
       <div class="meta-item">
         <span class="meta-label">Released:</span>
         <span class="meta-value">{formatDate(app.currentReleaseDate)}</span>
+      </div>
+    )}
+    {app.installsLastMonth !== undefined && app.installsLastMonth > 0 && (
+      <div class="meta-item">
+        <span class="meta-label">Installs (30d):</span>
+        <span class="meta-value">{app.installsLastMonth.toLocaleString()}</span>
+      </div>
+    )}
+    {app.favoritesCount !== undefined && app.favoritesCount > 0 && (
+      <div class="meta-item">
+        <span class="meta-label">Favorites:</span>
+        <span class="meta-value">⭐ {app.favoritesCount}</span>
       </div>
     )}
   </div>
@@ -190,6 +216,21 @@ function formatDate(dateStr: string) {
 
   .app-name a:hover {
     color: var(--color-primary);
+  }
+
+  .verified-badge {
+    display: inline-block;
+    margin-left: 0.5rem;
+    background: var(--color-success);
+    color: var(--color-bg);
+    border-radius: 50%;
+    width: 1.25rem;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: bold;
+    vertical-align: middle;
   }
 
   .app-id {

@@ -48,7 +48,7 @@ func FetchAllApps() *models.FetchResults {
 
 			appStart := time.Now()
 			app := enrichApp(fa)
-			
+
 			log.Printf("✅ Processed %s in %s", app.ID, time.Since(appStart))
 
 			mu.Lock()
@@ -68,32 +68,59 @@ func FetchAllApps() *models.FetchResults {
 func enrichApp(flathubApp models.FlathubApp) models.App {
 	fetchedAt := time.Now().UTC()
 
-	// Create base app from feed data
-	app := models.App{
-		ID:             flathubApp.ID,
-		Name:           flathubApp.Name,
-		Summary:        flathubApp.Summary,
-		DeveloperName:  flathubApp.DeveloperName,
-		Icon:           flathubApp.Icon,
-		ProjectLicense: flathubApp.ProjectLicense,
-		Categories:     flathubApp.Categories,
-		Version:        flathubApp.CurrentReleaseVersion,
-		ReleaseDate:    flathubApp.CurrentReleaseDate,
-		FlathubURL:     fmt.Sprintf("https://flathub.org/apps/%s", flathubApp.ID),
-		FetchedAt:      fetchedAt,
+	// Build categories array from main and sub categories
+	categories := []string{}
+	// MainCategories is now a StringOrArray, append all elements
+	categories = append(categories, flathubApp.MainCategories...)
+	categories = append(categories, flathubApp.SubCategories...)
+
+	// Convert Unix timestamp to string
+	updatedAt := ""
+	if flathubApp.UpdatedAt > 0 {
+		updatedAt = time.Unix(flathubApp.UpdatedAt, 0).UTC().Format(time.RFC3339)
 	}
 
-	// Fetch detailed information
-	details, err := FetchAppDetails(flathubApp.ID)
+	// Build verification info
+	var verificationInfo *models.Verification
+	if flathubApp.VerificationVerified {
+		verificationInfo = &models.Verification{
+			Method: flathubApp.VerificationMethod,
+		}
+		if flathubApp.VerificationLoginName != nil {
+			verificationInfo.LoginName = flathubApp.VerificationLoginName
+		}
+		if flathubApp.VerificationWebsite != nil {
+			verificationInfo.Website = flathubApp.VerificationWebsite
+		}
+	}
+
+	// Create base app from collection data
+	app := models.App{
+		ID:                flathubApp.AppID,
+		Name:              flathubApp.Name,
+		Summary:           flathubApp.Summary,
+		Description:       flathubApp.Description,
+		DeveloperName:     flathubApp.DeveloperName,
+		Icon:              flathubApp.Icon,
+		ProjectLicense:    flathubApp.ProjectLicense,
+		Categories:        categories,
+		UpdatedAt:         updatedAt,
+		FlathubURL:        fmt.Sprintf("https://flathub.org/apps/%s", flathubApp.AppID),
+		FetchedAt:         fetchedAt,
+		InstallsLastMonth: flathubApp.InstallsLastMonth,
+		FavoritesCount:    flathubApp.FavoritesCount,
+		IsVerified:        flathubApp.VerificationVerified,
+		VerificationInfo:  verificationInfo,
+	}
+
+	// Fetch detailed information for releases and source repo
+	details, err := FetchAppDetails(flathubApp.AppID)
 	if err != nil {
-		log.Printf("⚠️  Failed to fetch details for %s: %v", flathubApp.ID, err)
+		log.Printf("⚠️  Failed to fetch details for %s: %v", flathubApp.AppID, err)
 		return app
 	}
 
 	if details != nil {
-		// Add description
-		app.Description = details.Description
-
 		// Extract source repository
 		sourceRepo := ExtractSourceRepo(details)
 		if sourceRepo != nil {
@@ -103,6 +130,11 @@ func enrichApp(flathubApp models.FlathubApp) models.App {
 		// Convert Flathub releases to our format
 		if len(details.Releases) > 0 {
 			app.Releases = ConvertFlathubReleases(details.Releases)
+			// Set current version and release date from first release
+			if len(details.Releases) > 0 {
+				app.Version = details.Releases[0].Version
+				app.ReleaseDate = details.Releases[0].Date
+			}
 		}
 	}
 
@@ -112,10 +144,10 @@ func enrichApp(flathubApp models.FlathubApp) models.App {
 	return app
 }
 
-// FetchRecentlyUpdated fetches the list of recently updated apps from Flathub
+// FetchRecentlyUpdated fetches the list of recently updated apps from Flathub (using JSON collection API)
 func FetchRecentlyUpdated() ([]models.FlathubApp, error) {
-	url := fmt.Sprintf("%s/feed/recently-updated", FlathubAPIBase)
-	
+	url := fmt.Sprintf("%s/collection/recently-updated", FlathubAPIBase)
+
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, fmt.Errorf("fetch recently updated: %w", err)
@@ -131,18 +163,18 @@ func FetchRecentlyUpdated() ([]models.FlathubApp, error) {
 		return nil, fmt.Errorf("read response body: %w", err)
 	}
 
-	var apps []models.FlathubApp
-	if err := json.Unmarshal(body, &apps); err != nil {
+	var collectionResp models.FlathubCollectionResponse
+	if err := json.Unmarshal(body, &collectionResp); err != nil {
 		return nil, fmt.Errorf("unmarshal response: %w", err)
 	}
 
-	return apps, nil
+	return collectionResp.Hits, nil
 }
 
 // FetchAppDetails fetches detailed information for a specific app
 func FetchAppDetails(appID string) (*models.FlathubAppDetails, error) {
 	url := fmt.Sprintf("%s/appstream/%s", FlathubAPIBase, appID)
-	
+
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, fmt.Errorf("fetch app details: %w", err)
@@ -219,7 +251,7 @@ func extractGitHubRepo(url string) *models.SourceRepo {
 	// Match github.com/owner/repo patterns
 	re := regexp.MustCompile(`github\.com/([^/]+)/([^/\s?#]+)`)
 	matches := re.FindStringSubmatch(url)
-	
+
 	if len(matches) < 3 {
 		return &models.SourceRepo{
 			Type: "github",

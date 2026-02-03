@@ -1,160 +1,2654 @@
 {
   "metadata": {
     "schemaVersion": "1.0.0",
-    "generatedAt": "2026-02-03T00:42:00Z",
-    "generatedBy": "flatpak-firehose v1.0.0 (test data)",
-    "buildDuration": "12.5s",
+    "generatedAt": "2026-02-03T01:30:00Z",
+    "generatedBy": "flatpak-firehose v1.0.0",
+    "buildDuration": "814.178335ms",
     "stats": {
-      "appsTotal": 5,
-      "appsWithGitHubRepo": 4,
-      "appsWithChangelogs": 4,
-      "totalReleases": 10
+      "appsTotal": 50,
+      "appsWithGitHubRepo": 23,
+      "appsWithChangelogs": 50,
+      "totalReleases": 170
     },
     "performance": {
-      "flathubFetchDuration": "2.3s",
-      "detailsFetchDuration": "8.1s",
-      "githubFetchDuration": "2.1s",
-      "outputDuration": "15ms"
+      "flathubFetchDuration": "814.080364ms",
+      "detailsFetchDuration": "814.080364ms",
+      "githubFetchDuration": "3.02µs",
+      "outputDuration": "0s"
     }
   },
   "apps": [
     {
-      "id": "org.gimp.GIMP",
-      "name": "GIMP",
-      "summary": "Create images and edit photographs",
-      "developerName": "The GIMP Team",
-      "icon": "https://dl.flathub.org/repo/appstream/x86_64/icons/128x128/org.gimp.GIMP.png",
-      "projectLicense": "GPL-3.0+",
-      "categories": ["Graphics"],
-      "currentReleaseVersion": "2.10.36",
-      "currentReleaseDate": "2024-01-15",
-      "flathubUrl": "https://flathub.org/apps/org.gimp.GIMP",
-      "sourceRepo": {
-        "type": "github",
-        "url": "https://github.com/GNOME/gimp",
-        "owner": "GNOME",
-        "repo": "gimp"
-      },
-      "releases": [
-        {
-          "version": "2.10.36",
-          "date": "2024-01-15T00:00:00Z",
-          "title": "GIMP 2.10.36",
-          "description": "Bug fixes and performance improvements",
-          "url": "https://github.com/GNOME/gimp/releases/tag/GIMP_2_10_36",
-          "type": "github-release"
-        }
-      ],
-      "fetchedAt": "2026-02-03T00:42:00Z"
-    },
-    {
-      "id": "org.blender.Blender",
-      "name": "Blender",
-      "summary": "Free and open source 3D creation suite",
-      "developerName": "Blender Foundation",
-      "icon": "https://dl.flathub.org/repo/appstream/x86_64/icons/128x128/org.blender.Blender.png",
-      "projectLicense": "GPL-3.0",
-      "categories": ["Graphics"],
-      "currentReleaseVersion": "4.0.2",
-      "currentReleaseDate": "2024-01-10",
-      "flathubUrl": "https://flathub.org/apps/org.blender.Blender",
-      "sourceRepo": {
-        "type": "github",
-        "url": "https://github.com/blender/blender",
-        "owner": "blender",
-        "repo": "blender"
-      },
-      "releases": [
-        {
-          "version": "4.0.2",
-          "date": "2024-01-10T00:00:00Z",
-          "title": "Blender 4.0.2",
-          "description": "Stability update with bug fixes",
-          "url": "https://github.com/blender/blender/releases/tag/v4.0.2",
-          "type": "github-release"
-        }
-      ],
-      "fetchedAt": "2026-02-03T00:42:00Z"
-    },
-    {
-      "id": "com.obsproject.Studio",
-      "name": "OBS Studio",
-      "summary": "Live streaming and screen recording software",
-      "developerName": "OBS Project",
-      "icon": "https://dl.flathub.org/repo/appstream/x86_64/icons/128x128/com.obsproject.Studio.png",
-      "projectLicense": "GPL-2.0+",
-      "categories": ["AudioVideo"],
-      "currentReleaseVersion": "30.0.2",
-      "currentReleaseDate": "2024-01-18",
-      "flathubUrl": "https://flathub.org/apps/com.obsproject.Studio",
-      "sourceRepo": {
-        "type": "github",
-        "url": "https://github.com/obsproject/obs-studio",
-        "owner": "obsproject",
-        "repo": "obs-studio"
-      },
-      "releases": [
-        {
-          "version": "30.0.2",
-          "date": "2024-01-18T00:00:00Z",
-          "title": "OBS Studio 30.0.2",
-          "description": "Bug fixes for 30.0 release",
-          "url": "https://github.com/obsproject/obs-studio/releases/tag/30.0.2",
-          "type": "github-release"
-        }
-      ],
-      "fetchedAt": "2026-02-03T00:42:00Z"
-    },
-    {
-      "id": "com.github.tchx84.Flatseal",
-      "name": "Flatseal",
-      "summary": "Manage Flatpak permissions",
-      "developerName": "Martin Abente Lahaye",
-      "icon": "https://dl.flathub.org/repo/appstream/x86_64/icons/128x128/com.github.tchx84.Flatseal.png",
-      "projectLicense": "GPL-3.0",
-      "categories": ["System"],
-      "currentReleaseVersion": "2.2.0",
-      "currentReleaseDate": "2024-01-05",
-      "flathubUrl": "https://flathub.org/apps/com.github.tchx84.Flatseal",
-      "sourceRepo": {
-        "type": "github",
-        "url": "https://github.com/tchx84/Flatseal",
-        "owner": "tchx84",
-        "repo": "Flatseal"
-      },
-      "releases": [
-        {
-          "version": "2.2.0",
-          "date": "2024-01-05T00:00:00Z",
-          "title": "Flatseal 2.2.0",
-          "description": "New features and bug fixes",
-          "url": "https://github.com/tchx84/Flatseal/releases/tag/v2.2.0",
-          "type": "github-release"
-        }
-      ],
-      "fetchedAt": "2026-02-03T00:42:00Z"
-    },
-    {
-      "id": "org.mozilla.firefox",
-      "name": "Firefox",
-      "summary": "Fast, Private & Safe Web Browser",
-      "developerName": "Mozilla",
-      "icon": "https://dl.flathub.org/repo/appstream/x86_64/icons/128x128/org.mozilla.firefox.png",
+      "id": "org.garudalinux.firedragon",
+      "name": "FireDragon",
+      "summary": "Floorp fork build using custom branding & settings",
+      "description": "FireDragon is a browser based on the excellent Floorp browser. It was customized to have dr460nized-fitting aestetics as well as many opiniated settings by default. As this browser was originally a Librewolf fork, we are trying to integrate its best patches and tweaks in the new base. The most important features in addition of Floorps own ones can be found below.\n      \n        Searx &amp; Whoogle search engines added, with the possibility to run locally\n        The default search engine is Garuda's Searx instance\n        Dark Reader\n        Sweet theme added\n        Custom, dr460nized branding 🐉\n        Keeping settings in sync with Librewolfs changes\n        Firefox accounts are enabled using a custom self-hosted sync server (ffsync.garudalinux.org)\n        Faster webpages loading from: Custom Firedragon settings, Inclusion of FastFox tweaks\n        Artwork by @SGS\n        Hidden Navigation buttons instead of being greyed out when they are inactive\n        PBMode Security\n      \n    ",
+      "developerName": "Garuda Linux & FireDragon Community",
+      "icon": "https://dl.flathub.org/media/org/garudalinux/firedragon/c6fc57381fa8fbfc1a1ce79005b07d88/icons/128x128/org.garudalinux.firedragon.png",
       "projectLicense": "MPL-2.0",
-      "categories": ["Network"],
-      "currentReleaseVersion": "122.0",
-      "currentReleaseDate": "2024-01-23",
-      "flathubUrl": "https://flathub.org/apps/org.mozilla.firefox",
+      "categories": [
+        "network",
+        "WebBrowser"
+      ],
+      "updatedAt": "2026-02-02T06:57:22Z",
+      "currentReleaseVersion": "v12.8.0",
+      "flathubUrl": "https://flathub.org/apps/org.garudalinux.firedragon",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://firedragon.garudalinux.org/"
+      },
       "releases": [
         {
-          "version": "122.0",
-          "date": "2024-01-23T00:00:00Z",
-          "title": "Version 122.0",
-          "description": "Performance improvements and security fixes",
+          "version": "v12.8.0",
+          "date": "2026-02-02T20:30:00.051115252-05:00",
+          "title": "Version v12.8.0",
+          "type": "appstream"
+        },
+        {
+          "version": "v12.7.0",
+          "date": "2026-02-02T20:30:00.051116782-05:00",
+          "title": "Version v12.7.0",
+          "type": "appstream"
+        },
+        {
+          "version": "v12.6.1",
+          "date": "2026-02-02T20:30:00.051117352-05:00",
+          "title": "Version v12.6.1",
+          "type": "appstream"
+        },
+        {
+          "version": "v12.6.1",
+          "date": "2026-02-02T20:30:00.051120762-05:00",
+          "title": "Version v12.6.1",
           "type": "appstream"
         }
       ],
-      "fetchedAt": "2026-02-03T00:42:00Z"
+      "fetchedAt": "2026-02-03T01:29:59.956214156Z",
+      "installsLastMonth": 2342,
+      "favoritesCount": 12,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "garudalinux.org"
+      }
+    },
+    {
+      "id": "one.ablaze.floorp",
+      "name": "Floorp",
+      "summary": "Customizable Firefox-based browser from Japan",
+      "description": "Unlimited Customization For Everyone\n      Enable more advanced customization than your default browser. Floorp is based on the smart Firefox, and enhances functionality and flexibility while maintaining security and privacy.\n      What can Floorp do for you?\n      \n        Flexible UI Customization: Floorp's most distinctive feature is its customizability. Floorp is the first Firefox-based browser to enable UI customization, designed so that anyone can easily adjust their browsing experience to their preferences and access the web with ease.\n        Various Ways to Browse the Web: Floorp features workspaces that integrate tab groups with containers that can separate login information. Additionally, you can easily access social media and chats through web panels.\n        Various Control Methods Supported: Browse more efficiently with mouse gestures and customizable keyboard shortcuts. Of course, it's also designed to be easily operated with a mouse.\n        Development and Research Focused: Floorp actively pursues experimental browser development. It's a browser that continuously incorporates new technologies and ideas, and energetically improves based on community feedback.\n        Aiming for a Sustainable Web: We respect users' rights and contribute to building an open and sustainable web ecosystem. Let's create the future of the internet together for the next generation.\n      \n    ",
+      "developerName": "Ablaze",
+      "icon": "https://dl.flathub.org/media/one/ablaze/floorp/f5779e6cf649c4b25c5e1ce5d4dad05c/icons/128x128/one.ablaze.floorp.png",
+      "projectLicense": "MPL-2.0",
+      "categories": [
+        "network",
+        "WebBrowser"
+      ],
+      "updatedAt": "2026-02-02T08:39:24Z",
+      "currentReleaseVersion": "12.10.3",
+      "flathubUrl": "https://flathub.org/apps/one.ablaze.floorp",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://floorp.app/"
+      },
+      "releases": [
+        {
+          "version": "12.10.3",
+          "date": "2026-02-02T20:30:00.051110242-05:00",
+          "title": "Version 12.10.3",
+          "type": "appstream"
+        },
+        {
+          "version": "12.10.2",
+          "date": "2026-02-02T20:30:00.051112782-05:00",
+          "title": "Version 12.10.2",
+          "type": "appstream"
+        },
+        {
+          "version": "12.10.1",
+          "date": "2026-02-02T20:30:00.051113242-05:00",
+          "title": "Version 12.10.1",
+          "type": "appstream"
+        },
+        {
+          "version": "12.9.2",
+          "date": "2026-02-02T20:30:00.051113792-05:00",
+          "title": "Version 12.9.2",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956221186Z",
+      "installsLastMonth": 12325,
+      "favoritesCount": 39,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "ablaze.one"
+      }
+    },
+    {
+      "id": "io.github.Soundux",
+      "name": "Soundux",
+      "summary": "A cross-platform soundboard",
+      "description": "\n      A universal soundboard that uses PulseAudio modules or PipeWire linking\n    \n      Features\n      \n        Dark and light theme\n        Folder tabs\n        Supports a variety of audio formats\n        Sound search (can also be opened with CTRL + F)\n        Sound hotkeys\n        Stop button and hotkey\n        App Passthrough (can also be opened with CTRL + G)\n        Media Controls\n      \n    ",
+      "developerName": "Soundux",
+      "icon": "https://dl.flathub.org/media/io/github/Soundux/7a27e444f3b749bcabd5615c89d049cd/icons/128x128/io.github.Soundux.png",
+      "projectLicense": "GPL-3.0-only",
+      "categories": [
+        "audiovideo",
+        "Audio"
+      ],
+      "updatedAt": "2026-02-02T05:58:22Z",
+      "currentReleaseVersion": "0.2.7",
+      "flathubUrl": "https://flathub.org/apps/io.github.Soundux",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://soundux.rocks/"
+      },
+      "releases": [
+        {
+          "version": "0.2.7",
+          "date": "2026-02-02T20:30:00.051145962-05:00",
+          "title": "Version 0.2.7",
+          "description": "<ul>\n            <li>Mono Support for PipeWire</li>\n            <li>Add Tab opens on last folder and initially opens in home folder</li>\n            <li>Fix audio playing at 100% in the beginning</li>\n            <li>New Translations (Greek, Dutch, French)</li>\n            <li>Fixed Space not working in search</li>\n            <li>Faster sorting, Per Tab sorting</li>\n            <li>Added minimum PipeWire version</li>\n            <li>Arrow Keys to navigate tabs</li>\n            <li>Set Volume individually</li>\n            <li>UI Improvements</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.2.6",
+          "date": "2026-02-02T20:30:00.051147642-05:00",
+          "title": "Version 0.2.6",
+          "description": "<ul>\n            <li>Recursive Folder adding</li>\n            <li>Crashes with PulseAudio</li>\n            <li>Fix Icons</li>\n            <li>Bug fixes</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.2.5",
+          "date": "2026-02-02T20:30:00.051148202-05:00",
+          "title": "Version 0.2.5",
+          "description": "<ul>\n            <li>Command line argument to start hidden</li>\n            <li>Support multiple output apps</li>\n            <li>Support multiple pass-through apps</li>\n            <li>Restore output on startup</li>\n            <li>UI improvements</li>\n            <li>Bug fixes</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.2.4",
+          "date": "2026-02-02T20:30:00.051149552-05:00",
+          "title": "Version 0.2.4",
+          "description": "<ul>\n            <li>Enable Icon support for flatpak</li>\n            <li>Fix Blank Page bug on Ubuntu</li>\n            <li>Fix Crash on Startup</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956203496Z",
+      "installsLastMonth": 4009,
+      "favoritesCount": 13,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "soundux.github.io"
+      }
+    },
+    {
+      "id": "fm.reaper.Reaper",
+      "name": "Reaper",
+      "summary": "Digital Audio Workstation",
+      "description": "**NOTE: This wrapper is not verified by, affiliated with, or supported by Cockos Incorporated.**\n      REAPER is a complete digital audio production application for computers, offering a full multitrack audio and MIDI recording, editing, processing, mixing and mastering toolset.\n      Using REAPER you can import any audio and MIDI, synthesize, sample, compose, arrange, edit, mix, and master songs or any other audio projects. If you add a hardware audio interface and a microphone, you have a complete professional quality recording studio, suitable for recording anything from a soloist to a band to an orchestra.\n    ",
+      "developerName": "Cockos Incorporated",
+      "icon": "https://dl.flathub.org/media/fm/reaper/Reaper/64c7f6e60bf4e20dc3710bbdfc12fc48/icons/128x128/fm.reaper.Reaper.png",
+      "projectLicense": "LicenseRef-proprietary=https://www.reaper.fm/dist-agreement.php",
+      "categories": [
+        "audiovideo",
+        "Audio",
+        "Video",
+        "AudioVideoEditing",
+        "Recorder"
+      ],
+      "updatedAt": "2026-02-01T12:52:18Z",
+      "currentReleaseVersion": "7.60",
+      "flathubUrl": "https://flathub.org/apps/fm.reaper.Reaper",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://www.reaper.fm"
+      },
+      "releases": [
+        {
+          "version": "7.60",
+          "date": "2026-02-02T20:30:00.062740442-05:00",
+          "title": "Version 7.60",
+          "type": "appstream"
+        },
+        {
+          "version": "7.59",
+          "date": "2026-02-02T20:30:00.062741312-05:00",
+          "title": "Version 7.59",
+          "type": "appstream"
+        },
+        {
+          "version": "7.58",
+          "date": "2026-02-02T20:30:00.062742162-05:00",
+          "title": "Version 7.58",
+          "type": "appstream"
+        },
+        {
+          "version": "7.57",
+          "date": "2026-02-02T20:30:00.062743032-05:00",
+          "title": "Version 7.57",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956366317Z",
+      "installsLastMonth": 5707,
+      "favoritesCount": 25,
+      "isVerified": false
+    },
+    {
+      "id": "cn.lceda.LCEDAPro",
+      "name": "LCEDA Pro",
+      "summary": "An Easier and Powerful Online PCB Design Tool",
+      "description": "**NOTE: This wrapper is not verified by, affiliated with, or supported by LCEDA.**\n      \n      LCEDA (Chinese: 嘉立创EDA), Chinese editon of EasyEDA, is a web-based, ready-to-use, easy-to-use, team-collaborative EDA tool.\n    \n    ",
+      "developerName": "LCEDA",
+      "icon": "https://dl.flathub.org/media/cn/lceda/LCEDAPro/397771d5293209c8e639f0ffe2899f1a/icons/128x128/cn.lceda.LCEDAPro.png",
+      "projectLicense": "LicenseRef-proprietary=https://lceda.cn/page/legal",
+      "categories": [
+        "development",
+        "Electronics"
+      ],
+      "updatedAt": "2026-02-01T13:00:53Z",
+      "currentReleaseVersion": "3.2.87",
+      "flathubUrl": "https://flathub.org/apps/cn.lceda.LCEDAPro",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://lceda.cn/"
+      },
+      "releases": [
+        {
+          "version": "3.2.87",
+          "date": "2026-02-02T20:30:00.062710532-05:00",
+          "title": "Version 3.2.87",
+          "type": "appstream"
+        },
+        {
+          "version": "3.2.84",
+          "date": "2026-02-02T20:30:00.062715572-05:00",
+          "title": "Version 3.2.84",
+          "type": "appstream"
+        },
+        {
+          "version": "3.2.80",
+          "date": "2026-02-02T20:30:00.062716872-05:00",
+          "title": "Version 3.2.80",
+          "type": "appstream"
+        },
+        {
+          "version": "3.2.77",
+          "date": "2026-02-02T20:30:00.062718432-05:00",
+          "title": "Version 3.2.77",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956293456Z",
+      "installsLastMonth": 256,
+      "favoritesCount": 1,
+      "isVerified": false
+    },
+    {
+      "id": "io.github.dp0sk.Crosspipe",
+      "name": "Crosspipe",
+      "summary": "PipeWire graph GTK4/Libadwaita GUI",
+      "description": "\n      Crosspipe is a visual graph manager for PipeWire, built with GTK4/Libadwaita and Vala, following the GNOME Human Interface Guidelines.\n    \n      Features:\n      \n        Visual graph of PipeWire nodes and connections\n        Drag-and-drop connection management\n        Native GTK4/Libadwaita interface, following GNOME HIG\n      \n    ",
+      "developerName": "dp0sk",
+      "icon": "https://dl.flathub.org/media/io/github/dp0sk.Crosspipe/af0cc37129b165969d64d1bc94ade701/icons/128x128/io.github.dp0sk.Crosspipe.png",
+      "projectLicense": "GPL-3.0-only",
+      "categories": [
+        "audiovideo",
+        "Audio",
+        "Mixer"
+      ],
+      "updatedAt": "2026-02-01T13:35:15Z",
+      "currentReleaseVersion": "0.1.0",
+      "flathubUrl": "https://flathub.org/apps/io.github.dp0sk.Crosspipe",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/dp0sk/crosspipe",
+        "owner": "dp0sk",
+        "repo": "crosspipe"
+      },
+      "releases": [
+        {
+          "version": "0.1.0",
+          "date": "2026-02-02T20:30:00.062802892-05:00",
+          "title": "Version 0.1.0",
+          "description": "<p>Initial release</p>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956288596Z",
+      "installsLastMonth": 143,
+      "favoritesCount": 1,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "dp0sk"
+      }
+    },
+    {
+      "id": "io.github.randovania.Randovania",
+      "name": "Randovania",
+      "summary": "A randomizer platform for a multitude of games",
+      "description": "\n      Randovania is a program for randomizing multiple aspects of several games, making a fresh experience out of the familiar.\n    \n      \n      Depending on the game, users can randomize where items appear, how areas connect to each other, and more. And after things are changed, Randovania checks each randomized game to make sure it's beatable. Experienced players can also turn up the difficulty by making glitches and unintended tricks potentially required to win. (Randovania will not expect players to use glitches to win otherwise.)\n    \n    ",
+      "developerName": "Randovania Team",
+      "icon": "https://dl.flathub.org/media/io/github/randovania.Randovania/a98aa796198b85f9d03a4453b56db7a6/icons/128x128/io.github.randovania.Randovania.png",
+      "projectLicense": "GPL-3.0-only",
+      "categories": [
+        "game"
+      ],
+      "updatedAt": "2026-02-01T21:35:25Z",
+      "currentReleaseVersion": "10.4.0",
+      "flathubUrl": "https://flathub.org/apps/io.github.randovania.Randovania",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://randovania.org/"
+      },
+      "releases": [
+        {
+          "version": "10.4.0",
+          "date": "2026-02-02T20:30:00.062677981-05:00",
+          "title": "Version 10.4.0",
+          "type": "appstream"
+        },
+        {
+          "version": "10.3.2",
+          "date": "2026-02-02T20:30:00.062691852-05:00",
+          "title": "Version 10.3.2",
+          "type": "appstream"
+        },
+        {
+          "version": "10.3.1",
+          "date": "2026-02-02T20:30:00.062692842-05:00",
+          "title": "Version 10.3.1",
+          "type": "appstream"
+        },
+        {
+          "version": "10.2.0",
+          "date": "2026-02-02T20:30:00.062697492-05:00",
+          "title": "Version 10.2.0",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956286696Z",
+      "installsLastMonth": 218,
+      "favoritesCount": 2,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "randovania"
+      }
+    },
+    {
+      "id": "rocks.shy.VacuumTube",
+      "name": "VacuumTube",
+      "summary": "YouTube for TV, on your PC",
+      "description": "VacuumTube is an unofficial open source wrapper of YouTube Leanback (the console and Smart TV version of YouTube) for PCs, with a built-in adblocker and other enhancements. It is the best way to experience YouTube on your media center or handheld PC!\n    ",
+      "developerName": "shy",
+      "icon": "https://dl.flathub.org/media/r/ro/rocks.shy.vacuumtube/06b19d66cd540d5c69a3a7f5c856ec30/icons/128x128/rocks.shy.VacuumTube.png",
+      "projectLicense": "MIT",
+      "categories": [
+        "audiovideo"
+      ],
+      "updatedAt": "2026-02-01T22:14:56Z",
+      "currentReleaseVersion": "1.5.6",
+      "flathubUrl": "https://flathub.org/apps/rocks.shy.VacuumTube",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/shy1132/VacuumTube",
+        "owner": "shy1132",
+        "repo": "VacuumTube"
+      },
+      "releases": [
+        {
+          "version": "1.5.6",
+          "date": "2026-02-02T20:30:00.062715662-05:00",
+          "title": "Version 1.5.6",
+          "description": "<p>v1.5.6</p>\n          <ul>\n            <li>Added support for flags.txt file</li>\n            <li>Updated dependencies</li>\n            <li>Temporarily downgraded from Electron v40.0.0 to v39.4.0 to alleviate video stuttering</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956391957Z",
+      "installsLastMonth": 11832,
+      "favoritesCount": 43,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "shy.rocks"
+      }
+    },
+    {
+      "id": "app.devsuite.Ptyxis",
+      "name": "Ptyxis",
+      "summary": "Container-oriented terminal",
+      "description": "\n      Ptyxis is a terminal for GNOME that focuses on ease-of-use in a\n      world of containers.\n    \n      Features:\n      \n        Remembers current container when opening a new tab with support for podman, toolbox, distrobox, and more\n        Configurable keyboard shortcuts\n        Modern interface which integrates the palette with the window styling\n        User-installable color palettes\n        Support for preferences profiles with container integration\n        Integrated color palettes with light and dark support\n        Tabbed interface with tab overviews\n        Efficient foreground process tracking denoting sudo and SSH\n        Support for transparent terminal backgrounds\n        Separate process mode for terminal-based applications\n        Support for pinned tabs and saved sessions\n        Terminal tabs are run within separate cgroups\n        Terminal inspector to help when writing terminal-based applications\n      \n    ",
+      "developerName": "Christian Hergert",
+      "icon": "https://dl.flathub.org/media/app/devsuite/Ptyxis/3ec8f162d74dfb9a1fdc8cd0c8382219/icons/128x128/app.devsuite.Ptyxis.png",
+      "projectLicense": "GPL-3.0-or-later",
+      "categories": [
+        "system",
+        "TerminalEmulator"
+      ],
+      "updatedAt": "2026-02-01T16:42:37Z",
+      "currentReleaseVersion": "49.3",
+      "flathubUrl": "https://flathub.org/apps/app.devsuite.Ptyxis",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://gitlab.gnome.org/chergert/ptyxis"
+      },
+      "releases": [
+        {
+          "version": "49.3",
+          "date": "2026-02-02T20:30:00.062843493-05:00",
+          "title": "Version 49.3",
+          "description": "<p>New features and improvements:</p>\n          <ul>\n            <li>Add support for apx containers</li>\n            <li>Improve tab focus handling when creating new tabs and windows</li>\n            <li>Add Norwegian Nynorsk translation</li>\n          </ul>\n          <p>Bug fixes:</p>\n          <ul>\n            <li>Fix user palettes being able to set primary/system-accent colors</li>\n            <li>Fix using default profile when requested profile UUID does not exist</li>\n            <li>Clear X11 urgency hint when window becomes active</li>\n            <li>Improve force-quit fallback priority</li>\n            <li>Improve agent handling of --no-tty/--tty flags for distrobox containers</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "49.2",
+          "date": "2026-02-02T20:30:00.062938874-05:00",
+          "title": "Version 49.2",
+          "type": "appstream"
+        },
+        {
+          "version": "49.1",
+          "date": "2026-02-02T20:30:00.062939504-05:00",
+          "title": "Version 49.1",
+          "type": "appstream"
+        },
+        {
+          "version": "49.0",
+          "date": "2026-02-02T20:30:00.062940174-05:00",
+          "title": "Version 49.0",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956277116Z",
+      "installsLastMonth": 3647,
+      "favoritesCount": 55,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "devsuite.app"
+      }
+    },
+    {
+      "id": "org.libvips.nip4",
+      "name": "nip4",
+      "summary": "Image processing spreadsheet",
+      "description": "\n\n      nip4 is a spreadsheet-like interface to the libvips image processing\n      library. You create a set of formula connecting your objects together,\n      and on a change nip4 will recalculate.  Because nip4 uses libvips\n      as the image processing engine it can handle very large images,\n      recalculates quickly, and only needs a little memory.  It scales to\n      fairly complex workflows: I've used it to develop systems with more\n      than 10,000 cells, analyzing images of many tens of gigabytes.\n\n    \n      \n\n      nip4 can load all workspaces from nip2, the previous version of this\n      program.  It has a batch mode, so you can run any image processing\n      system you develop from the command-line and without a GUI.\n\n    \n    ",
+      "developerName": "jcupitt",
+      "icon": "https://dl.flathub.org/media/org/libvips/nip4/fa1510637f14a48a3093988523371f5a/icons/128x128/org.libvips.nip4.png",
+      "projectLicense": "GPL-2.0+",
+      "categories": [
+        "graphics",
+        "2DGraphics",
+        "RasterGraphics"
+      ],
+      "updatedAt": "2026-02-01T16:24:45Z",
+      "currentReleaseVersion": "9.0.16",
+      "flathubUrl": "https://flathub.org/apps/org.libvips.nip4",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/jcupitt/nip4",
+        "owner": "jcupitt",
+        "repo": "nip4"
+      },
+      "releases": [
+        {
+          "version": "9.0.16",
+          "date": "2026-02-02T20:30:00.062995274-05:00",
+          "title": "Version 9.0.16",
+          "description": "<p>\n\n          This build adds more improvements to nip4's programming language,\n          including pattern matching for lambdas and better scoping for list\n          comprehensions. Startup is faster thanks to deferred compilation,\n          and the flatpak binary bundles an ImageMagick binary for wider file\n          format support.\n\n        </p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "9.0.15",
+          "date": "2026-02-02T20:30:00.062996704-05:00",
+          "title": "Version 9.0.15",
+          "description": "<p>\n\n            This build improves nip4's programming language with argument\n            pattern matching and function overloads.\n\n        </p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "9.0.14",
+          "date": "2026-02-02T20:30:00.062997284-05:00",
+          "title": "Version 9.0.14",
+          "description": "<p>\n\n            This version fixes the Magick menu, improves load cancel, and\n            improves the display of computed animated images. There are\n            a lot of fixes to the backend with better startup and shutdown\n            speed, a new vips8 builtin system, lazy batch output, and lazy ++.\n\n        </p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "9.0.13",
+          "date": "2026-02-02T20:30:00.062997854-05:00",
+          "title": "Version 9.0.13",
+          "description": "<p>\n\n        This version improves the workspace definitions pane and the\n        programming window. Batch mode is now complete. Visual styling is\n        improved. Lots of bug fixes and small polishing.\n\n        </p>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956296946Z",
+      "installsLastMonth": 127,
+      "isVerified": false
+    },
+    {
+      "id": "io.github.yairm210.unciv",
+      "name": "Unciv",
+      "summary": "Turn-based strategy game",
+      "description": "A reimplementation of the most famous civilization-building game ever—fast, small, no ads, free forever!\n      Build your civilization, research technologies, expand your cities and defeat your foes!\n      The world awaits! Will you build your civilization into an empire that will stand the test of time?\n    ",
+      "developerName": "Yair Morgenstern",
+      "icon": "https://dl.flathub.org/media/io/github/yairm210.unciv/f4fe2cdc241ae06407736c32e346284a/icons/128x128/io.github.yairm210.unciv.png",
+      "projectLicense": "MPL-2.0",
+      "categories": [
+        "game",
+        "StrategyGame"
+      ],
+      "updatedAt": "2026-02-02T01:37:23Z",
+      "currentReleaseVersion": "4.19.11",
+      "flathubUrl": "https://flathub.org/apps/io.github.yairm210.unciv",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/yairm210/Unciv/",
+        "owner": "yairm210",
+        "repo": "Unciv"
+      },
+      "releases": [
+        {
+          "version": "4.19.11",
+          "date": "2026-02-02T20:30:00.065852159-05:00",
+          "title": "Version 4.19.11",
+          "type": "appstream"
+        },
+        {
+          "version": "4.19.10",
+          "date": "2026-02-02T20:30:00.065853859-05:00",
+          "title": "Version 4.19.10",
+          "type": "appstream"
+        },
+        {
+          "version": "4.19.9",
+          "date": "2026-02-02T20:30:00.065854529-05:00",
+          "title": "Version 4.19.9",
+          "type": "appstream"
+        },
+        {
+          "version": "4.19.8",
+          "date": "2026-02-02T20:30:00.065855239-05:00",
+          "title": "Version 4.19.8",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956335097Z",
+      "installsLastMonth": 1947,
+      "favoritesCount": 10,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "yairm210"
+      }
+    },
+    {
+      "id": "org.libreoffice.LibreOffice",
+      "name": "LibreOffice",
+      "summary": "The LibreOffice productivity suite",
+      "description": "LibreOffice is a powerful office suite.  Its clean interface and\n  feature-rich tools help you unleash your creativity and enhance your\n  productivity.  LibreOffice includes several applications that make it the most\n  powerful Free and Open Source office suite on the market: Writer (word\n  processing), Calc (spreadsheets), Impress (presentations), Draw (vector\n  graphics and flowcharts), Base (databases), and Math (formula editing).\n      LibreOffice supports opening and saving into a wide variety of formats, so\n  you can easily share documents with users of other popular office suites\n  without worrying about compatibility.\n    ",
+      "developerName": "The Document Foundation",
+      "icon": "https://dl.flathub.org/media/org/libreoffice/LibreOffice/7b32acd0aa44b900e1fa0c99e6a509d3/icons/128x128/org.libreoffice.LibreOffice.png",
+      "projectLicense": "MPL-2.0",
+      "categories": [
+        "office"
+      ],
+      "updatedAt": "2026-02-01T17:23:38Z",
+      "currentReleaseVersion": "25.8.4.2",
+      "flathubUrl": "https://flathub.org/apps/org.libreoffice.LibreOffice",
+      "sourceRepo": {
+        "type": "other",
+        "url": "http://www.libreoffice.org/discover/libreoffice/"
+      },
+      "releases": [
+        {
+          "version": "25.8.4.2",
+          "date": "2026-02-02T20:30:00.065576946-05:00",
+          "title": "Version 25.8.4.2",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956334807Z",
+      "installsLastMonth": 62656,
+      "favoritesCount": 197,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "libreoffice.org"
+      }
+    },
+    {
+      "id": "ru.toxblh.KeeneticManager",
+      "name": "Keenetic Manager",
+      "summary": "Provides the ability to manage some features of the Keenetic router more easily",
+      "description": "Provides the ability to manage some features of the Keenetic router more easily or provided UI for cli only features\n    ",
+      "developerName": "Anton Palgunov (Toxblh)",
+      "icon": "https://dl.flathub.org/media/ru/toxblh/KeeneticManager/c3a725a92791df20a2b01b86d8827dba/icons/128x128/ru.toxblh.KeeneticManager.png",
+      "projectLicense": "MIT",
+      "categories": [
+        "utility"
+      ],
+      "updatedAt": "2026-02-01T23:13:05Z",
+      "currentReleaseVersion": "0.5.0",
+      "flathubUrl": "https://flathub.org/apps/ru.toxblh.KeeneticManager",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/Toxblh/Keenetic-Manager",
+        "owner": "Toxblh",
+        "repo": "Keenetic-Manager"
+      },
+      "releases": [
+        {
+          "version": "0.5.0",
+          "date": "2026-02-02T20:30:00.065739548-05:00",
+          "title": "Version 0.5.0",
+          "description": "<p>Enhanced router connectivity</p>\n          <ul>\n            <li>Automatically connects to routers from the list when on the same network</li>\n            <li>Smarter detection of available connection paths (IP or domain)</li>\n            <li>Optimized connection priority with preference for direct IP access</li>\n            <li>Seamless configuration migration</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.4.0",
+          "date": "2026-02-02T20:30:00.065741898-05:00",
+          "title": "Version 0.4.0",
+          "description": "<p>Added WoL button in clients</p>\n          <ul>\n            <li>Clients present now and offline</li>\n            <li>All clients could be wake on LAN even if online</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.3.2",
+          "date": "2026-02-02T20:30:00.065742658-05:00",
+          "title": "Version 0.3.2",
+          "description": "<p>Improved management of multiple routers</p>\n          <ul>\n            <li>Auto-reload when selecting a different router</li>\n            <li>Adding and editing routers will trigger data checks</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.3.1",
+          "date": "2026-02-02T20:30:00.065743398-05:00",
+          "title": "Version 0.3.1",
+          "description": "<p>Rework application</p>\n          <ul>\n            <li>New page Me, which present your curent device setting on router.</li>\n            <li>Re-work VPN page. Added search.</li>\n            <li>Re-work online clients. Added search. Possible to copy IP and MAC addresses</li>\n            <li>Auto search gateway for adding</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956377077Z",
+      "installsLastMonth": 107,
+      "favoritesCount": 3,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "toxblh.ru"
+      }
+    },
+    {
+      "id": "io.github.nacho.mecalin",
+      "name": "Mecalin",
+      "summary": "Learn touch typing",
+      "description": "\n      Mecalin is a modern typing tutor application that helps you learn and improve your touch typing skills.\n      It provides a clean and intuitive interface for practicing typing.\n    \n      \n      Features include structured lessons, keyboard layout visualization, and progress tracking to help you\n      become a more efficient typist.\n    \n    ",
+      "developerName": "Ignacio Casal Quinteiro",
+      "icon": "https://dl.flathub.org/media/io/github/nacho.mecalin/d5cdd62a83f502322400617bc33b5828/icons/128x128/io.github.nacho.mecalin.png",
+      "projectLicense": "GPL-3.0-or-later",
+      "categories": [
+        "education",
+        "Office"
+      ],
+      "updatedAt": "2026-02-01T12:56:13Z",
+      "currentReleaseVersion": "0.8.0",
+      "flathubUrl": "https://flathub.org/apps/io.github.nacho.mecalin",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/nacho/mecalin",
+        "owner": "nacho",
+        "repo": "mecalin"
+      },
+      "releases": [
+        {
+          "version": "0.8.0",
+          "date": "2026-02-02T20:30:00.06603803-05:00",
+          "title": "Version 0.8.0",
+          "description": "<ul>\n            <li>Added lesson 9 covering special characters for all languages</li>\n            <li>Added Galician word list for text generation in games</li>\n            <li>Speed test now uses system locale for language selection</li>\n            <li>Added retry button to speed test results</li>\n            <li>Added red glow error effect to typing row for visual feedback</li>\n            <li>Fixed WPM calculation to use graphemes instead of characters</li>\n            <li>Fixed keyboard widget character matching for accented characters</li>\n            <li>Fixed cursor position handling for multi-byte UTF-8 characters</li>\n            <li>Fixed falling keys rendering to appear above keyboard widget</li>\n            <li>Refactored scrolling lanes game to use text generation module</li>\n            <li>Updated Speed Test translations for all languages</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.7.0",
+          "date": "2026-02-02T20:30:00.06603922-05:00",
+          "title": "Version 0.7.0",
+          "description": "<ul>\n            <li>Added Portuguese (Portugal) language support (keyboard layout, lessons, and translations)</li>\n            <li>Added lesson 8 covering special characters in the top row for all languages</li>\n            <li>Added Menu key support to keyboard layouts</li>\n            <li>New unified TypingRow widget combining target text, input field, and repetition counter</li>\n            <li>Modernized main menu using AdwPreferencesPage and AdwActionRow</li>\n            <li>Simplified text view integration for better code organization</li>\n            <li>Fixed typo in lesson 7 step 53</li>\n            <li>Standardized key notation from |key| to 'key' in lessons 7-8</li>\n            <li>Completed missing translations in po files</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.6.0",
+          "date": "2026-02-02T20:30:00.06604008-05:00",
+          "title": "Version 0.6.0",
+          "description": "<ul>\n            <li>Added Galician language support (keyboard layout, lessons, and translations)</li>\n            <li>Migrated to GTK 4.14 GSK rendering API for improved performance</li>\n            <li>Ported keyboard widget, falling keys game, and scrolling lanes game to GSK</li>\n            <li>Moved game results UI to GtkBuilder for better maintainability</li>\n            <li>Added Super L and Super R keys to keyboard layouts</li>\n            <li>Updated dependencies</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.5.0",
+          "date": "2026-02-02T20:30:00.06604083-05:00",
+          "title": "Version 0.5.0",
+          "description": "<ul>\n            <li>Added Polish language support (keyboard layout, lessons, and translations)</li>\n            <li>Added number row lesson (lesson 7) to all languages</li>\n            <li>Added missing first keys to keyboard layouts (º, \\, `)</li>\n            <li>Improved lesson view UI layout</li>\n            <li>Centered keyboard widget in falling keys game</li>\n            <li>Adjusted keyboard key widths for better visual balance</li>\n            <li>Fixed keyboard widget width calculation</li>\n            <li>Refactored keyboard rendering to row-by-row approach</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956320917Z",
+      "installsLastMonth": 1380,
+      "favoritesCount": 4,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "nacho"
+      }
+    },
+    {
+      "id": "net.shadps4.shadPS4",
+      "name": "shadPS4",
+      "summary": "PS4 Emulator",
+      "description": "shadPS4 is an early PlayStation 4 emulator for Windows, Linux and macOS written in C++.\n      For ease of use, this Flatpak distribution of shadPS4 bundles the latest stable release\n      of the emulator with the official shadPS4 Qt Launcher as a GUI front-end. The launcher in\n      the Flatpak distribution is pre-set to use the bundled emulator and cannot download or run\n      other versions. If you want the ability to select different versions of shadPS4, please\n      download the AppImage release from the shadPS4 website instead.\n      The emulator is still early in development, so don't expect a flawless experience. Nonetheless, the emulator can already run a number of commercial games.\n    ",
+      "developerName": "shadPS4 Contributors",
+      "icon": "https://dl.flathub.org/media/net/shadps4/shadPS4/07a997f12d93ef316cd225c11cf7a182/icons/128x128/net.shadps4.shadPS4.png",
+      "projectLicense": "GPL-2.0",
+      "categories": [
+        "game"
+      ],
+      "updatedAt": "2026-02-02T03:49:46Z",
+      "currentReleaseVersion": "0.13.0",
+      "flathubUrl": "https://flathub.org/apps/net.shadps4.shadPS4",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://shadps4.net/"
+      },
+      "releases": [
+        {
+          "version": "0.13.0",
+          "date": "2026-02-02T20:30:00.065873729-05:00",
+          "title": "Version 0.13.0",
+          "type": "appstream"
+        },
+        {
+          "version": "0.12.5",
+          "date": "2026-02-02T20:30:00.065890659-05:00",
+          "title": "Version 0.12.5",
+          "type": "appstream"
+        },
+        {
+          "version": "0.12.0",
+          "date": "2026-02-02T20:30:00.065892189-05:00",
+          "title": "Version 0.12.0",
+          "type": "appstream"
+        },
+        {
+          "version": "0.11.0",
+          "date": "2026-02-02T20:30:00.065893599-05:00",
+          "title": "Version 0.11.0",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956312277Z",
+      "installsLastMonth": 4549,
+      "favoritesCount": 34,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "shadps4.net"
+      }
+    },
+    {
+      "id": "app.curocalc.calculator",
+      "name": "Curo Calculator",
+      "summary": "Financial calculations simplified",
+      "description": "Curo Calculator is the ultimate tool for anyone needing to calculate loan, lease, and hire\n      purchase repayments and interest rates. Perfect for both personal users and finance\n      professionals, this app simplifies complex financial calculations.\n      Key Features Include:\n      \n        Customizable Interface: Tailor the calculator's layout to suit your needs, whether for\n        straightforward daily calculations or advanced financial scenarios.\n        Guided Examples: Dive into usage with examples illustrating both basic and advanced\n        features like payment weighting, deferred settlements, and 0% interest calculations. With\n        just 3 clicks or taps, navigate from simple to complex calculations effortlessly.\n        User-Defined Templates: Save time on repetitive tasks with templates tailored to your\n        frequent calculations.\n        Day Count Conventions: Supports multiple conventions like 30/360, Actual/365,\n        Actual/Actual, and the EU's APR for consumer credit, ensuring accuracy across various\n        financial contexts.\n        Amortization and APR Proof Schedules: View results in clear, downloadable formats for\n        further analysis or record-keeping.\n        Comprehensive Online Support: Access an extensive help website that explains all features,\n        provides examples, and more.\n      \n      Curo Calculator is a proprietary Flutter-based app for advanced financial calculations,\n      including loan, lease, and hire purchase payments and rates. It is built on the open-source\n      Curo library available on GitHub.\n      Built on Debian GNU/Linux 12 (bookworm) with Flutter 3.38.3, distributed as a prebuilt\n      binary.\n    ",
+      "developerName": "Andrew Murphy",
+      "icon": "https://dl.flathub.org/media/app/curocalc/calculator/ad0fca77c283ca0f690c7af9b9b8a7e1/icons/128x128/app.curocalc.calculator.png",
+      "projectLicense": "LicenseRef-proprietary",
+      "categories": [
+        "office",
+        "Finance"
+      ],
+      "updatedAt": "2026-02-02T04:57:06Z",
+      "currentReleaseVersion": "2.6.1",
+      "flathubUrl": "https://flathub.org/apps/app.curocalc.calculator",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://curocalc.app"
+      },
+      "releases": [
+        {
+          "version": "2.6.1",
+          "date": "2026-02-02T20:30:00.068066488-05:00",
+          "title": "Version 2.6.1",
+          "description": "<p>hotfix: Correct decimal separator handling for locales that use comma (`,`)\n          instead of dot (`.`). Amounts now display properly on blur and initial load in affected\n          regions. No changes to calculations or input flow.</p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "2.6.0",
+          "date": "2026-02-02T20:30:00.068067028-05:00",
+          "title": "Version 2.6.0",
+          "description": "<p>This release brings a major improvement to the input experience within the app.</p>\n          <ul>\n            <li>Replaced the previous numeric input control with a custom, modern formatter</li>\n            <li>Cursor now stays exactly where expected during typing, editing in the middle,\n            backspacing, and deleting — even across thousand separators and decimal points</li>\n            <li>Supports pasting, locale-specific separators/symbols, and natural deletion behaviour</li>\n            <li>Eliminates the biggest reported frustration when entering amounts, weights and\n            percentages</li>\n          </ul>\n          <p>No changes to calculations, templates or stored data — just a much smoother daily\n          experience.</p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "2.5.0",
+          "date": "2026-02-02T20:30:00.068067398-05:00",
+          "title": "Version 2.5.0",
+          "description": "<p>This version introduces greater user control with a new language switcher and theme\n          selector, allowing you to customize the app's language and appearance (Light, Dark, or\n          Automatic mode) directly within the app. These preferences are saved for future sessions.</p>\n          <p>Additionally, a custom splash screen has been added for Linux, providing a smoother and\n          more branded startup experience.</p>\n          <p>All existing financial calculation features remain fully intact, with no changes to\n          templates or functionality.</p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "2.4.0",
+          "date": "2026-02-02T20:30:00.068067778-05:00",
+          "title": "Version 2.4.0",
+          "description": "<p>Major internal modernisation with the complete integration of the rewritten curo\n          financial calculation library, delivering improved reliability, performance, and future\n          maintainability while preserving all existing functionality.</p>\n          <ul>\n            <li>Enhanced EAR and APR Proof schedules: added a running \"Balancing Total\" column\n            (replacing the previous footer total), now displayed at user-defined currency precision\n            (default 2 decimal places).</li>\n            <li>Improved discount input logging: column renamed to \"Discount Inputs\" with clearer\n            operand labels (e.g., \"t = 31/360\" and inclusion of unit-periods \"p\" for US Appendix J).</li>\n            <li>Expanded explanations in the EAR/APR Proof info dialog to cover the updated discount\n            input format.</li>\n            <li>Added missing tooltips on icon buttons throughout the input screens.</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956274806Z",
+      "installsLastMonth": 852,
+      "favoritesCount": 2,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "curocalc.app"
+      }
+    },
+    {
+      "id": "cc.arduino.IDE2",
+      "name": "Arduino IDE v2",
+      "summary": "Open-source electronics prototyping platform",
+      "description": "\n\t\t\tNOTE: This wrapper is not verified by, affiliated with, or supported by Arduino.\n\t\t\tArduino do not offer official support for the Flatpak wrapper, and so to offer the best\n\t\t\tsupport and experience for the Flatpak wrapper please report ALL issues at the Flathub\n\t\t\tissue tracker (linked by the issue button/link on this page).\n\t\t\tThis allows with issues to be dealt with correctly. For more info press the issues\n\t\t\tbutton/link on this page.\n\t\t\n      \n\t\t\tIf you would like to limit the app's filesystem access and avoid cluttered configuration\n\t\t\tfiles, please see limit-filesystem-access.md in the Flathub repo.\n\t\t\n      \n\t\t\tArduino is an open-source electronics prototyping platform based\n\t\t\ton flexible, easy-to-use hardware and software. It's intended for\n\t\t\tartists, designers, hobbyists, and anyone interested in creating\n\t\t\tinteractive objects or environments.\n\t\t\n      \n\t\t\tIncluded is an integrated development environment that can be used\n\t\t\tto develop and upload code to compatible microcontrollers.\n\t\t\n      \n\t\t\tThe new major release of the Arduino IDE is faster and even more powerful!\n\t\t\tIn addition to a more modern editor and a more responsive interface it features\n\t\t\tautocompletion, code navigation, and even a live debugger.\n\t\t\n      \n\t\t\tThe Flatpak build of Arduino IDE 2.x requires the user to have USB permissions to upload\n\t\t\ta sketch, see our readme for instructions (https://github.com/flathub/cc.arduino.IDE2/blob/master/README.md).\n\t\t\n    ",
+      "developerName": "Arduino SA",
+      "icon": "https://dl.flathub.org/media/cc/arduino/IDE2/769f6452be1602c9d6697abfa4934c92/icons/128x128/cc.arduino.IDE2.png",
+      "projectLicense": "AGPL-3.0",
+      "categories": [
+        "development",
+        "IDE",
+        "Electronics"
+      ],
+      "updatedAt": "2026-02-01T21:11:01Z",
+      "currentReleaseVersion": "2.3.7",
+      "flathubUrl": "https://flathub.org/apps/cc.arduino.IDE2",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://www.arduino.cc/"
+      },
+      "releases": [
+        {
+          "version": "2.3.7",
+          "date": "2026-02-02T20:30:00.067998937-05:00",
+          "title": "Version 2.3.7",
+          "description": "<p>Fixed</p>\n          <ul>\n            <li>When updating a library, install all dependencies (#2830)</li>\n            <li>Escape asterisks in error message content for notification display (#2811)</li>\n            <li>Replace null characters in copied monitor output (#2382)</li>\n            <li>Review macOS build security (#2805)</li>\n            <li>Use macos-15-intel runner for MacOS x86_64 builds (#2828)</li>\n          </ul>\n          <p>Changed</p>\n          <ul>\n            <li>Use Arduino CLI 1.3.1 (#2806)</li>\n            <li>Add copy button to serial monitor (#2718) [93d27ea]</li>\n            <li>Add \"installed\" filter in boards manager (#2812)</li>\n            <li>Update translation files (#2709)</li>\n            <li>Remove welcome dialog and donation links (#2808) [155f0ae] [11b2460]</li>\n            <li>Update docs (#2821) (#2814) [ee4f74d]</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "2.3.6",
+          "date": "2026-02-02T20:30:00.068000607-05:00",
+          "title": "Version 2.3.6",
+          "description": "<p>Fixed</p>\n          <ul>\n            <li>Auto-update doesn't trigger (#2697)</li>\n            <li>Extra blank window when IDE started via sketch file association (#2693)</li>\n            <li>Duplicate sketch opened from file and terminal on second instance of IDE (#2686)</li>\n            <li>IDE window steals focus when new content added to Output view (#2681)</li>\n            <li>Add missing Linux dependencies for create-changelog job (#2677)</li>\n          </ul>\n          <p>Changed</p>\n          <ul>\n            <li>Update translation files (#2692)</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "2.3.5",
+          "date": "2026-02-02T20:30:00.068001107-05:00",
+          "title": "Version 2.3.5",
+          "description": "<p>Changed</p>\n          <ul>\n            <li>Bump Arduino CLI to v1.2.0 (#2645)</li>\n            <li>Bump Theia IDE to v1.57.0 (#2654)</li>\n            <li>Bump Electron version and upgrade yarn dependencies (#2654)</li>\n            <li>Bump built-in example sketches version to 1.10.2 (#2646)</li>\n            <li>Updated translation files (#2597)</li>\n          </ul>\n          <p>Fixed</p>\n          <ul>\n            <li>Sanitize message in notification component (#2664)</li>\n            <li>Decouple state update from the LS (#2643)</li>\n            <li>Safer electron version parsing for electron-builder command (#2673)</li>\n            <li>Multiple CI workflows fixes (#2647 #2675 #2672 #2676)</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "2.3.4",
+          "date": "2026-02-02T20:30:00.068001597-05:00",
+          "title": "Version 2.3.4",
+          "description": "<p>\n\t\t\t\t\tImportant Compatibility Notice [Ubuntu 18.04]\n\t\t\t\t</p>\n          <p>This will be the final release supporting Ubuntu 18.04. Unfortunately due to\n\t\t\t\t\tchanges in our Continuous Integration workflows we are no longer able to produce\n\t\t\t\t\tIDE 2.x builds compatible with older versions of Ubuntu (context, related\n\t\t\t\t\tchange). We have manually built Arduino IDE 2.3.4 to allow support for one final\n\t\t\t\t\tversion, subsequent releases will not be compatible.</p>\n          <p>Added</p>\n          <ul>\n            <li>Can skip verify before upload (#2397)</li>\n            <li>Implement menu action to reload current board data (#2553)</li>\n            <li>Add donate footer to updater dialog (71b11ed, #2581)</li>\n            <li>Add dialog to introduce to new version (4788bfb, #2581)</li>\n          </ul>\n          <p>Changed</p>\n          <ul>\n            <li>Use Arduino CLI v1.1.1 (#2576)</li>\n            <li>Use Ubuntu 18.10 in Linux build container (#2307)</li>\n          </ul>\n          <p>Fixed</p>\n          <ul>\n            <li>Retry compilation if grpc client needs to be reinitialized (#2548)</li>\n            <li>Fix memory leak when scanning sketchbooks with large files (#2555)</li>\n            <li>Disable local windows signing for forks PR (#2554)</li>\n            <li>Align viewsWelcome behavior to VS Code (#2543)</li>\n            <li>Fix CLI error parsing (#2518)</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956294766Z",
+      "installsLastMonth": 11459,
+      "favoritesCount": 37,
+      "isVerified": false
+    },
+    {
+      "id": "page.codeberg.impromptux.ytdl-gui",
+      "name": "Yt Downloader",
+      "summary": "Download videos and music from various sources.",
+      "description": "\n      A simple-to-use tool to download videos or audios from various sources including Youtube, Dailymotion, Vimeo...\n      It support more than 1000 websites and 8 different formats including mp3, mp4 and webm. \n      You can chose between different resolutions and audio quality. It also support downloading whole playlists.\n    \n    ",
+      "developerName": "Impromptux",
+      "icon": "https://dl.flathub.org/media/page/codeberg/impromptux.ytdl-gui/84dbfddf08237738d8ed113f0f8dad06/icons/128x128/page.codeberg.impromptux.ytdl-gui.png",
+      "projectLicense": "GPL-3.0-or-later",
+      "categories": [
+        "audiovideo",
+        "Utility"
+      ],
+      "updatedAt": "2026-02-01T17:05:59Z",
+      "currentReleaseVersion": "4.3",
+      "flathubUrl": "https://flathub.org/apps/page.codeberg.impromptux.ytdl-gui",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://codeberg.org/impromptux/ytdl-gui"
+      },
+      "releases": [
+        {
+          "version": "4.3",
+          "date": "2026-02-02T20:30:00.068009827-05:00",
+          "title": "Version 4.3",
+          "description": "<ul>\n            <li>Write metadata for audio files</li>\n            <li>Add Spanish translations support</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "4.2.1",
+          "date": "2026-02-02T20:30:00.068011447-05:00",
+          "title": "Version 4.2.1",
+          "description": "<ul>\n            <li>Add German translations support</li>\n            <li>Partial German translation</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "4.2",
+          "date": "2026-02-02T20:30:00.068011977-05:00",
+          "title": "Version 4.2",
+          "description": "<ul>\n            <li>Show translation when download finish and window is in background.</li>\n            <li>Add translations support</li>\n            <li>Add French translation</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "4.1",
+          "date": "2026-02-02T20:30:00.068012627-05:00",
+          "title": "Version 4.1",
+          "description": "<p>Add 360p format support.</p>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956289256Z",
+      "installsLastMonth": 2662,
+      "favoritesCount": 4,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "impromptux.codeberg.page"
+      }
+    },
+    {
+      "id": "com.markdeepwell.GitY",
+      "name": "GitY",
+      "summary": "View and search full Git history",
+      "description": "\n      A simple and fast Git repository browser to view Git branches and commit diffs.\n    \n      \n        View all branches and commits for local Git repositories\n        Search by commit message or Git SHA\n        Coloured Git diff viewer\n        Remembers recently opened Git repositories\n      \n    ",
+      "developerName": "Mark Deepwell",
+      "icon": "https://dl.flathub.org/media/com/markdeepwell/GitY/b24ec35e1641b1d89cc388b994754625/icons/128x128/com.markdeepwell.GitY.png",
+      "projectLicense": "GPL-3.0-or-later",
+      "categories": [
+        "development",
+        "RevisionControl"
+      ],
+      "updatedAt": "2026-02-01T22:49:16Z",
+      "currentReleaseVersion": "0.5.1",
+      "flathubUrl": "https://flathub.org/apps/com.markdeepwell.GitY",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/deepwell/gity",
+        "owner": "deepwell",
+        "repo": "gity"
+      },
+      "releases": [
+        {
+          "version": "0.5.1",
+          "date": "2026-02-02T20:30:00.071114644-05:00",
+          "title": "Version 0.5.1",
+          "description": "<ul>\n            <li>Show upstream branch position in commit list</li>\n            <li>Support dark mode colours for commit diff</li>\n            <li>Reduce commit diff loading flash by removing text</li>\n            <li>Add line change colours to the gutter</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.5.0",
+          "date": "2026-02-02T20:30:00.071115874-05:00",
+          "title": "Version 0.5.0",
+          "description": "<ul>\n            <li>Add a beautiful new app icon</li>\n            <li>Add tags to the left side panel and show in commit list</li>\n            <li>Allow branches and tags sections to be collapsed</li>\n            <li>Support multiple app windows with Ctrl+N</li>\n            <li>Allow diff text to be copied to the clipboard</li>\n            <li>Ctrl+Q closes all windows and quits the app</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.4.2",
+          "date": "2026-02-02T20:30:00.071116454-05:00",
+          "title": "Version 0.4.2",
+          "description": "<ul>\n            <li>Fix crash when refreshing on changed commit</li>\n            <li>Go back to welcome screen if the repository cannot be opened</li>\n            <li>Mouse back button navigates back to the welcome screen</li>\n            <li>Improve window resizing: remove hard coded minimum width and grow commit list independent of branch panel</li>\n            <li>Add a hard minimum width to the left branch panel</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.4.1",
+          "date": "2026-02-02T20:30:00.071116874-05:00",
+          "title": "Version 0.4.1",
+          "description": "<p>Initial Flatpak release</p>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956383747Z",
+      "installsLastMonth": 408,
+      "favoritesCount": 1,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "markdeepwell.com"
+      }
+    },
+    {
+      "id": "io.github.whelanh.scidCommunity",
+      "name": "scidCommunity",
+      "summary": "Community-enhanced chess database and analysis application",
+      "description": "\n      scidCommunity is a community-driven fork of Scid (Shane's Chess Information Database), focused on \n      adding enhancements while maintaining full compatibility with existing Scid databases. It allows you to \n      store, organize, and search through large collections of chess games with support for any compatible UCI chess engine.\n    \n      \n      Key enhancements in scidCommunity:\n    \n      \n        Engine analysis controls with configurable depth and time limits\n        Integrated TWIC (The Week in Chess) game downloads\n        Direct game uploads to Lichess and Chess.com from the PGN window\n        Tablebase integration via Lichess 7-man endgames\n        Additional theme options (Sand and cobalt2)\n        New feature to open Lichess broadcast tournament games\n        Improved Header Search with saveable search layouts for frequently-used parameters\n      \n      \n      This fork welcomes community suggestions and aims to be responsive to user feature requests. \n      If you've wished for specific functionality in your chess database workflow, scidCommunity may be for you.\n    \n    ",
+      "developerName": "scidCommunity",
+      "icon": "https://dl.flathub.org/media/io/github/whelanh.scidCommunity/7db36202814a3133bb970b208a822583/icons/128x128/io.github.whelanh.scidCommunity.png",
+      "projectLicense": "GPL-2.0",
+      "categories": [
+        "game",
+        "BoardGame",
+        "StrategyGame"
+      ],
+      "updatedAt": "2026-02-01T21:21:47Z",
+      "currentReleaseVersion": "5.1.2.09",
+      "flathubUrl": "https://flathub.org/apps/io.github.whelanh.scidCommunity",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/whelanh/scidCommunity",
+        "owner": "whelanh",
+        "repo": "scidCommunity"
+      },
+      "releases": [
+        {
+          "version": "5.1.2.09",
+          "date": "2026-02-02T20:30:00.071556168-05:00",
+          "title": "Version 5.1.2.09",
+          "description": "<p>Cleanup Export Game to HTML options and remove Latex option</p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "5.1.2.08",
+          "date": "2026-02-02T20:30:00.071556848-05:00",
+          "title": "Version 5.1.2.08",
+          "description": "<p>Change Options/Language list to language names used in those languages</p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "5.1.2.07",
+          "date": "2026-02-02T20:30:00.071557328-05:00",
+          "title": "Version 5.1.2.07",
+          "description": "<p>Add Japanese and Romanian language .tcl files</p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "5.1.2.06",
+          "date": "2026-02-02T20:30:00.071557788-05:00",
+          "title": "Version 5.1.2.06",
+          "description": "<p>Add Turkish and Serbian Cyrillic and update other language .tcl files</p>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956286706Z",
+      "installsLastMonth": 433,
+      "favoritesCount": 1,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "whelanh"
+      }
+    },
+    {
+      "id": "io.github.hydrusnetwork.hydrus",
+      "name": "Hydrus",
+      "summary": "Organize media on the desktop",
+      "description": "The hydrus network client is a desktop application written for Anonymous and other internet enthusiasts with large media collections. It organises your files into an internal database and browses them with tags instead of folders, a little like a booru on your desktop. Tags and files can be anonymously shared through custom servers that any user may run. Everything is free, nothing phones home, and the source code is included with the release. It is developed mostly for Windows, but builds for Linux and macOS are available (perhaps with some limitations, depending on your situation).\n      Currently importable filetypes are:\n      \n        images - jpg, gif (including animated), png (including animated!), tiff, webp, bmp\n        video - webm, mp4, mpeg, avi, mov, mkv, flv, wmv\n        audio - mp3, flac, ogg, wma\n        misc - swf, pdf, psd, zip, rar, 7z\n      \n      The client can download files and parse tags from a number of websites, including by default:\n      \n        various imageboards, with a thread watcher\n        the popular boorus\n        gallery sites like deviant art, and pixiv\n        tumblr and twitter\n      \n      And can be extended to download from more locations using easily shareable user-made downloaders. It can also be set to 'subscribe' to any gallery search, repeating it every few days to keep up with new results.\n      The program's emphasis is on your freedom. There is no DRM, no spying, no censorship. The program never phones home.\n    ",
+      "developerName": "Hydrus Network",
+      "icon": "https://dl.flathub.org/media/io/github/hydrusnetwork.hydrus/022813001466594306b312a60b11cc96/icons/128x128/io.github.hydrusnetwork.hydrus.png",
+      "projectLicense": "WTFPL",
+      "categories": [
+        "utility",
+        "FileTools"
+      ],
+      "updatedAt": "2026-02-01T13:52:22Z",
+      "currentReleaseVersion": "657",
+      "flathubUrl": "https://flathub.org/apps/io.github.hydrusnetwork.hydrus",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://hydrusnetwork.github.io/hydrus/"
+      },
+      "releases": [
+        {
+          "version": "657",
+          "date": "2026-02-02T20:30:00.071575068-05:00",
+          "title": "Version 657",
+          "type": "appstream"
+        },
+        {
+          "version": "653",
+          "date": "2026-02-02T20:30:00.071577028-05:00",
+          "title": "Version 653",
+          "type": "appstream"
+        },
+        {
+          "version": "650",
+          "date": "2026-02-02T20:30:00.071577568-05:00",
+          "title": "Version 650",
+          "type": "appstream"
+        },
+        {
+          "version": "639",
+          "date": "2026-02-02T20:30:00.071578138-05:00",
+          "title": "Version 639",
+          "description": "<p>Changes in Version 639</p>\n          <ul>\n            <li>\n            system:number of tags and system:tag as number have a nicer new namespace selection widget\n          </li>\n            <li>\n          fixed the duplicate filter group mode finding a new group after the previous group was resolved. I messed this up in last week's rewrite and it slipped through testing\n          </li>\n            <li>\n            huge multi-column lists handle large selections much more efficiently, particularly when they have lots of buttons. all the various logic that handles 'should this accompanying button be enabled?' and so on now uses calls that work much faster when there are thousands of items selected. in my tests, a sublist with 5,000 test items now updates to a new selection in under 30ms--previously it was about a second. similarly, pasting all those items to a new list now takes about six seconds, whereas previously it was locking up for ages and ages, perhaps forever (issue #1737)\n          </li>\n            <li>\n            fixed an issue where the 'move media files' dialog was saying all files were in their ideal location if the thumbnail location override was not set. this was happening because an error was being quashed over-eagerly. if this dialog has a similar problem in future, you might get some spammy reports, but it'll show. also a side thing, the 'set' button of the thumbnail location override no longer disables if you have a path set--feel free to move it to a new location in one step mate\n          </li>\n            <li>\n            the system that positions windows off the topLeft corner of their parent is now more forgiving of unusual window manager frame geometry. if you kept getting 'hey I just rescued a window from ( 24, -14 )'-style popups every time you open the options off a maximised main GUI, let me know what happens now--are your dialogs appearing offscreen, auto-repositioning to (0, 0), or is everything good now?\n          </li>\n            <li>\n            if you are feeling clever and can get an OR predicate into the duplicates auto-resolution 'test A or B' comparator, it now works! I'll brush up the UI in future to make it easy to enter an OR here (issue #1790)\n          </li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956283606Z",
+      "installsLastMonth": 337,
+      "favoritesCount": 1,
+      "isVerified": false
+    },
+    {
+      "id": "org.pvermeer.WebAppHub",
+      "name": "Web App Hub",
+      "summary": "Create web apps with ease",
+      "description": "\n      A modern Web App Manager built with Rust, GTK, and the Adwaita design language. Web App Hub enables seamless management of web applications, each with its own icon and isolated browser profile.\n    \n      \n        Seamless browser switching between all installed browsers\n        Leverages your existing browser installations\n        Profile isolation for enhanced privacy and organization\n        Dedicated icons and dock indicators for each web application\n        Extensible configuration system via YAML and desktop files\n      \n    ",
+      "developerName": "PVermeer",
+      "icon": "https://dl.flathub.org/media/org/pvermeer/WebAppHub/6922eaa99fc7948d03c04e17b42ef874/icons/128x128/org.pvermeer.WebAppHub.png",
+      "projectLicense": "GPL-3.0-only",
+      "categories": [
+        "utility"
+      ],
+      "updatedAt": "2026-02-01T20:47:12Z",
+      "currentReleaseVersion": "0.4.1",
+      "flathubUrl": "https://flathub.org/apps/org.pvermeer.WebAppHub",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/pvermeer/web-app-hub",
+        "owner": "pvermeer",
+        "repo": "web-app-hub"
+      },
+      "releases": [
+        {
+          "version": "0.4.1",
+          "date": "2026-02-02T20:30:00.071512148-05:00",
+          "title": "Version 0.4.1",
+          "description": "<p>Fixes:</p>\n          <ul>\n            <li>desktop-file: web apps update again on app update</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.4.0",
+          "date": "2026-02-02T20:30:00.071514878-05:00",
+          "title": "Version 0.4.0",
+          "description": "<p>New features:</p>\n          <ul>\n            <li>icon-picker: allow more image types</li>\n            <li>desktop-file: set a default category</li>\n            <li>desktop-file: add description</li>\n            <li>web-app-view: optional settings for desktops with an app menu</li>\n          </ul>\n          <p>Fixes:</p>\n          <ul>\n            <li>web-app-view: reset button is now disabled after saving a new web app</li>\n            <li>web-apps: app list is now sorted by name</li>\n            <li>web-app-view: make sure \"No browser\" is selected when browser is missing</li>\n            <li>firefox: more reliable popups on firefox profile</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.3.1",
+          "date": "2026-02-02T20:30:00.071515838-05:00",
+          "title": "Version 0.3.1",
+          "description": "<p>Fixes:</p>\n          <ul>\n            <li>release: corrected last released version</li>\n            <li>release: increment patch version for dry-run</li>\n            <li>use Adwaita icon theme on KDE</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.3.0",
+          "date": "2026-02-02T20:30:00.071516678-05:00",
+          "title": "Version 0.3.0",
+          "description": "<p>New features:</p>\n          <ul>\n            <li>show update status + add release notes to about</li>\n            <li>desktop-file: allow local ip as domain</li>\n          </ul>\n          <p>Fixes:</p>\n          <ul>\n            <li>icon-picker: previous custom icon now shows when online fetch fails</li>\n            <li>icon-picker: currently used icon is now also loaded</li>\n            <li>web-app-view: url validator now also validates local ips</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956301306Z",
+      "installsLastMonth": 2984,
+      "favoritesCount": 12,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "pvermeer.org"
+      }
+    },
+    {
+      "id": "com.markopejic.downloader",
+      "name": "Media Downloader",
+      "summary": "Web video/audio downloader",
+      "description": "\n        Download from hundreds of websites\n        Download mp3 (audio) or mp4 (video)\n        Download playlists and whole channels\n        Download or embed subtitles\n        Embed video chapters, thumbnails and metadata\n        Crop thumbnails / album arts to square shape (useful when downloading music)\n        Download and work with multiple URLs at once\n      \n    ",
+      "developerName": "Marko Pejić",
+      "icon": "https://dl.flathub.org/media/com/markopejic/downloader/ffbca0417354af1696acc1f0ef666267/icons/128x128/com.markopejic.downloader.png",
+      "projectLicense": "GPL-3.0-or-later",
+      "categories": [
+        "audiovideo",
+        "Network"
+      ],
+      "updatedAt": "2026-02-01T18:48:01Z",
+      "currentReleaseVersion": "5.0.2",
+      "flathubUrl": "https://flathub.org/apps/com.markopejic.downloader",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://downloader.markopejic.com"
+      },
+      "releases": [
+        {
+          "version": "5.0.2",
+          "date": "2026-02-02T20:30:00.074401222-05:00",
+          "title": "Version 5.0.2",
+          "description": "<ul>\n            <li>Fixed a bug where the app would try to download files with the same filename</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "5.0.0",
+          "date": "2026-02-02T20:30:00.074403962-05:00",
+          "title": "Version 5.0.0",
+          "description": "<ul>\n            <li>Many parts of the UI have been improved</li>\n            <li>Improved performance</li>\n            <li>Fixed a bug where downloads outside of the Downloads folder get stuck inside the app's sandbox</li>\n            <li>The app now follows desktop themes</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "4.1.2",
+          "date": "2026-02-02T20:30:00.074404842-05:00",
+          "title": "Version 4.1.2",
+          "description": "<ul>\n            <li>The app now defaults to the Breeze theme</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "4.1.1",
+          "date": "2026-02-02T20:30:00.074405762-05:00",
+          "title": "Version 4.1.1",
+          "description": "<ul>\n            <li>Fixed an issue where the app downloaded non-original (dubbed) audio</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956388787Z",
+      "installsLastMonth": 5119,
+      "favoritesCount": 12,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "markopejic.com"
+      }
+    },
+    {
+      "id": "net.nokyan.Resources",
+      "name": "Resources",
+      "summary": "Keep an eye on system resources",
+      "description": "\n      Resources allows you to check the utilization of your system resources and control your running processes and apps. It’s designed to be user-friendly and feel right at home on a modern desktop by using GNOME’s libadwaita.\n    \n      \n      Resources supports monitoring the following components:\n    \n      \n        CPU\n        Memory\n        GPU\n        Network Interfaces\n        Storage Devices\n        Batteries\n      \n    ",
+      "developerName": "nokyan",
+      "icon": "https://dl.flathub.org/media/net/nokyan/Resources/b9da457afb9ec1922806c54ea84948db/icons/128x128/net.nokyan.Resources.png",
+      "projectLicense": "GPL-3.0-or-later",
+      "categories": [
+        "system"
+      ],
+      "updatedAt": "2026-02-01T14:16:14Z",
+      "currentReleaseVersion": "1.10.0",
+      "flathubUrl": "https://flathub.org/apps/net.nokyan.Resources",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://apps.gnome.org/app/net.nokyan.Resources/"
+      },
+      "releases": [
+        {
+          "version": "1.10.0",
+          "date": "2026-02-02T20:30:00.074297751-05:00",
+          "title": "Version 1.10.0",
+          "description": "<p>\n          Today marks the release of Resources 1.10 with support for new hardware, software and improvements all around! Here are some highlights:\n        </p>\n          <ul>\n            <li>Added support for AMD NPUs</li>\n            <li>Added support for detecting apps managed by appimaged and Portable</li>\n            <li>Improved app detection in some cases</li>\n            <li>Improved accessibility for screen reader users and keyboard users</li>\n            <li>Resources’ CPU usage has been cut down significantly</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "1.9.1",
+          "date": "2026-02-02T20:30:00.074298811-05:00",
+          "title": "Version 1.9.1",
+          "description": "<p>\n          Resources 1.9.1 is here with a small bugfix:\n        </p>\n          <ul>\n            <li>Less unnecessary warnings in Resources’ console logs</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "1.9.0",
+          "date": "2026-02-02T20:30:00.074379382-05:00",
+          "title": "Version 1.9.0",
+          "description": "<p>\n          After quite some time since the last update, Resources 1.9 has been released featuring lots of more languages and a bunch of small new features! These are the highlights:\n        </p>\n          <ul>\n            <li>Thanks to the volunteers of GNOME Damned Lies, Resources is now available in many more languages</li>\n            <li>Support for the new “xe” driver for Intel GPUs</li>\n            <li>Link information is now also shown for Wi-Fi interfaces</li>\n            <li>Resources can now halt graphical updates when its window is not in view to save on power</li>\n            <li>Internal changes for less code complexity and clearer architecture</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "1.8.0",
+          "date": "2026-02-02T20:30:00.074383982-05:00",
+          "title": "Version 1.8.0",
+          "description": "<p>\n          Resources 1.8 has landed with new features, quality of life updates and better support for more hardware. Here are the highlights:\n        </p>\n          <ul>\n            <li>GPUs, drives and network interfaces can now show their link types and speeds</li>\n            <li>Added support for Raspberry Pi’s GPUs</li>\n            <li>Type to search is now supported in the Apps and Processes views</li>\n            <li>Holding Ctrl now pauses updates to the Apps and Processes views</li>\n            <li>Added a column for combined memory and swap usage to the Apps and Processes views</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956247336Z",
+      "installsLastMonth": 18474,
+      "favoritesCount": 159,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "nokyan.net"
+      }
+    },
+    {
+      "id": "io.github.totoshko88.RustConn",
+      "name": "RustConn",
+      "summary": "Manage remote connections easily",
+      "description": "\n      RustConn is a modern connection manager for Linux with a GTK4/Wayland-native interface.\n      Manage SSH, RDP, VNC, SPICE, and Zero Trust connections from a single application\n      with support for both embedded and external clients.\n    \n      Protocols:\n      \n        SSH with embedded terminal and split view\n        RDP via IronRDP/FreeRDP (embedded and external)\n        VNC via vnc-rs/TigerVNC (embedded and external)\n        SPICE via virt-viewer\n        Zero Trust: AWS SSM, GCP IAP, Azure Bastion, OCI Bastion, Cloudflare, Teleport, Tailscale, Boundary\n      \n      Organization:\n      \n        Groups, tags, and templates\n        Connection history and statistics\n        Session logging\n      \n      Import/Export:\n      \n        Asbru-CM, Remmina, SSH config, Ansible inventory\n        Royal TS, MobaXterm, native format (.rcn)\n      \n      Security:\n      \n        KeePassXC (KDBX files and proxy)\n        libsecret (GNOME Keyring)\n        Bitwarden CLI\n        1Password CLI\n      \n      Productivity:\n      \n        Split terminals\n        Command snippets\n        Cluster commands\n        Wake-on-LAN\n      \n    ",
+      "developerName": "Anton Isaiev",
+      "icon": "https://dl.flathub.org/media/io/github/totoshko88.RustConn/e47043685ef482c991ef889f89ddd15e/icons/128x128/io.github.totoshko88.RustConn.png",
+      "projectLicense": "GPL-3.0+",
+      "categories": [
+        "network",
+        "RemoteAccess",
+        "GTK"
+      ],
+      "updatedAt": "2026-02-01T17:55:25Z",
+      "currentReleaseVersion": "0.7.1",
+      "flathubUrl": "https://flathub.org/apps/io.github.totoshko88.RustConn",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/totoshko88/RustConn",
+        "owner": "totoshko88",
+        "repo": "RustConn"
+      },
+      "releases": [
+        {
+          "version": "0.7.1",
+          "date": "2026-02-02T20:30:00.074568894-05:00",
+          "title": "Version 0.7.1",
+          "description": "<p>Version 0.7.1 - Undo/Trash, Group Inheritance, and Sidebar Refactoring:</p>\n          <ul>\n            <li>Undo/Trash Functionality - Deleted items can be restored via \"Undo\" notification</li>\n            <li>Group Inheritance - \"Load from Group\" buttons auto-fill credentials from parent group</li>\n            <li>Debounced Persistence - Changes batched and saved after 2 seconds of inactivity</li>\n            <li>Sort Optimization - Sorting skipped when data order unchanged</li>\n            <li>Connection History Sorting - Newest entries now shown first</li>\n            <li>Sidebar Module Refactoring - Decomposed into search.rs, filter.rs, view.rs, drag_drop.rs</li>\n            <li>Drag-and-Drop Refactoring - Strongly typed DragPayload enum replaces string parsing</li>\n            <li>Search Highlighting - Matched text highlighted in bold with Pango markup</li>\n            <li>Fixed credential inheritance from parent groups for KeePass</li>\n            <li>Fixed GTK widget parenting warning at startup</li>\n            <li>Fixed Connection History reconnect not opening tab</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.7.0",
+          "date": "2026-02-02T20:30:00.074577614-05:00",
+          "title": "Version 0.7.0",
+          "description": "<p>Version 0.7.0 - Asbru Import Fixes and Group Descriptions:</p>\n          <ul>\n            <li>Fixed Asbru Import nested groups - group hierarchy now preserved correctly</li>\n            <li>Fixed Asbru Export description field for connections and groups</li>\n            <li>Added Group Description field for storing project info and notes</li>\n            <li>Asbru global variable conversion during import</li>\n            <li>Variable substitution at connection time for host and username</li>\n            <li>Dialog size unification for visual consistency</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.6.9",
+          "date": "2026-02-02T20:30:00.074578524-05:00",
+          "title": "Version 0.6.9",
+          "description": "<p>Version 0.6.9 - Password Caching, Retry Logic, and 1Password Support:</p>\n          <ul>\n            <li>Password Caching TTL - Cached credentials expire after configurable time</li>\n            <li>Connection Retry Logic - Automatic retry with exponential backoff</li>\n            <li>Loading States - Visual feedback for long-running operations</li>\n            <li>Session State Persistence - Split layouts preserved across restarts</li>\n            <li>Connection Health Check - Periodic monitoring of active sessions</li>\n            <li>1Password as PasswordSource - 1Password can now be selected per-connection</li>\n            <li>Credential Rename on Connection Rename - Credentials automatically renamed</li>\n            <li>Fixed KeePass password retrieval for subgroups</li>\n            <li>Fixed Keyring and Bitwarden password retrieval</li>\n            <li>370+ new property tests (total: 1241 tests)</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.6.8",
+          "date": "2026-02-02T20:30:00.074579144-05:00",
+          "title": "Version 0.6.8",
+          "description": "<p>Version 0.6.8 - 1Password CLI Integration:</p>\n          <ul>\n            <li>1Password CLI Integration - New secret backend with biometric auth</li>\n            <li>Service account support via OP_SERVICE_ACCOUNT_TOKEN</li>\n            <li>Automatic vault creation for storing credentials</li>\n            <li>Bitwarden API Key Authentication for automated workflows</li>\n            <li>Bitwarden Self-Hosted Support</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956232686Z",
+      "installsLastMonth": 307,
+      "favoritesCount": 1,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "totoshko88"
+      }
+    },
+    {
+      "id": "io.github.heathcliff26.go-minesweeper",
+      "name": "go-minesweeper",
+      "summary": "A minesweeper game",
+      "description": "\n            This is an implementation of minesweeper in golang, made with the UI framework fyne.io.\n        \n      \n            I mainly created it because I was bored and wanted to create a GUI app.\n        \n    ",
+      "developerName": "Heathcliff",
+      "icon": "https://dl.flathub.org/media/io/github/heathcliff26.go-minesweeper/d793eb0314c07238ac6efb6fd4a68d23/icons/128x128/io.github.heathcliff26.go-minesweeper.png",
+      "projectLicense": "Apache-2.0",
+      "categories": [
+        "game"
+      ],
+      "updatedAt": "2026-02-01T12:53:03Z",
+      "currentReleaseVersion": "v0.9.7",
+      "flathubUrl": "https://flathub.org/apps/io.github.heathcliff26.go-minesweeper",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/heathcliff26/go-minesweeper",
+        "owner": "heathcliff26",
+        "repo": "go-minesweeper"
+      },
+      "releases": [
+        {
+          "version": "v0.9.7",
+          "date": "2026-02-02T20:30:00.074553704-05:00",
+          "title": "Version v0.9.7",
+          "description": "<p>Bumped framework version.</p>\n          <p>Small maintenance update.</p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "v0.9.6",
+          "date": "2026-02-02T20:30:00.074557824-05:00",
+          "title": "Version v0.9.6",
+          "description": "<p>Small maintenance update.</p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "v0.9.5",
+          "date": "2026-02-02T20:30:00.074558474-05:00",
+          "title": "Version v0.9.5",
+          "description": "<p>Bumped framework version.</p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "v0.9.4",
+          "date": "2026-02-02T20:30:00.074559184-05:00",
+          "title": "Version v0.9.4",
+          "description": "<p>Bumped framework version.</p>\n          <p>Fixed potential crash when starting a new game while autosolve is running.</p>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956339397Z",
+      "installsLastMonth": 965,
+      "favoritesCount": 1,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "heathcliff26"
+      }
+    },
+    {
+      "id": "com.ktechpit.colorsmith",
+      "name": "ColorSmith",
+      "summary": "Professional color picker, gradient maker, and palette manager",
+      "description": "\n      ColorSmith is a comprehensive color management and design tool for developers, designers, and digital artists.\n      It provides an intuitive interface to pick colors, create gradients, manage palettes, and convert between\n      multiple color formats with professional-grade precision.\n    \n      Core Features:\n      \n        Screen color picker to capture colors from anywhere on your display\n        Interactive HSV color plane with brightness adjustment slider\n        Support for multiple color formats: HEX, RGB, RGBA, HSL, HSLA, HSV, and CMYK\n        Transparency control with alpha channel support\n        Random color generator for creative inspiration\n        One-click color value copying to clipboard\n        Recently picked colors history (FIFO with 24 color limit)\n      \n      Gradient Generator:\n      \n        Create linear and radial gradients with unlimited stops\n        Precise control over gradient angles (0-360°) and stop positions\n        Live preview with fullscreen mode support\n        Export as CSS code (with vendor prefixes and old WebKit syntax)\n        Export as SVG files or PNG images with custom dimensions\n        Random gradient generation\n        Color picker integration for gradient stops\n      \n      Palette Management:\n      \n        Create and manage multiple custom color palettes\n        Extract color palettes from images using K-means clustering\n        Import and export palettes in JSON format\n        Add optional names to palette colors for better organization\n        Built-in standard HTML colors palette\n        Quick add current color to any palette\n      \n      Professional Tools:\n      \n        Comprehensive keyboard shortcuts for efficient workflow\n        Persistent settings that remember window geometry and last used color\n        Clean, modern Qt-based interface with dark theme support\n      \n    ",
+      "developerName": "Keshav Bhatt",
+      "icon": "https://dl.flathub.org/media/com/ktechpit/colorsmith/ae12d18b7ca405c56fdac292ac674ce8/icons/128x128/com.ktechpit.colorsmith.png",
+      "projectLicense": "GPL-3.0+",
+      "categories": [
+        "graphics",
+        "Utility"
+      ],
+      "updatedAt": "2026-02-01T17:01:28Z",
+      "currentReleaseVersion": "1.0.0",
+      "flathubUrl": "https://flathub.org/apps/com.ktechpit.colorsmith",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/keshavbhatt/colorsmith",
+        "owner": "keshavbhatt",
+        "repo": "colorsmith"
+      },
+      "releases": [
+        {
+          "version": "1.0.0",
+          "date": "2026-02-02T20:30:00.074696855-05:00",
+          "title": "Version 1.0.0",
+          "description": "<p>Initial release of ColorSmith with comprehensive color management features</p>\n          <ul>\n            <li>Screen color picker with system-wide color capture</li>\n            <li>Support for HEX, RGB, RGBA, HSL, HSLA, HSV, and CMYK color formats</li>\n            <li>Interactive HSV color plane with brightness adjustment</li>\n            <li>Gradient generator with linear and radial gradients</li>\n            <li>CSS, SVG, and PNG export for gradients</li>\n            <li>Palette management with import/export functionality</li>\n            <li>Image-to-palette extraction using K-means clustering</li>\n            <li>Random color and gradient generation</li>\n            <li>Recently picked colors history (24 colors)</li>\n            <li>Comprehensive keyboard shortcuts</li>\n            <li>Settings persistence for window geometry and last color</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956267396Z",
+      "installsLastMonth": 88,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "ktechpit.com"
+      }
+    },
+    {
+      "id": "org.qgis.qgis",
+      "name": "QGIS Desktop",
+      "summary": "A Geographic Information System",
+      "description": "QGIS is a user friendly Open Source Geographic Information System (GIS) licensed under the GNU General Public License. QGIS is an official project of the Open Source Geospatial Foundation (OSGeo). It runs on Linux, Unix, Mac OSX, Windows and Android and supports numerous vector, raster, and database formats and functionalities.\n    ",
+      "developerName": "QGIS Development Team",
+      "icon": "https://dl.flathub.org/media/org/qgis/qgis.desktop/fe50830620b865e9a3b10d101f9a83a6/icons/128x128/org.qgis.qgis.desktop.png",
+      "projectLicense": "GPL-2.0+",
+      "categories": [
+        "education",
+        "Geography",
+        "Science"
+      ],
+      "updatedAt": "2026-02-01T12:27:15Z",
+      "currentReleaseVersion": "3.44.7",
+      "flathubUrl": "https://flathub.org/apps/org.qgis.qgis",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://qgis.org"
+      },
+      "releases": [
+        {
+          "version": "3.44.7",
+          "date": "2026-02-02T20:30:00.077227237-05:00",
+          "title": "Version 3.44.7",
+          "type": "appstream"
+        },
+        {
+          "version": "3.44.6",
+          "date": "2026-02-02T20:30:00.077228677-05:00",
+          "title": "Version 3.44.6",
+          "type": "appstream"
+        },
+        {
+          "version": "3.44.5",
+          "date": "2026-02-02T20:30:00.077229107-05:00",
+          "title": "Version 3.44.5",
+          "type": "appstream"
+        },
+        {
+          "version": "3.44.4",
+          "date": "2026-02-02T20:30:00.077229607-05:00",
+          "title": "Version 3.44.4",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956217726Z",
+      "installsLastMonth": 4621,
+      "favoritesCount": 11,
+      "isVerified": false
+    },
+    {
+      "id": "io.github.shonebinu.Glyph",
+      "name": "Glyph",
+      "summary": "Install fonts",
+      "description": "Glyph lets you install fonts from a catalog of thousands of fonts into your system for free.\n      Browse and view previews of each font as you scroll.\n      Features:\n      \n        Preview fonts without internet or installation.\n        Search through thousands of fonts in various categories such as sans, mono etc.\n        Install the latest font to your system.\n        View the details of fonts such as the designer, license, files etc.\n        Fonts fetched from Google Fonts Github repo with original quality.\n      \n    ",
+      "developerName": "Shone Binu",
+      "icon": "https://dl.flathub.org/media/io/github/shonebinu.Glyph/c38d647bddd89f61f94285786dbda6ef/icons/128x128/io.github.shonebinu.Glyph.png",
+      "projectLicense": "GPL-3.0-or-later",
+      "categories": [
+        "utility",
+        "Graphics"
+      ],
+      "updatedAt": "2026-02-01T14:27:37Z",
+      "currentReleaseVersion": "0.1.0",
+      "flathubUrl": "https://flathub.org/apps/io.github.shonebinu.Glyph",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/shonebinu/Glyph",
+        "owner": "shonebinu",
+        "repo": "Glyph"
+      },
+      "releases": [
+        {
+          "version": "0.1.0",
+          "date": "2026-02-02T20:30:00.077496859-05:00",
+          "title": "Version 0.1.0",
+          "description": "<p>Release v0.1.0</p>\n          <ul>\n            <li>Initial release of the app</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956292166Z",
+      "installsLastMonth": 274,
+      "favoritesCount": 2,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "shonebinu"
+      }
+    },
+    {
+      "id": "io.github.db_mobile.resonance",
+      "name": "Resonance",
+      "summary": "Test and explore web services",
+      "description": "\n      Resonance is a local-first, zero-account API client application designed to provide an excellent\n      user experience for testing and interacting with web services. It offers a modern and intuitive\n      interface for developers with powerful features for API development and testing.\n    \n      Key Features:\n      \n        Import collections from OpenAPI 3.0 specifications and Postman collections\n        Environment management with variable templating for different deployment contexts\n        Multiple authentication methods including Bearer tokens, Basic Auth, API keys, OAuth 2.0, and Digest authentication\n        Generate code in 9 languages: cURL, Python, JavaScript, Node.js, Go, PHP, Ruby, and Java\n        GraphQL support with dedicated query editor and syntax highlighting\n        Built-in mock server for testing without a backend, with custom responses and configurable delays\n        Workspace tabs for managing multiple concurrent requests with independent state\n        Request history with search and replay capability for easy debugging\n        Performance metrics showing detailed timing breakdown including DNS, TCP, TLS, and download times\n        Cookie management with full attribute display\n        HTTP proxy support with authentication and bypass lists\n        Protocol version control supporting HTTP/1.1, HTTP/2, and HTTP/3\n        Comprehensive keyboard shortcuts for efficient workflow\n        Four theme options: light, dark, system-adaptive, and blueprint\n        Available in English, German, Spanish, French, and Italian\n      \n    ",
+      "developerName": "Dennis Blümer",
+      "icon": "https://dl.flathub.org/media/io/github/db_mobile.resonance/c6532333f99d3b4d71a30a071b973bff/icons/128x128/io.github.db_mobile.resonance.png",
+      "projectLicense": "MIT",
+      "categories": [
+        "development",
+        "Network"
+      ],
+      "updatedAt": "2026-02-01T15:32:49Z",
+      "currentReleaseVersion": "2.0.3",
+      "flathubUrl": "https://flathub.org/apps/io.github.db_mobile.resonance",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/db-mobile/resonance",
+        "owner": "db-mobile",
+        "repo": "resonance"
+      },
+      "releases": [
+        {
+          "version": "2.0.3",
+          "date": "2026-02-02T20:30:00.077465459-05:00",
+          "title": "Version 2.0.3",
+          "description": "<p>Feature stabilization</p>\n          <ul>\n            <li>Update dependencies</li>\n            <li>Add version info in UI</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "2.0.2",
+          "date": "2026-02-02T20:30:00.077467149-05:00",
+          "title": "Version 2.0.2",
+          "description": "<p>Feature stabilization</p>\n          <ul>\n            <li>Stabilize script execution environment</li>\n            <li>Improve contrast in light theme</li>\n            <li>Improve async UI updating</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "2.0.1",
+          "date": "2026-02-02T20:30:00.077467829-05:00",
+          "title": "Version 2.0.1",
+          "description": "<p>Feature stabilization</p>\n          <ul>\n            <li>Improved performance metrics</li>\n            <li>Improved Postman collection import</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "2.0.0",
+          "date": "2026-02-02T20:30:00.077471429-05:00",
+          "title": "Version 2.0.0",
+          "description": "<p>Resonance reworked</p>\n          <ul>\n            <li>Fully reworked backend</li>\n            <li>Reworked themes</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956331177Z",
+      "installsLastMonth": 737,
+      "favoritesCount": 2,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "db-mobile"
+      }
+    },
+    {
+      "id": "io.github.archisman_panigrahi.typhoon",
+      "name": "Typhoon",
+      "summary": "Check the weather with style",
+      "description": "\n      Typhoon is a beautiful weather application that provides real-time weather updates and forecasts in a highly configurable and colorful widget inspired by the Metro interface in Windows 8.\n    \n      \n      Originally based on Stormcloud by Jono Cooper, Typhoon is powered by Open-Meteo, OpenStreetMap and ipapi.\n    \n       Features: \n      \n        Real-time weather updates and forecasts for up to four days\n        Customizable units of measurement\n        Displays current temperature as launcher count\n        Displays precipitation warning within app\n        Displays system notifications for rain, snow or thunderstorm\n        Configurable widget opacity and color\n        Chameleonic background color based on wallpaper or accent color\n        Temperature based background color\n        Supports customizable background color\n        Powered by Open-Meteo, OpenStreetMap and ipapi\n        Supports IP address-based location detection\n        Supports multiple locations\n      \n    ",
+      "developerName": "Archisman Panigrahi",
+      "icon": "https://dl.flathub.org/media/io/github/archisman_panigrahi.typhoon/f91844ecbae13808c11922399f8d2a61/icons/128x128/io.github.archisman_panigrahi.typhoon.png",
+      "projectLicense": "GPL-3.0-or-later",
+      "categories": [
+        "utility",
+        "Network"
+      ],
+      "updatedAt": "2026-02-02T04:38:35Z",
+      "currentReleaseVersion": "1.5.1",
+      "flathubUrl": "https://flathub.org/apps/io.github.archisman_panigrahi.typhoon",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://archisman-panigrahi.github.io/typhoon"
+      },
+      "releases": [
+        {
+          "version": "1.5.1",
+          "date": "2026-02-02T20:30:00.077312397-05:00",
+          "title": "Version 1.5.1",
+          "description": "<ul>\n            <li>implemented better compass positioning</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "1.5.0",
+          "date": "2026-02-02T20:30:00.077435568-05:00",
+          "title": "Version 1.5.0",
+          "description": "<ul>\n            <li>new feature: wind direction</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "1.4.6",
+          "date": "2026-02-02T20:30:00.077436478-05:00",
+          "title": "Version 1.4.6",
+          "description": "<ul>\n            <li>Fix snow and thunderstorm warning</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "1.4.5",
+          "date": "2026-02-02T20:30:00.077437058-05:00",
+          "title": "Version 1.4.5",
+          "description": "<ul>\n            <li>update weather on city change</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956301306Z",
+      "installsLastMonth": 1123,
+      "favoritesCount": 2,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "archisman-panigrahi"
+      }
+    },
+    {
+      "id": "org.kde.qrca",
+      "name": "Barcode Scanner",
+      "summary": "Scan and create QR-Codes",
+      "description": "\n      Scan QR-Codes with your camera on phones and laptops, and create your own for easily sharing data between devices.\n    \n    ",
+      "developerName": "KDE",
+      "icon": "https://dl.flathub.org/media/org/kde/qrca/74ba75c4848f93444a892f6497ea9588/icons/128x128/org.kde.qrca.png",
+      "projectLicense": "GPL-3.0+",
+      "categories": [
+        "audiovideo"
+      ],
+      "updatedAt": "2026-02-02T02:33:32Z",
+      "currentReleaseVersion": "25.12.1",
+      "flathubUrl": "https://flathub.org/apps/org.kde.qrca",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://apps.kde.org/en/qrca"
+      },
+      "releases": [
+        {
+          "version": "25.12.1",
+          "date": "2026-02-02T20:30:00.077290917-05:00",
+          "title": "Version 25.12.1",
+          "type": "appstream"
+        },
+        {
+          "version": "25.12.0",
+          "date": "2026-02-02T20:30:00.077291957-05:00",
+          "title": "Version 25.12.0",
+          "type": "appstream"
+        },
+        {
+          "version": "25.08.3",
+          "date": "2026-02-02T20:30:00.077292517-05:00",
+          "title": "Version 25.08.3",
+          "type": "appstream"
+        },
+        {
+          "version": "25.08.2",
+          "date": "2026-02-02T20:30:00.077293257-05:00",
+          "title": "Version 25.08.2",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956321727Z",
+      "installsLastMonth": 874,
+      "favoritesCount": 5,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "teams/flathub"
+      }
+    },
+    {
+      "id": "io.github.Ethanscharlie.albumripper",
+      "name": "Album Ripper",
+      "summary": "Download Albums from YT Music",
+      "description": "Download albums from YouTube Music with album information and album art.\n    ",
+      "developerName": "Ethanscharlie",
+      "icon": "https://dl.flathub.org/media/io/github/Ethanscharlie.albumripper/6329793d31881a1af904e16f3209cc2c/icons/128x128/io.github.Ethanscharlie.albumripper.png",
+      "projectLicense": "GPL-3.0-or-later",
+      "categories": [
+        "utility"
+      ],
+      "updatedAt": "2026-02-01T20:10:02Z",
+      "currentReleaseVersion": "1.2.1",
+      "flathubUrl": "https://flathub.org/apps/io.github.Ethanscharlie.albumripper",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/Ethanscharlie/YTMusic-Ripper",
+        "owner": "Ethanscharlie",
+        "repo": "YTMusic-Ripper"
+      },
+      "releases": [
+        {
+          "version": "1.2.1",
+          "date": "2026-02-02T20:30:00.078922971-05:00",
+          "title": "Version 1.2.1",
+          "description": "<p>Updated ytdlp</p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "1.2.0",
+          "date": "2026-02-02T20:30:00.078923721-05:00",
+          "title": "Version 1.2.0",
+          "description": "<p>Cleaner UI</p>\n          <ul>\n            <li>Scrollable</li>\n            <li>Queue only allows for 3 items at a time</li>\n            <li>Finished section for items</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "1.1.1",
+          "date": "2026-02-02T20:30:00.078924211-05:00",
+          "title": "Version 1.1.1",
+          "description": "<p>Work for Flathub quality checks</p>\n          <ul>\n            <li>Updated Icon</li>\n            <li>Updated Screenshot</li>\n            <li>Updated Description</li>\n            <li>Updated App Name</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956357507Z",
+      "installsLastMonth": 1510,
+      "favoritesCount": 11,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "Ethanscharlie"
+      }
+    },
+    {
+      "id": "io.github.pol_rivero.github-desktop-plus",
+      "name": "Desktop Plus",
+      "summary": "Git client with advanced functionality and Bitbucket, GitLab integration",
+      "description": "\n      This is an up-to-date fork of GitHub Desktop, with many quality of life improvements and advanced features for power users.\n    \n      General:\n      \n        Red color for destructive action buttons.\n        Add icons to some similar-looking buttons for faster visual recognition.\n        Allow generating branch name presets by calling an external script (e.g. fetching ticket numbers from an issue tracker).\n        Bitbucket and GitLab integration: preview and create pull requests, view pull requests status (including checks), display a commit or PR in Bitbucket/GitLab (web browser), and correctly set repository owner (instead of displaying \"Other\").\n      \n      Repositories list:\n      \n        Pull all button to fetch and pull from all remotes at once.\n        Allow hiding the 'Recent' repositories section.\n      \n      Branches list:\n      \n        Add warning indicator to local-only branches (branches that are not on the remote).\n        Allow manually setting which is the default branch for a repository (even if it doesn't match the one configured in the remote).\n      \n      History tab:\n      \n        Search commits by title, message, tag, or hash.\n        Use a different font style for merge commits in order to make them visually distinct, since most of the time they are not as relevant.\n        If a commit modifies only 1 file, allow double-clicking the commit to open the file. For other commits, you can still double-click the file as usual.\n      \n      Changes tab:\n      \n        Context menu option to permanently discard changes without sending to trash (useful when the there are many changed files and the regular \"Discard\" is extremely slow).\n      \n    ",
+      "developerName": "Pol Rivero",
+      "icon": "https://dl.flathub.org/media/io/github/pol_rivero.github-desktop-plus/7ecf42723453475ac804d027aebfd772/icons/128x128/io.github.pol_rivero.github-desktop-plus.png",
+      "projectLicense": "MIT",
+      "categories": [
+        "development"
+      ],
+      "updatedAt": "2026-02-02T06:18:27Z",
+      "currentReleaseVersion": "3.5.5.7",
+      "flathubUrl": "https://flathub.org/apps/io.github.pol_rivero.github-desktop-plus",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/pol-rivero/github-desktop-plus",
+        "owner": "pol-rivero",
+        "repo": "github-desktop-plus"
+      },
+      "releases": [
+        {
+          "version": "3.5.5.7",
+          "date": "2026-02-02T20:30:00.079055482-05:00",
+          "title": "Version 3.5.5.7",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956244686Z",
+      "installsLastMonth": 1354,
+      "favoritesCount": 6,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "pol-rivero"
+      }
+    },
+    {
+      "id": "io.github.quantum_mutnauq.pictures_converter_gtk",
+      "name": "Pictures Converter",
+      "summary": "Converting image formats",
+      "description": "The image converter is a program that allows users to convert various file formats through a graphical interface. With this program, the following formats can be converted into all supported formats: \n      JPG, PNG, TIFF, and PDF\n      Users can select images from different directories. By double-clicking, the program automatically navigates to the directory where the image is stored. After selecting the new format (using the buttons in the middle), the files are converted into the desired format. They are saved in the same directory from which they were selected.\n      The TIFF and PDF formats can contain multiple pages. These pages are converted into separate files with sequential numbering.\n      In the settings function, users can choose whether images are always saved in the \"Pictures/Converted\" directory, the original directory from which they came (note that the Flatpak version requires elevated permissions for this), or if the program should always prompt for the desired save location.\n    ",
+      "developerName": "Quantum_mutnauQ",
+      "icon": "https://dl.flathub.org/media/io/github/quantum_mutnauq.pictures_converter_gtk/0c64fee46be1771b15efdf1572023c7e/icons/128x128/io.github.quantum_mutnauq.pictures_converter_gtk.png",
+      "projectLicense": "GPL-2.0-only",
+      "categories": [
+        "graphics",
+        "ImageProcessing",
+        "Photography"
+      ],
+      "updatedAt": "2026-02-01T18:19:42Z",
+      "currentReleaseVersion": "1.3",
+      "flathubUrl": "https://flathub.org/apps/io.github.quantum_mutnauq.pictures_converter_gtk",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/Quantum-mutnauQ/pictures_converter_gtk/",
+        "owner": "Quantum-mutnauQ",
+        "repo": "pictures_converter_gtk"
+      },
+      "releases": [
+        {
+          "version": "1.3",
+          "date": "2026-02-02T20:30:00.079054582-05:00",
+          "title": "Version 1.3",
+          "description": "<p>Version 1.3</p>\n          <p>Features added:</p>\n          <ul>\n            <li>Resolution scaling</li>\n            <li>JPG compression</li>\n            <li>PDF sample rate in DPI</li>\n          </ul>\n          <p>Other changes:</p>\n          <ul>\n            <li>Updated dependencies on Flatpak</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "1.2",
+          "date": "2026-02-02T20:30:00.079056352-05:00",
+          "title": "Version 1.2",
+          "description": "<p>Version 1.2</p>\n          <p>Other changes:</p>\n          <ul>\n            <li>Removed appstream-flathub-manifest-url</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "1.1",
+          "date": "2026-02-02T20:30:00.079057072-05:00",
+          "title": "Version 1.1",
+          "description": "<p>Version 1.1</p>\n          <p>Added features:</p>\n          <ul>\n            <li>Setting for save location</li>\n          </ul>\n          <p>Dependency update:</p>\n          <ul>\n            <li>Updated Poppler to 25.10.0</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "1",
+          "date": "2026-02-02T20:30:00.079057932-05:00",
+          "title": "Version 1",
+          "description": "<p>Version 1</p>\n          <p>The first version from the Pictures Converter</p>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956441338Z",
+      "installsLastMonth": 723,
+      "favoritesCount": 1,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "quantum-mutnauq"
+      }
+    },
+    {
+      "id": "network.loki.Session",
+      "name": "Session Desktop",
+      "summary": "Private messenger",
+      "description": "\n      Session is a new breed of private messenger, built on a unique network of\n      user-operated servers spread all over the world. With no central servers,\n      Session can’t leak or sell your data. And with Session’s private routing\n      protocols, your messages are completely anonymous. No one ever knows who\n      you’re talking to, what you’re saying, or even your IP address.\n    \n      \n        \n        Fully anonymous account creation: No phone number or email needed to create a Account ID\n      \n        \n        Decentralised server network: No data breaches, no central point of failure\n      \n        \n        No metadata logging: Session doesn't store, track, or log your messaging metadata\n      \n        \n        IP address protection: Device IP addresses are never exposed to the person you're talking\n        to or the servers holding your data\n      \n        \n        Groups: Private, end-to-end encrypted group chats for up to 100 people\n      \n        \n        Secure attachments: Share voice snippets, photos, and files with Session's secure encryption\n        and privacy protections\n      \n        \n        Multi-device syncing: One Account ID for your phone and computer\n      \n        \n        Free and open-source: Don’t take our word for it — check Session's code yourself\n      \n      \n      \n      Session is free as in free speech, free as in free beer, and free of ads and\n      trackers. Session is built and maintained by the Swiss based Session Technology Foundation.\n      Take back your online privacy today — download Session.\n    \n    ",
+      "developerName": "Session Technology Foundation",
+      "icon": "https://dl.flathub.org/media/n/ne/network.loki.session/251d0cbcea5096a5bc42d6a9ee828700/icons/128x128/network.loki.Session.png",
+      "projectLicense": "GPL-3.0",
+      "categories": [
+        "network",
+        "InstantMessaging",
+        "Chat"
+      ],
+      "updatedAt": "2026-02-01T20:44:10Z",
+      "currentReleaseVersion": "1.17.8",
+      "flathubUrl": "https://flathub.org/apps/network.loki.Session",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://getsession.org/"
+      },
+      "releases": [
+        {
+          "version": "1.17.8",
+          "date": "2026-02-02T20:30:00.080568815-05:00",
+          "title": "Version 1.17.8",
+          "type": "appstream"
+        },
+        {
+          "version": "1.17.7",
+          "date": "2026-02-02T20:30:00.080569195-05:00",
+          "title": "Version 1.17.7",
+          "type": "appstream"
+        },
+        {
+          "version": "1.17.6",
+          "date": "2026-02-02T20:30:00.080569435-05:00",
+          "title": "Version 1.17.6",
+          "type": "appstream"
+        },
+        {
+          "version": "1.17.5",
+          "date": "2026-02-02T20:30:00.080569745-05:00",
+          "title": "Version 1.17.5",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956325617Z",
+      "installsLastMonth": 4142,
+      "favoritesCount": 10,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "loki.network"
+      }
+    },
+    {
+      "id": "io.github.slgobinath.SafeEyes",
+      "name": "Safe Eyes",
+      "summary": "A FOSS tool for Linux users to reduce and prevent repetitive strain injury (RSI)",
+      "description": "\n            Protect your eyes from eye strain using this simple and beautiful, yet extensible break\n            reminder\n        \n      \n            Features:\n        \n      \n            Remind you to take breaks with exercises to reduce RSI, Disable keyboard during breaks,\n            Notification before and after breaks, Smart pause if system is idle, Multi-screen\n            support, Customizable user interface, Command-line arguments to control the running\n            instance, Customizable using plug-ins\n        \n    ",
+      "developerName": "Gobinath",
+      "icon": "https://dl.flathub.org/media/io/github/slgobinath.SafeEyes/8b242d7591c8eb13cf7a0197b8626b3a/icons/128x128/io.github.slgobinath.SafeEyes.png",
+      "projectLicense": "GPL-3.0",
+      "categories": [
+        "utility",
+        "Accessibility"
+      ],
+      "updatedAt": "2026-02-01T14:06:36Z",
+      "currentReleaseVersion": "3.3.1",
+      "flathubUrl": "https://flathub.org/apps/io.github.slgobinath.SafeEyes",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://slgobinath.github.io/safeeyes/"
+      },
+      "releases": [
+        {
+          "version": "3.3.1",
+          "date": "2026-02-02T20:30:00.080544115-05:00",
+          "title": "Version 3.3.1",
+          "type": "appstream"
+        },
+        {
+          "version": "3.3.0",
+          "date": "2026-02-02T20:30:00.080544985-05:00",
+          "title": "Version 3.3.0",
+          "type": "appstream"
+        },
+        {
+          "version": "3.2.0",
+          "date": "2026-02-02T20:30:00.080545485-05:00",
+          "title": "Version 3.2.0",
+          "type": "appstream"
+        },
+        {
+          "version": "3.1.0",
+          "date": "2026-02-02T20:30:00.080546085-05:00",
+          "title": "Version 3.1.0",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956269296Z",
+      "installsLastMonth": 819,
+      "favoritesCount": 7,
+      "isVerified": false
+    },
+    {
+      "id": "org.strawberrymusicplayer.strawberry",
+      "name": "Strawberry Music Player",
+      "summary": "A music player and collection organizer",
+      "description": "\n      Strawberry is a music player and music collection organizer. It is aimed at music collectors and audiophiles. Strawberry is free software released under GPL. It's written in C++ using the Qt framework and GStreamer.\n    \n      Features:\n      \n        Play and organize music\n        Supports most popular audio formats and CD playback\n        Native desktop notifications\n        Playlist management and playlists in multiple formats\n        Smart and dynamic playlists\n        Advanced audio output and device configuration for bit-perfect playback on Linux\n        Edit tags on audio files\n        Automatically retrieve tags from MusicBrainz\n        Album cover art from Last.fm, Musicbrainz, Discogs, Musixmatch, Deezer, Tidal, Qobuz and Spotify\n        Lyrics from multiple sources\n        Audio analyzer and equalizer\n        Transfer music to mass-storage USB players, MTP compatible devices and iPod Nano/Classic\n        Scrobbler with support for Last.fm and ListenBrainz\n        Streaming support for Subsonic-compatible servers\n        Unofficial streaming support for Tidal, Spotify and Qobuz\n      \n    ",
+      "developerName": "Jonas Kvinge",
+      "icon": "https://dl.flathub.org/media/org/strawberrymusicplayer/strawberry/b26d1094f3e7bdcb707a41f49a031b70/icons/128x128/org.strawberrymusicplayer.strawberry.png",
+      "projectLicense": "GPL-3.0+",
+      "categories": [
+        "audiovideo",
+        "Player",
+        "Audio"
+      ],
+      "updatedAt": "2026-02-01T18:03:16Z",
+      "currentReleaseVersion": "1.2.18",
+      "flathubUrl": "https://flathub.org/apps/org.strawberrymusicplayer.strawberry",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://www.strawberrymusicplayer.org/"
+      },
+      "releases": [
+        {
+          "version": "1.2.18",
+          "date": "2026-02-02T20:30:00.080464544-05:00",
+          "title": "Version 1.2.18",
+          "type": "appstream"
+        },
+        {
+          "version": "1.2.17",
+          "date": "2026-02-02T20:30:00.080465184-05:00",
+          "title": "Version 1.2.17",
+          "type": "appstream"
+        },
+        {
+          "version": "1.2.16",
+          "date": "2026-02-02T20:30:00.080465544-05:00",
+          "title": "Version 1.2.16",
+          "type": "appstream"
+        },
+        {
+          "version": "1.2.15",
+          "date": "2026-02-02T20:30:00.080465824-05:00",
+          "title": "Version 1.2.15",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956235446Z",
+      "installsLastMonth": 10934,
+      "favoritesCount": 20,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "strawberrymusicplayer.org"
+      }
+    },
+    {
+      "id": "io.kapsa.drive",
+      "name": "S3Drive",
+      "summary": "Convert S3, SFTP, WebDAV or Rclone back-end into your encrypted storage",
+      "description": "\n            S3Drive is an easy-to-use software client that converts vast range of protocols (S3, WebDav, FTP etc.) and cloud providers into your personal encrypted file storage with comprehensive syncing and backup options.\n        \n      \n            There are dozens of providers where you can get a free tier account. You can then decide to pay only for additionally used storage or you can fully control your storage by self-hosting S3 or any other back-end.\n        \n      \n            You can start with the simplest option and make adjustments whenever you're ready. Your files are encrypted before they leave your device, so no one beside you can access them. Not even us.\n        \n      \n            Features: Rclone compatible E2E encryption, Drive mount, Sync modes (copy, move, sync, two-way), Content and filename encryption, Secure sharing via encrypted link, Multiple accounts support, Manage files &amp; directories (open, preview, download, copy, delete, rename, folder upload etc.), Preview different file formats (pdf, markdown, txt, audio, video), Simple text editor, Search within directories, Object Lock support, File versioning (delete &amp; restore), Light and dark themes\n        \n      \n            Supported protocols: S3, WebDAV, SFTP, SMB, FTP, HTTP\n        \n      \n            Personal storage: Google Drive, Google Photos, Dropbox, Box, Microsoft OneDrive, pCloud, Proton Drive, Koofr\n        \n      \n            S3 clouds: AWS S3, Backblaze B2, Synology C2, Cloudflare R2, Google Cloud Storage, Wasabi, Linode, IDrive e2, Storj, Scaleway, DigitalOcean Spaces\n            Self-hosted: MinIO, SeaweedFS, GarageFS, Openstack Swift S3, Ceph, Zenko CloudServer\n            Visit our Docs for full list of supported providers.\n        \n      \n            Available on: Android, iOS, macOS, Windows, Linux, Web\n        \n      \n            If you like what we're doing and would like to support us, please consider upgrading your plan and leave us a review if you haven't already.\n        \n      \n            Other providers: 1Fichier, Akamai Netstorage, Citrix ShareFile, Digi Storage, Enterprise File Fabric, HiDrive, Internet Archive, Jottacloud, Linkbox, Mail.ru Cloud, Mega, Rackspace Cloudfiles, Memset Memstore, OpenDrive, Oracle Object Storage, PikPak, premiumize.me, put.io, QingStor, Quatrix by Maytech, Sia, Storj, SugarSync, Uptobox, Yandex Disk, Zoho WorkDrive\n        \n      \n            Other providers (S3): AWS Snowball Edge, Dreamhost, Huawei OBS, IBM COS (S3), Storadera, Xaweho.de, Petabox, IONOS Cloud, Qiniu Cloud Object Storage (Kodo), RackCorp, Seagate Lyve Cloud, Alibaba OSS, China Mobile Ecloud Elastic Object Storage (EOS), Leviia Cloud Object Storage, Liara, ArvanCloud, Tencent COS, Netease NOS\n        \n    ",
+      "developerName": "S3Drive",
+      "icon": "https://dl.flathub.org/media/io/kapsa/drive/cf052e53219a86bb7f6e6febe2f57d37/icons/128x128/io.kapsa.drive.png",
+      "projectLicense": "LicenseRef-proprietary",
+      "categories": [
+        "utility"
+      ],
+      "updatedAt": "2026-02-01T14:00:44Z",
+      "currentReleaseVersion": "1.16.4",
+      "flathubUrl": "https://flathub.org/apps/io.kapsa.drive",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://s3drive.app"
+      },
+      "releases": [
+        {
+          "version": "1.16.4",
+          "date": "2026-02-02T20:30:00.082993256-05:00",
+          "title": "Version 1.16.4",
+          "type": "appstream"
+        },
+        {
+          "version": "1.16.2",
+          "date": "2026-02-02T20:30:00.082994406-05:00",
+          "title": "Version 1.16.2",
+          "type": "appstream"
+        },
+        {
+          "version": "1.16.1",
+          "date": "2026-02-02T20:30:00.082995086-05:00",
+          "title": "Version 1.16.1",
+          "type": "appstream"
+        },
+        {
+          "version": "1.16.0",
+          "date": "2026-02-02T20:30:00.082996036-05:00",
+          "title": "Version 1.16.0",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956278366Z",
+      "installsLastMonth": 1172,
+      "favoritesCount": 11,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "kapsa.io"
+      }
+    },
+    {
+      "id": "com.github.IsmaelMartinez.teams_for_linux",
+      "name": "Portal for Teams",
+      "summary": "Unofficial Microsoft Teams client for Linux",
+      "description": "Experience seamless integration with the Microsoft Teams Web App in a standalone Electron application.\n      This application is an unofficial client for Microsoft Teams.\n    ",
+      "developerName": "Ismael Martinez",
+      "icon": "https://dl.flathub.org/media/com/github/IsmaelMartinez.teams_for_linux/e56668893bab51d5f750f3a5ed7b7d63/icons/128x128/com.github.IsmaelMartinez.teams_for_linux.png",
+      "projectLicense": "GPL-3.0",
+      "categories": [
+        "network",
+        "Chat",
+        "Office"
+      ],
+      "updatedAt": "2026-02-01T12:43:44Z",
+      "currentReleaseVersion": "2.7.2",
+      "flathubUrl": "https://flathub.org/apps/com.github.IsmaelMartinez.teams_for_linux",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/IsmaelMartinez/teams-for-linux",
+        "owner": "IsmaelMartinez",
+        "repo": "teams-for-linux"
+      },
+      "releases": [
+        {
+          "version": "2.7.2",
+          "date": "2026-02-02T20:30:00.083054637-05:00",
+          "title": "Version 2.7.2",
+          "description": "<ul>\n            <li>fix(screenSharing): prevent SIGILL crash by using static thumbnails - by @bluvulture (#2089), @IsmaelMartinez (#2068)</li>\n            <li>Fix Intune SSO for Microsoft Identity Broker &gt; 2.0.1 - by @IsmaelMartinez (#2069)</li>\n            <li>Fix tray icon rendering on Linux by always using nativeImage - by @IsmaelMartinez (#2096)</li>\n            <li>Upgrade yargs to v18 and update dependencies - by @IsmaelMartinez (#2097)</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "2.7.1",
+          "date": "2026-02-02T20:30:00.083055107-05:00",
+          "title": "Version 2.7.1",
+          "description": "<ul>\n            <li>Add AppImage update info to Linux builds for third-party managers - by @IsmaelMartinez (#2067)</li>\n            <li>Fix username matching for intune auth to not be case-sensitive - by @vizius-jps (#2076)</li>\n            <li>Add development roadmap and reorganize research documentation - by @IsmaelMartinez (#2079)</li>\n            <li>fix(ci): use unsquashfs for cross-architecture ARM AppImage extraction - by @IsmaelMartinez (#2080)</li>\n            <li>docs: Add GNOME Shell search provider investigation research - by @IsmaelMartinez (#2081)</li>\n            <li>Remove references to mqtt-commands-implementation research doc - by @IsmaelMartinez (#2083)</li>\n            <li>chore(deps): bump tar from 6.2.1 to 7.5.7 in the npm_and_yarn group across 1 directory (#2084)</li>\n            <li>Fix: update reference to core services due to upstream change (#2077) - by @bastidest (#2085)</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "2.7.0",
+          "date": "2026-02-02T20:30:00.083055467-05:00",
+          "title": "Version 2.7.0",
+          "description": "<ul>\n            <li>Implement Calendar Data Export Feature - by @IsmaelMartinez (#2006)</li>\n            <li>chore: upgrade Electron from 37.9.0 to 39.2.6 - by @IsmaelMartinez (#2020)</li>\n            <li>docs: fix documentation inconsistencies across repository - by @IsmaelMartinez (#2030)</li>\n            <li>fix: MQTT status stuck on do_not_disturb - by @IsmaelMartinez (#2032)</li>\n            <li>chore(deps): bump the npm_and_yarn group across 2 directories with 1 update (#2034)</li>\n            <li>chore(deps): bump qs from 6.13.0 to 6.14.1 in /docs-site in the npm_and_yarn group across 1 directory (#2035)</li>\n            <li>Fix Electron 39 snap permissions issue - by @IsmaelMartinez (#2040)</li>\n            <li>Update dependencies for Electron 39 - by @IsmaelMartinez (#2045)</li>\n            <li>Update default teams link - by @XCroatoanX (#2046)</li>\n            <li>ci: restore armv7l snap build - by @IsmaelMartinez (#2050)</li>\n            <li>Fix SonarQube security issue in changelog workflow - by @IsmaelMartinez (#2051)</li>\n            <li>Fix changelog generation for external repositories - by @IsmaelMartinez (#2052)</li>\n            <li>docs: update research documentation status and remove outdated files - by @IsmaelMartinez (#2053)</li>\n            <li>feat: add automated release preparation workflow - by @IsmaelMartinez (#2056)</li>\n            <li>chore(deps): bump the npm_and_yarn group across 2 directories with 1 update (#2061)</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "2.6.19",
+          "date": "2026-02-02T20:30:00.083055767-05:00",
+          "title": "Version 2.6.19",
+          "description": "<ul>\n            <li>Investigate issue 1984 - by @IsmaelMartinez (#1989)</li>\n            <li>Investigate and resolve GitHub issue 1987 - by @IsmaelMartinez (#1990)</li>\n            <li>Start config research implementation phase one - by @IsmaelMartinez (#2005)</li>\n            <li>Implement MQTT Extended Status Phase 1a - by @IsmaelMartinez (#2007)</li>\n            <li>Fix changelog generation triggering on every change - by @IsmaelMartinez (#2008)</li>\n            <li>Make top bar elements clickable in frameless mode - by @KrissN (#2009)</li>\n            <li>chore(deps): bump mdast-util-to-hast from 13.2.0 to 13.2.1 in /docs-site in the npm_and_yarn group across 1 directory (#2012)</li>\n            <li>[Research]: Disable camera and microphone when screen is locked (#2015) - by @IsmaelMartinez (#2018)</li>\n            <li>Investigate Open Login Dialog in the browser #2017 - by @IsmaelMartinez (#2019)</li>\n            <li>chore: cleanup obsolete tasks folder and consolidate docs - by @IsmaelMartinez (#2022)</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956379707Z",
+      "installsLastMonth": 21367,
+      "favoritesCount": 47,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "IsmaelMartinez"
+      }
+    },
+    {
+      "id": "org.qownnotes.QOwnNotes",
+      "name": "QOwnNotes",
+      "summary": "Markdown note-taking",
+      "description": "QOwnNotes is the open source (GPL) plain-text file notepad with Markdown support and todo list manager for GNU/Linux, Mac OS X and Windows by Patrizio Bekerle, that (optionally) works together with the notes application of ownCloud or Nextcloud.\n    ",
+      "developerName": "Patrizio Bekerle",
+      "icon": "https://dl.flathub.org/media/org/qownnotes/QOwnNotes/74bce3b07e1b04b6aeda974102f85f00/icons/128x128/org.qownnotes.QOwnNotes.png",
+      "projectLicense": "GPL-2.0+",
+      "categories": [
+        "utility",
+        "TextEditor"
+      ],
+      "updatedAt": "2026-02-02T01:22:28Z",
+      "currentReleaseVersion": "26.2.0",
+      "flathubUrl": "https://flathub.org/apps/org.qownnotes.QOwnNotes",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://www.qownnotes.org/"
+      },
+      "releases": [
+        {
+          "version": "26.2.0",
+          "date": "2026-02-02T20:30:00.082952506-05:00",
+          "title": "Version 26.2.0",
+          "type": "appstream"
+        },
+        {
+          "version": "26.1.15",
+          "date": "2026-02-02T20:30:00.082953446-05:00",
+          "title": "Version 26.1.15",
+          "type": "appstream"
+        },
+        {
+          "version": "26.1.14",
+          "date": "2026-02-02T20:30:00.082954036-05:00",
+          "title": "Version 26.1.14",
+          "type": "appstream"
+        },
+        {
+          "version": "26.1.13",
+          "date": "2026-02-02T20:30:00.082954556-05:00",
+          "title": "Version 26.1.13",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956399017Z",
+      "installsLastMonth": 1522,
+      "favoritesCount": 7,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "qownnotes.org"
+      }
+    },
+    {
+      "id": "io.github.mpc_qt.mpc-qt",
+      "name": "MPC-QT",
+      "summary": "Media Player Classic reimplemented with Qt and libmpv",
+      "description": "\n   Open source media player focusing on ease of use and effectiveness.\n  \n      Features:\n      \n        Multiple playlists\n        Video preview on seekbar (thumbnail)\n        Quick queueing like xmms/qmmp\n        Play online videos (with youtube-dl)\n        Configurable shortcuts and mouse buttons\n        Multimedia keys support (Mpris)\n        Web interface\n        Thumbnails maker\n      \n    ",
+      "developerName": "The MPC-QT developers",
+      "icon": "https://dl.flathub.org/media/io/github/mpc_qt.mpc-qt/615b955b31fc15c4d8490801937fb442/icons/128x128/io.github.mpc_qt.mpc-qt.png",
+      "projectLicense": "GPL-2.0+",
+      "categories": [
+        "audiovideo",
+        "Audio",
+        "Video",
+        "Player",
+        "TV"
+      ],
+      "updatedAt": "2026-02-01T14:57:00Z",
+      "currentReleaseVersion": "26.01",
+      "flathubUrl": "https://flathub.org/apps/io.github.mpc_qt.mpc-qt",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://mpc-qt.github.io/"
+      },
+      "releases": [
+        {
+          "version": "26.01",
+          "date": "2026-02-02T20:30:00.083938354-05:00",
+          "title": "Version 26.01",
+          "description": "<p>Release description</p>\n          <ul>\n            <li>Pre-defined audio and video filters: Extra Stereo, Compressor and Crossfeed for audio, and Deinterlace for video.</li>\n            <li>Fast seeking is used by default when hardware decoding isn't available.</li>\n            <li>Support for many video modifications: zoom, switch to 4:3 aspect ratio, free video resize, video move, rotate and horizontal flip.</li>\n            <li>Move File to Trash feature which lets you sift through videos or music and remove unwanted ones by pressing a key.</li>\n            <li>You can now set custom mpv options in Options &gt; Tweaks.</li>\n            <li>Many other improvements and bug fixes.</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "25.07",
+          "date": "2026-02-02T20:30:00.083940014-05:00",
+          "title": "Version 25.07",
+          "description": "<p>Release description</p>\n          <ul>\n            <li>A video preview is shown on the seek bar.</li>\n            <li>Improved shuffle feature, playlist view and new music mode.</li>\n            <li>The keys editor has a search field and a better workflow.</li>\n            <li>Subtitles additions for deaf or hard-of-hearing (SDH) can be automatically hidden.</li>\n            <li>Bigger icons and updated subtitles icon.</li>\n            <li>The interface language can be forced to English.</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "24.12.1",
+          "date": "2026-02-02T20:30:00.083940524-05:00",
+          "title": "Version 24.12.1",
+          "description": "<p>Release description</p>\n          <ul>\n            <li>Fixes a long standing bug that could lead to a crash.</li>\n            <li>Fixes a regression for Nvidia GPUs introduced by previous version.</li>\n            <li>Fixes the new \"remember file position\" feature.</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "24.12",
+          "date": "2026-02-02T20:30:00.083941024-05:00",
+          "title": "Version 24.12",
+          "description": "<p>Release description</p>\n          <ul>\n            <li>Position, audio, video and subtitle tracks can now be remembered for 1000 videos.</li>\n            <li>Seek bar is easier to use.</li>\n            <li>Updated hardware decoding backends.</li>\n            <li>Active subtitle, audio and video tracks are shown.</li>\n            <li>Subtitles delay and video aspect ratio are adjustable.</li>\n            <li>Current and total time and other information shown in OSD.</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956332047Z",
+      "installsLastMonth": 2789,
+      "favoritesCount": 5,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "mpc-qt"
+      }
+    },
+    {
+      "id": "org.gitfourchette.gitfourchette",
+      "name": "GitFourchette",
+      "summary": "The comfortable Git UI",
+      "description": "Explore your repos easily. Craft commits intuitively. GitFourchette will become your new home to get work done in your Git repositories.\n      \n        A comfortable way to explore and understand your Git repositories\n        Powerful tools to stage code, create commits, and manage branches\n        Snappy and intuitive Qt UI designed to fit in snugly with KDE Plasma\n      \n    ",
+      "developerName": "Iliyas Jorio",
+      "icon": "https://dl.flathub.org/media/org/gitfourchette/gitfourchette/56ae9be0c7bdc0c77b42b99a6d1122b6/icons/128x128/org.gitfourchette.gitfourchette.png",
+      "projectLicense": "GPL-3.0",
+      "categories": [
+        "development",
+        "RevisionControl"
+      ],
+      "updatedAt": "2026-02-01T23:23:24Z",
+      "currentReleaseVersion": "1.6.0",
+      "flathubUrl": "https://flathub.org/apps/org.gitfourchette.gitfourchette",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://gitfourchette.org"
+      },
+      "releases": [
+        {
+          "version": "1.6.0",
+          "date": "2026-02-02T20:30:00.085369857-05:00",
+          "title": "Version 1.6.0",
+          "description": "<p>New features:</p>\n          <ul>\n            <li><em>Mount commits as folders.</em> This lets you browse the workdir at a specific point in time using your system's file manager. Available by right-clicking a commit in the Commit History. (FUSE 3 required + new optional dependency 'mfusepy')</li>\n            <li><em>Auto-fetch remotes periodically (experimental).</em> Enable this <em>Settings → Advanced → Auto-fetch remotes every N minutes.</em></li>\n          </ul>\n          <p>Quality of life improvements:</p>\n          <ul>\n            <li>FileList: Improve path readability by muting color of directory string (#77)</li>\n            <li>GraphView context menu: Show branch name instead of \"Reset HEAD to Here\" (#71)</li>\n            <li>GraphView context menu: Offer merging for any commit, not just branch tips (#74)</li>\n            <li>Image diffs: Ability to toggle between old/new images</li>\n            <li>Blame: Emphasize \"new\" lines with a different background color in the gutter</li>\n            <li>Allow pressing the Escape key to quickly close detached diff/blame windows</li>\n          </ul>\n          <p>Bug fixes:</p>\n          <ul>\n            <li>Fix impossible to open worktrees located in a subdirectory of a bare repo (#82)</li>\n            <li>When a merge is blocked by untracked files that would be overwritten, show an error message (instead of denying the merge silently)</li>\n          </ul>\n          <p>Maintenance:</p>\n          <ul>\n            <li>Continued from the work started in v1.5.0, more operations now use \"standard\" Git instead of libgit2. This should be transparent to most users; others may benefit from better interoperability with their Git setup. (Reworked operations include: Workdir Status, Commit Diffs, Export Patch, Blame/Revlist, Register/Remove Submodule, New Repository, Add/Remove/Edit Remote, Restore files after stashing)</li>\n            <li>Some work on Windows compatibility (experimental)</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "1.5.0",
+          "date": "2026-02-02T20:30:00.085371137-05:00",
+          "title": "Version 1.5.0",
+          "description": "<p><em>Major change: Better integration with standard Git tooling.</em> GitFourchette now uses git instead of libgit2 to edit repositories and communicate with remotes. This enables seamless integration into workflows that depend on OpenSSH, hooks, etc.</p>\n          <p>The Flatpak version comes bundled with a Git distribution so you can use it without any additional setup. For more control, you can switch to your system's Git install via <em>Settings → Git Integration</em>.</p>\n          <p>New features:</p>\n          <ul>\n            <li><em>GPG-sign your commits.</em> Look for a little key icon in the Commit Dialog. (#63)</li>\n            <li><em>Verify commit signatures in the commit history.</em><em>Settings → Commit History → Verify signed commits on the fly</em>. (#59)</li>\n          </ul>\n          <p>Quality of life improvements:</p>\n          <ul>\n            <li>Force push with lease (#61)</li>\n            <li>Sidebar: Bold current commit and upstream (#60)</li>\n            <li>Sidebar: Allow collapsing/expanding all folders from Local Branches context menu</li>\n            <li>Keep syntax highlighting active while a search term is being highlighted</li>\n            <li>In non-KDE environments (e.g. GNOME), the Return key can now be used to confirm most dialogs regardless of the focused widget (note: KDE already allowed this) (#68)</li>\n          </ul>\n          <p>Bug fixes:</p>\n          <ul>\n            <li>Fix rendering of Unicode surrogate pairs in character-level diffs (#58)</li>\n            <li>Fix parent commit links in Get Commit Info (regression in 1.4.0)</li>\n          </ul>\n          <p>Breaking changes due to integration with Git tooling:</p>\n          <ul>\n            <li>Passphrase saving has been delegated to ssh-agent. Some Linux distros like Ubuntu and Fedora provide an ssh-agent out of the box. As a fallback, you can have GitFourchette spin up an ssh-agent for you via <em>Settings → Git Integration → ssh-agent</em>.</li>\n            <li>Per-remote custom SSH keys aren't supported anymore. You can set per-host keys in <em>~/.ssh/config</em> to achieve the same effect; or, you can set per-repo custom SSH keys in <em>Repo → Repo Settings → Log in to SSH remotes with custom key file</em>.</li>\n          </ul>\n          <p>Note: Although many commands now call git, libgit2 (via pygit2) is still used internally to build a model of the repo.</p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "1.4.0",
+          "date": "2026-02-02T20:30:00.085371727-05:00",
+          "title": "Version 1.4.0",
+          "description": "<p>New features:</p>\n          <ul>\n            <li>Blame/File History. Within GitFourchette, right-click any file and select \"Blame File\"; or, drag any file in your repo from your file manager and drop it onto the main window to view its history.</li>\n          </ul>\n          <p>Quality of life improvements:</p>\n          <ul>\n            <li>An informative \"drop zone\" now appears when you drag an item from an external program over the main window. This tells you what will happen upon dropping the item (open repo folder, open repo containing a file, blame file in current repo, apply patch file, clone URL).</li>\n            <li>CheckoutCommitDialog: Also offer Merge, Reset HEAD</li>\n            <li>New branch/tag name validation: Friendly warning if attempting to create a folder with the same name as an existing ref</li>\n            <li>CodeView: Toggling Word Wrap now preserves your scroll position in the document</li>\n            <li>FileList: Reevaluate search term when jumping to another commit</li>\n            <li>DiffGutter: Enable high-DPI custom cursor on Wayland</li>\n          </ul>\n          <p>Bug fixes:</p>\n          <ul>\n            <li>Fix \"Detect Renames\" may unexpectedly switch to the workdir in rare cases</li>\n            <li>Flatpak distribution: Updated to Pygments 2.19.2 to fix problems with Lua syntax highlighting</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "1.3.0",
+          "date": "2026-02-02T20:30:00.085372207-05:00",
+          "title": "Version 1.3.0",
+          "description": "<p><em>Upgrade note:</em> The terminal command template now requires the <code>$COMMAND</code> argument placeholder. Please review your terminal command in <em>Settings → External Tools → Terminal</em>.</p>\n          <p>New features:</p>\n          <ul>\n            <li>Custom terminal commands (Settings → Custom Commands) (#37).</li>\n            <li>Sidebar: Hide All But This (#49). You can now show a single branch and hide all others.</li>\n            <li>Add file to .gitignore or .git/info/exclude from untracked file context menu (#42)</li>\n          </ul>\n          <p>Quality of life improvements:</p>\n          <ul>\n            <li>GraphView: Conjoined refboxes when a local branch is in sync with its upstream (#12)</li>\n            <li>Add target branch shorthand to default merge commit message (#39)</li>\n            <li>NewBranchDialog: Pre-tick upstream checkbox if branching off remote branch</li>\n            <li>Report mandatory placeholder token errors when launching external tool commands</li>\n            <li>Speed up remote listing and upstream lookup</li>\n            <li>Fix Sidebar/DiffArea would sometimes jump around by a few pixels while temporary banners were shown</li>\n            <li>Override Yaru icon theme's \"scary\" red warning icon (#27)</li>\n            <li>More helpful message if Python bindings for QtSvg are missing</li>\n          </ul>\n          <p>Bug fixes:</p>\n          <ul>\n            <li>Sidebar: Strip initial slash in nested RefFolder display names (#45)</li>\n            <li>Fix Ctrl+G keyboard shortcut on GNOME</li>\n            <li>Work around window snapping issue on GNOME (#50)</li>\n          </ul>\n          <p>Two other bug fixes originally introduced in v1.2.0 had been dormant until now due to depending on a pygit2 version bump – they are now in full effect:</p>\n          <ul>\n            <li>Fix push progress wasn't reported properly during transfer (requires pygit2 1.18.0) (#22)</li>\n            <li>Fix push couldn't be canceled once the transfer starts (requires pygit2 1.18.0) (#22)</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956370407Z",
+      "installsLastMonth": 673,
+      "favoritesCount": 7,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "gitfourchette.org"
+      }
+    },
+    {
+      "id": "it.mq1.TinyWiiBackupManager",
+      "name": "TinyWiiBackupManager",
+      "summary": "A tiny game backup and homebrew app manager for the Wii",
+      "description": "‼️ TinyWiiBackupManager is intended strictly for legal homebrew use and is not affiliated with or endorsed by Nintendo. Use of TinyWiiBackupManager for pirated or unauthorized copies of games is strictly prohibited.\n      ✨ Features\n      \n        Lightweight &amp; Fast: Native app, -O3, Cross-Language LTO (C ⇔ Rust), x86_64-v1/v2/v3 optimized builds (AppImage only)\n        Cross-Platform: Windows 7+ (x86, x64, arm64), macOS 10.12+ (x64, arm64), Linux (x86, x64, arm64)\n      \n      🎮 Game Management\n      \n        Games view: Manage your Wii and GameCube games\n        Format Support: .iso, .rvz and major formats thanks to NOD\n        Automatic Splitting: .wbfs file splitting when needed\n        Partition Stripping: Remove the update partition to save space\n        Game Archiving: Archive games using RVZ+zstd-19\n        Integrity Checks: Verify game data for corruption\n        GameTDB: Fetch covers and wiitdb.xml from GameTDB\n        TxtCodes: Download cheat codes from geckocodes.org (web archive), codes.rc24.xyz and gamehacking.org\n      \n      🛠️ Wii Homebrew Management\n      \n        Apps: Manage Wii homebrew applications\n        OSC: Download apps from the Open Shop Channel\n        Wiiload: Send apps directly to Wii via network\n      \n    ",
+      "developerName": "Manuel Quarneti",
+      "icon": "https://dl.flathub.org/media/it/mq1/TinyWiiBackupManager/185e6024de01d41a059c752d1c3d7d08/icons/128x128/it.mq1.TinyWiiBackupManager.png",
+      "projectLicense": "GPL-3.0-only",
+      "categories": [
+        "game",
+        "Utility"
+      ],
+      "updatedAt": "2026-02-01T16:41:12Z",
+      "currentReleaseVersion": "5.0.2",
+      "flathubUrl": "https://flathub.org/apps/it.mq1.TinyWiiBackupManager",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/mq1/TinyWiiBackupManager",
+        "owner": "mq1",
+        "repo": "TinyWiiBackupManager"
+      },
+      "releases": [
+        {
+          "version": "5.0.2",
+          "date": "2026-02-02T20:30:00.143566277-05:00",
+          "title": "Version 5.0.2",
+          "type": "appstream"
+        },
+        {
+          "version": "5.0.1",
+          "date": "2026-02-02T20:30:00.143567667-05:00",
+          "title": "Version 5.0.1",
+          "type": "appstream"
+        },
+        {
+          "version": "5.0.0",
+          "date": "2026-02-02T20:30:00.143568497-05:00",
+          "title": "Version 5.0.0",
+          "type": "appstream"
+        },
+        {
+          "version": "4.9.24",
+          "date": "2026-02-02T20:30:00.143569207-05:00",
+          "title": "Version 4.9.24",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956250266Z",
+      "installsLastMonth": 1308,
+      "favoritesCount": 6,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "mq1.it"
+      }
+    },
+    {
+      "id": "io.github.alsofelix.crabdrop",
+      "name": "Crabdrop",
+      "summary": "S3-compatible file manager",
+      "description": "\n            A simple and fast app to manage files stored online.\n            Easily connect to popular cloud storage services\n            and move files between your computer and the cloud.\n        \n      Features:\n      \n        Browse files and folders\n        Upload and download files\n        Drag and drop uploads\n        Upload large files reliably\n        See upload progress in real time\n      \n      \n            Works with AWS S3, Cloudflare R2, MinIO,\n            and other compatible cloud storage services.\n        \n    ",
+      "developerName": "Felix",
+      "icon": "https://dl.flathub.org/media/io/github/alsofelix.crabdrop/d71ca3e6ecf2a8c754019560707e0bd2/icons/128x128/io.github.alsofelix.crabdrop.png",
+      "projectLicense": "MIT",
+      "categories": [
+        "utility",
+        "FileManager",
+        "Network"
+      ],
+      "updatedAt": "2026-02-01T20:35:50Z",
+      "currentReleaseVersion": "0.1.10",
+      "flathubUrl": "https://flathub.org/apps/io.github.alsofelix.crabdrop",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/alsofelix/crabdrop",
+        "owner": "alsofelix",
+        "repo": "crabdrop"
+      },
+      "releases": [
+        {
+          "version": "0.1.10",
+          "date": "2026-02-02T20:30:00.143533447-05:00",
+          "title": "Version 0.1.10",
+          "description": "<ul>\n            <li>Adds the option to share files via a presigned url</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.1.9",
+          "date": "2026-02-02T20:30:00.143534487-05:00",
+          "title": "Version 0.1.9",
+          "description": "<ul>\n            <li>Fixed a critical bug with multipart uploads</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.1.8",
+          "date": "2026-02-02T20:30:00.143535147-05:00",
+          "title": "Version 0.1.8",
+          "description": "<ul>\n            <li>Fixed a bug where you could not upload multiple files at once</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.1.6",
+          "date": "2026-02-02T20:30:00.143535677-05:00",
+          "title": "Version 0.1.6",
+          "description": "<ul>\n            <li>Moved credential storage to the system keyring via Secret Service</li>\n            <li>Removed secrets from on-disk configuration files</li>\n            <li>Improved settings flow to safely update credentials without re-entering them</li>\n            <li>Fixed repeated password prompts caused by legacy configuration data</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956348077Z",
+      "installsLastMonth": 122,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "alsofelix"
+      }
+    },
+    {
+      "id": "com.strlen.TreeSheets",
+      "name": "TreeSheets",
+      "summary": "Free Form Data Organizer",
+      "description": "\n      A \"hierarchical spreadsheet\" that is a great replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases.\n    \n      \n      Suitable for any kind of data organization, such as todo lists, calendars, project management, brainstorming, organizing ideas, planning, requirements gathering, presentation of information, etc.\n    \n      \n      It's like a spreadsheet, immediately familiar, but much more suitable for complex data because it's hierarchical. It's like a mind mapper, but more organized and compact. It's like an outliner, but in more than one dimension. It's like a text editor, but with structure.\n    \n    ",
+      "developerName": "Wouter van Oortmerssen",
+      "icon": "https://dl.flathub.org/media/com/strlen/TreeSheets/95d4deca8a217860e89523469f7d602d/icons/128x128/com.strlen.TreeSheets.png",
+      "projectLicense": "Zlib",
+      "categories": [
+        "office",
+        "Spreadsheet",
+        "TextEditor",
+        "Utility"
+      ],
+      "updatedAt": "2026-02-01T14:13:14Z",
+      "currentReleaseVersion": "2253",
+      "flathubUrl": "https://flathub.org/apps/com.strlen.TreeSheets",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://strlen.com/treesheets"
+      },
+      "releases": [
+        {
+          "version": "2253",
+          "date": "2026-02-02T20:30:00.144384124-05:00",
+          "title": "Version 2253",
+          "description": "<p>Please refer to the release notes on the GitHub page.</p>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956254126Z",
+      "installsLastMonth": 583,
+      "favoritesCount": 4,
+      "isVerified": false
+    },
+    {
+      "id": "com.artemchep.keyguard",
+      "name": "Keyguard",
+      "summary": "Manage passwords",
+      "description": "Multi-client for the Bitwarden® platform and KeePass (KDBX), designed to provide the best user experience possible.\n      Can be used with any Bitwarden® installation. This product is not associated with the Bitwarden project nor Bitwarden, Inc. Bitwarden® is a registered trademark of Bitwarden Inc.\n      Highlights:\n      \n        Beautiful Interface: a rich, responsive Material You UI with Light/Dark themes.\n        Advanced Search: Powerful and fast search capabilities.\n        Watchtower: Detects pwned passwords, vulnerable accounts, reused passwords, inactive two-factor authentication, insecure websites, duplicate or expiring items and more.\n        Multi-Account Support: Simultaneously have multiple accounts signed in.\n        Offline Management: Add items and sends, modify, and view your vault offline.\n        Data Export: Export individual or organization items, including attachments.\n        Generator: Create passwords, SSH keys and email forwarders, with support for custom wordlists.\n        Advanced Features: Support for shortcuts, Field placeholders, URL overrides, and smart conflict resolution.\n      \n    ",
+      "developerName": "Artem Chepurnyi",
+      "icon": "https://dl.flathub.org/media/com/artemchep/keyguard/4f8ea01eddaeba302709c131794c49b2/icons/128x128/com.artemchep.keyguard.png",
+      "projectLicense": "LicenseRef-proprietary=https://github.com/AChep/keyguard-app/blob/master/LICENSE",
+      "categories": [
+        "utility"
+      ],
+      "updatedAt": "2026-02-02T00:34:15Z",
+      "currentReleaseVersion": "2.3.4",
+      "flathubUrl": "https://flathub.org/apps/com.artemchep.keyguard",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/AChep/keyguard-app/",
+        "owner": "AChep",
+        "repo": "keyguard-app"
+      },
+      "releases": [
+        {
+          "version": "2.3.4",
+          "date": "2026-02-02T20:30:00.143494827-05:00",
+          "title": "Version 2.3.4",
+          "description": "<p>This update introduces several platform-specific enhancements and general fixes. For Android users, the \"Allow screenshot\" option can now display an optional visual cue, and the app will react to system light/dark mode changes without recreating the screen. Support has also been added for marking copied values as sensitive on pre-Tiramisu devices. On desktop platforms, the application has been migrated to a native Compose tray. Finally, this release resolves an issue causing \"en-US\" to appear twice in the language selector and adds support for re-prompting on Custom field actions.</p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "2.3.3",
+          "date": "2026-02-02T20:30:00.143496647-05:00",
+          "title": "Version 2.3.3",
+          "description": "<p>This release introduces functional and user interface updates for Windows. The trust manager has been consolidated to combine the Windows-My, Windows-ROOT, and default certificate stores. On Windows, the main window title will now dynamically change to match the selected application theme. A bug has also been fixed where blank tags were incorrectly being saved with vault ciphers.</p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "2.3.2",
+          "date": "2026-02-02T20:30:00.143497127-05:00",
+          "title": "Version 2.3.2",
+          "description": "<p>This release includes several improvements to the password generator and fixes for certificate handling. You can now create longer passphrases of up to 20 words, and the generator will display a character count for both passphrases and usernames. We have also resolved issues with certificate stores on Windows and macOS for a more reliable experience.</p>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "2.3.1",
+          "date": "2026-02-02T20:30:00.143497847-05:00",
+          "title": "Version 2.3.1",
+          "description": "<p>This update introduces a new feature allowing you to tap an application's URI to look it up in the Google Play, F-Droid, or Apple App stores, which now also fetches app icons. An issue on Android has been fixed where cancelling an autofill prompt could cause the service to stop working. For desktop users, the Windows and macOS apps now use the system's native certificate store for improved connectivity. This release also includes several minor performance and user interface enhancements.</p>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956406077Z",
+      "installsLastMonth": 760,
+      "favoritesCount": 6,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "website",
+        "website": "artemchep.com"
+      }
+    },
+    {
+      "id": "io.github.enginkirmaci.lumux",
+      "name": "Lumux for Philips Hue Sync",
+      "summary": "Real-time Philips Hue sync with your screen",
+      "description": "\n      Lumux for Philips Hue Sync is a lightweight desktop app that analyzes the colors on your screen\n      and streams them to a Philips Hue Entertainment area for an \"ambilight\" effect.\n    \n      \n      It is designed for Wayland desktops and uses the XDG Desktop Portal ScreenCast API (PipeWire)\n      so you control when and what Lumux can capture.\n    \n      Key features:\n      \n        Hue Entertainment streaming (DTLS) for smooth, low-latency updates\n        Portal-based screen capture on Wayland (no privileged access required)\n        Configurable zone grid and real-time zone preview\n        Performance controls (resolution scale, target FPS, smoothing, gamma/brightness)\n        Optional tray integration and quick start/stop controls\n      \n      \n      Requires a Philips Hue Bridge and an Entertainment area configured in the Hue app.\n    \n    ",
+      "developerName": "Engin Kirmaci",
+      "icon": "https://dl.flathub.org/media/io/github/enginkirmaci.lumux/7e510d2c37a38b009e1828980765196c/icons/128x128/io.github.enginkirmaci.lumux.png",
+      "projectLicense": "MIT",
+      "categories": [
+        "utility"
+      ],
+      "updatedAt": "2026-02-01T20:38:50Z",
+      "currentReleaseVersion": "0.2.0",
+      "flathubUrl": "https://flathub.org/apps/io.github.enginkirmaci.lumux",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/enginkirmaci/lumux",
+        "owner": "enginkirmaci",
+        "repo": "lumux"
+      },
+      "releases": [
+        {
+          "version": "0.2.0",
+          "date": "2026-02-02T20:30:00.14501915-05:00",
+          "title": "Version 0.2.0",
+          "description": "<p>New features and bug fixes:</p>\n          <ul>\n            <li>Added autostart at login support for Flatpak</li>\n            <li>Fixed config persistence in Flatpak sandbox (now uses XDG_CONFIG_HOME)</li>\n            <li>Improved settings management for sandboxed environments</li>\n          </ul>\n        ",
+          "type": "appstream"
+        },
+        {
+          "version": "0.1.0",
+          "date": "2026-02-02T20:30:00.14502015-05:00",
+          "title": "Version 0.1.0",
+          "description": "<p>Initial release of Lumux for Philips Hue Sync.</p>\n          <ul>\n            <li>Hue Entertainment streaming with DTLS for smooth, low-latency light updates</li>\n            <li>Portal-based screen capture on Wayland using XDG Desktop Portal and PipeWire</li>\n            <li>Configurable zone grid with real-time preview</li>\n            <li>Performance controls including resolution scale, target FPS, smoothing, gamma, and brightness</li>\n            <li>System tray integration with quick start/stop controls</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956339137Z",
+      "installsLastMonth": 75,
+      "favoritesCount": 1,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "enginkirmaci"
+      }
+    },
+    {
+      "id": "io.github.sitraorg.sitra",
+      "name": "Sitra",
+      "summary": "Get fonts from online sources",
+      "description": "\n      Get your fonts from online sources with a sleek, friendly user interface.\n      Sitra provides a seamless experience for installing, uninstalling and previewing fonts.\n    \n      \n        List fonts available on Google Fonts\n        Preview the fonts using Fontsource CDN for privacy\n        Get code to use the font in your project, via CDN or npm from fontsource\n        Download the fonts on your device in ttf format from google\n        Filter font by category using the toggle buttons or by family and subset using search\n      \n    ",
+      "developerName": "Ronnie Nissan",
+      "icon": "https://dl.flathub.org/media/io/github/sitraorg.sitra/338a63620f6b8f976501d5051274e7f8/icons/128x128/io.github.sitraorg.sitra.png",
+      "projectLicense": "GPL-3.0-or-later",
+      "categories": [
+        "utility",
+        "TextTools"
+      ],
+      "updatedAt": "2026-02-01T14:22:52Z",
+      "currentReleaseVersion": "0.1.0",
+      "flathubUrl": "https://flathub.org/apps/io.github.sitraorg.sitra",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/sitraorg/sitra",
+        "owner": "sitraorg",
+        "repo": "sitra"
+      },
+      "releases": [
+        {
+          "version": "0.1.0",
+          "date": "2026-02-02T20:30:00.146025018-05:00",
+          "title": "Version 0.1.0",
+          "description": "<p>Initial release</p>\n          <ul>\n            <li>List fonts available on Google Fonts</li>\n            <li>Preview the fonts using fontsource cdn for privacy</li>\n            <li>Change font size, character width and line height, as well as preview text and language</li>\n            <li>Configure and get code to use the font in your project, via CDN or npm from fontsource</li>\n            <li>Download the fonts on your device in ttf format from google</li>\n            <li>Filter font by category using the toggle buttons or by family and subset using search</li>\n          </ul>\n        ",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956306716Z",
+      "installsLastMonth": 134,
+      "favoritesCount": 1,
+      "isVerified": true,
+      "verificationInfo": {
+        "method": "login_provider",
+        "loginName": "sitraorg"
+      }
+    },
+    {
+      "id": "br.gov.fazenda.receita.gcap2026",
+      "name": "GCAP 2026",
+      "summary": "Do your capital gains taxes in Brazil (Calendar year of 2026)",
+      "description": "NOTE: This wrapper is not verified by, affiliated with, or supported by any Brazilian government agency.\n      GCAP is an app officially distributed by the Special Department of Federal Revenue of Brazil, to help Brazilian citizens do their capital gains taxes.\n    ",
+      "developerName": "Special Department of Federal Revenue of Brazil",
+      "icon": "https://dl.flathub.org/media/br/gov/fazenda.receita.gcap2026/122c6de8bee3d9b4252baafbadb44ddd/icons/128x128/br.gov.fazenda.receita.gcap2026.png",
+      "projectLicense": "LicenseRef-proprietary",
+      "categories": [
+        "office",
+        "Network"
+      ],
+      "updatedAt": "2026-02-01T19:03:37Z",
+      "currentReleaseVersion": "1.0",
+      "flathubUrl": "https://flathub.org/apps/br.gov.fazenda.receita.gcap2026",
+      "sourceRepo": {
+        "type": "other",
+        "url": "https://www.gov.br/pt-br/servicos/apurar-imposto-sobre-ganhos-de-capital"
+      },
+      "releases": [
+        {
+          "version": "1.0",
+          "date": "2026-02-02T20:30:00.145863157-05:00",
+          "title": "Version 1.0",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T01:29:59.956370637Z",
+      "installsLastMonth": 68,
+      "isVerified": false
     }
   ]
 }
