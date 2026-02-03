@@ -50,6 +50,11 @@ const appsWithGitHub = apps.filter(app => app.sourceRepo && app.sourceRepo.type 
 const appsWithChangelogs = apps.filter(app => app.releases && app.releases.length > 0).length;
 const appsVerified = apps.filter(app => app.isVerified).length;
 
+// Count package types
+const flatpakApps = apps.filter((app: any) => app.packageType === 'flatpak').length;
+const homebrewApps = apps.filter((app: any) => app.packageType === 'homebrew').length;
+const osReleases = apps.filter((app: any) => app.packageType === 'os').length;
+
 // Calculate total installs and favorites
 const totalInstalls = apps.reduce((sum, app) => sum + (app.installsLastMonth || 0), 0);
 const totalFavorites = apps.reduce((sum, app) => sum + (app.favoritesCount || 0), 0);
@@ -437,7 +442,19 @@ const appNames = apps.map(app => app.name).sort();
           <div class="stats-grid">
             <div class="stat">
               <div class="stat-value">{apps.length}</div>
-              <div class="stat-label">Total Apps</div>
+              <div class="stat-label">Total Packages</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">{osReleases}</div>
+              <div class="stat-label">OS Releases</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">{flatpakApps}</div>
+              <div class="stat-label">Flatpak Apps</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">{homebrewApps}</div>
+              <div class="stat-label">Homebrew Packages</div>
             </div>
             <div class="stat">
               <div class="stat-value">{appsVerified}</div>
@@ -454,10 +471,6 @@ const appNames = apps.map(app => app.name).sort();
             <div class="stat">
               <div class="stat-value">{totalInstalls.toLocaleString()}</div>
               <div class="stat-label">Total Installs (30d)</div>
-            </div>
-            <div class="stat">
-              <div class="stat-value">{totalFavorites}</div>
-              <div class="stat-label">Total Favorites</div>
             </div>
           </div>
         </div>
