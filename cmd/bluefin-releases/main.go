@@ -12,6 +12,7 @@ import (
 	"github.com/castrojo/bluefin-releases/internal/github"
 	"github.com/castrojo/bluefin-releases/internal/gitlab"
 	"github.com/castrojo/bluefin-releases/internal/models"
+	"github.com/castrojo/bluefin-releases/internal/mozilla"
 )
 
 const version = "1.0.0"
@@ -126,6 +127,13 @@ func main() {
 	gitlabDuration := time.Since(gitlabStart)
 	log.Printf("GitLab enrichment complete in %s", gitlabDuration)
 
+	// Step 5.6: Enrich with Mozilla release notes (Firefox and Thunderbird)
+	log.Println("Enriching Mozilla products with release notes...")
+	mozillaStart := time.Now()
+	enrichedApps = mozilla.EnrichWithMozillaReleases(enrichedApps)
+	mozillaDuration := time.Since(mozillaStart)
+	log.Printf("Mozilla enrichment complete in %s", mozillaDuration)
+
 	// Step 5: Sort by update date (Flatpak apps have updatedAt, Homebrew may not)
 	// For now, just use the order they come in (Flatpak first, then Homebrew)
 	// Future: could sort by latest release date
@@ -185,6 +193,7 @@ func main() {
 				DetailsFetchDuration: flathubDuration.String(), // Combined in FetchAllApps
 				GitHubFetchDuration:  githubDuration.String(),
 				GitLabFetchDuration:  gitlabDuration.String(),
+				MozillaFetchDuration: mozillaDuration.String(),
 				OutputDuration:       "0s", // Will be updated
 			},
 		},

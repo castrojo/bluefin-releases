@@ -38,6 +38,7 @@ type Performance struct {
 	DetailsFetchDuration string `json:"detailsFetchDuration"`
 	GitHubFetchDuration  string `json:"githubFetchDuration"`
 	GitLabFetchDuration  string `json:"gitlabFetchDuration"`
+	MozillaFetchDuration string `json:"mozillaFetchDuration"`
 	OutputDuration       string `json:"outputDuration"`
 }
 
