@@ -6,9 +6,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/castrojo/flatpak-firehose/internal/flathub"
-	"github.com/castrojo/flatpak-firehose/internal/github"
-	"github.com/castrojo/flatpak-firehose/internal/models"
+	"github.com/castrojo/bluefin-releases/internal/flathub"
+	"github.com/castrojo/bluefin-releases/internal/github"
+	"github.com/castrojo/bluefin-releases/internal/models"
 )
 
 const version = "1.0.0"
@@ -16,7 +16,7 @@ const version = "1.0.0"
 func main() {
 	startTime := time.Now()
 
-	log.Printf("Flatpak Firehose Go Pipeline v%s", version)
+	log.Printf("Bluefin Releases Pipeline v%s", version)
 	log.Println("Starting data aggregation...")
 
 	// Step 1: Fetch Flathub apps and enrich with details
@@ -58,7 +58,7 @@ func main() {
 		Metadata: models.Metadata{
 			SchemaVersion: "1.0.0",
 			GeneratedAt:   time.Now().UTC().Format(time.RFC3339),
-			GeneratedBy:   fmt.Sprintf("flatpak-firehose v%s", version),
+			GeneratedBy:   fmt.Sprintf("bluefin-releases v%s", version),
 			BuildDuration: buildDuration.String(),
 			Stats: models.Stats{
 				AppsTotal:          len(enrichedApps),

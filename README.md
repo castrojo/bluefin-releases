@@ -1,10 +1,10 @@
-# Flatpak Firehose
+# Bluefin Releases
 
-A feed reader for recently updated Flathub applications with changelogs from source repositories.
+A release tracker for Bluefin-specific Flatpak apps and Homebrew packages with changelogs from source repositories.
 
 ## Overview
 
-This project tracks recently updated Flatpak applications on Flathub and displays their changelogs from the actual source repositories (not the @flathub packaging repos). It follows the architecture pattern of [castrojo/firehose](https://github.com/castrojo/firehose) with a Go backend and Astro frontend.
+This project tracks Flatpak applications and Homebrew packages specific to the Bluefin project and displays their changelogs from the actual source repositories. It follows the architecture pattern of [castrojo/firehose](https://github.com/castrojo/firehose) with a Go backend and Astro frontend.
 
 ## Architecture
 
@@ -26,9 +26,9 @@ This project tracks recently updated Flatpak applications on Flathub and display
 ## Project Structure
 
 ```
-flatpak-firehose/
+bluefin-releases/
 ├── cmd/
-│   └── flatpak-firehose/
+│   └── bluefin-releases/
 │       └── main.go              # CLI entry point
 ├── internal/
 │   ├── models/
@@ -84,10 +84,10 @@ npm run dev
 
 ```bash
 # Run without GitHub integration (uses only Flathub metadata)
-go run cmd/flatpak-firehose/main.go
+go run cmd/bluefin-releases/main.go
 
 # Run with GitHub integration (fetches actual release notes)
-GITHUB_TOKEN=your_token_here go run cmd/flatpak-firehose/main.go
+GITHUB_TOKEN=your_token_here go run cmd/bluefin-releases/main.go
 ```
 
 ## Data Flow

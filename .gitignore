@@ -23,3 +23,6 @@ src/data/apps.json
 
 # Go binary
 flatpak-firehose
+
+# bv (beads viewer) local config and caches
+.bv/

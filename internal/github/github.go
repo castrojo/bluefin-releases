@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/castrojo/flatpak-firehose/internal/models"
+	"github.com/castrojo/bluefin-releases/internal/models"
 	"github.com/google/go-github/v57/github"
 	"golang.org/x/oauth2"
 )
@@ -50,7 +50,7 @@ func EnrichWithGitHubReleases(apps []models.App) []models.App {
 
 			releases, err := fetchGitHubReleases(ctx, client, app.SourceRepo.Owner, app.SourceRepo.Repo)
 			if err != nil {
-				log.Printf("⚠️  Failed to fetch GitHub releases for %s/%s: %v", 
+				log.Printf("⚠️  Failed to fetch GitHub releases for %s/%s: %v",
 					app.SourceRepo.Owner, app.SourceRepo.Repo, err)
 				return
 			}

@@ -1,0 +1,385 @@
+---
+// FilterBar component for filtering apps by category, verification, and date
+interface Props {
+  categories: string[];
+}
+
+const { categories } = Astro.props;
+---
+
+<div class="filters-container">
+  <h2 class="filters-heading">Filters</h2>
+  
+  <!-- Verification Filter -->
+  <div class="filter-section">
+    <h3 class="filter-label">Verification</h3>
+    <div class="filter-options">
+      <label class="filter-checkbox">
+        <input type="checkbox" id="filter-verified" name="verification" value="verified" />
+        <span>Verified only</span>
+      </label>
+      <label class="filter-checkbox">
+        <input type="checkbox" id="filter-unverified" name="verification" value="unverified" />
+        <span>Unverified only</span>
+      </label>
+    </div>
+  </div>
+  
+  <!-- Category Filter -->
+  <div class="filter-section">
+    <h3 class="filter-label">Category</h3>
+    <select id="filter-category" class="filter-select">
+      <option value="">All categories</option>
+      {categories.sort().map(category => (
+        <option value={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</option>
+      ))}
+    </select>
+  </div>
+  
+  <!-- Date Filter -->
+  <div class="filter-section">
+    <h3 class="filter-label">Updated</h3>
+    <select id="filter-date" class="filter-select">
+      <option value="">Any time</option>
+      <option value="1">Last 24 hours</option>
+      <option value="7">Last 7 days</option>
+      <option value="30">Last 30 days</option>
+      <option value="90">Last 90 days</option>
+    </select>
+  </div>
+  
+  <!-- Active Filters Display -->
+  <div id="active-filters" class="active-filters" style="display: none;">
+    <div class="active-filters-header">
+      <span class="active-filters-label">Active filters:</span>
+      <button type="button" id="clear-all-filters" class="clear-all-btn">Clear all</button>
+    </div>
+    <div id="active-filters-list" class="active-filters-list"></div>
+  </div>
+  
+  <!-- Results Count -->
+  <div id="filter-results" class="filter-results">
+    <span id="filter-count"></span>
+  </div>
+</div>
+
+<script>
+  // Client-side filtering logic
+  (function() {
+    // Get filter elements
+    const verifiedCheckbox = document.getElementById('filter-verified') as HTMLInputElement;
+    const unverifiedCheckbox = document.getElementById('filter-unverified') as HTMLInputElement;
+    const categorySelect = document.getElementById('filter-category') as HTMLSelectElement;
+    const dateSelect = document.getElementById('filter-date') as HTMLSelectElement;
+    const activeFiltersContainer = document.getElementById('active-filters') as HTMLElement;
+    const activeFiltersList = document.getElementById('active-filters-list') as HTMLElement;
+    const clearAllBtn = document.getElementById('clear-all-filters') as HTMLButtonElement;
+    const filterCount = document.getElementById('filter-count') as HTMLElement;
+    
+    if (!verifiedCheckbox || !unverifiedCheckbox || !categorySelect || !dateSelect) {
+      console.error('[FilterBar] Required filter elements not found');
+      return;
+    }
+    
+    // Get all app cards
+    let allCards: HTMLElement[] = [];
+    
+    function initCards() {
+      allCards = Array.from(document.querySelectorAll('.app-card'));
+      console.log(`[FilterBar] Initialized with ${allCards.length} app cards`);
+    }
+    
+    // Apply all filters
+    function applyFilters() {
+      const verifiedOnly = verifiedCheckbox.checked;
+      const unverifiedOnly = unverifiedCheckbox.checked;
+      const selectedCategory = categorySelect.value;
+      const selectedDays = dateSelect.value;
+      
+      let visibleCount = 0;
+      const now = new Date();
+      
+      allCards.forEach(card => {
+        let shouldShow = true;
+        
+        // Verification filter
+        if (verifiedOnly || unverifiedOnly) {
+          const isVerified = card.dataset.verified === 'true';
+          if (verifiedOnly && !isVerified) shouldShow = false;
+          if (unverifiedOnly && isVerified) shouldShow = false;
+        }
+        
+        // Category filter
+        if (selectedCategory && shouldShow) {
+          const categories = card.dataset.categories || '';
+          if (!categories.includes(selectedCategory)) {
+            shouldShow = false;
+          }
+        }
+        
+        // Date filter
+        if (selectedDays && shouldShow) {
+          const updatedAt = card.dataset.updatedAt;
+          if (updatedAt) {
+            const updatedDate = new Date(updatedAt);
+            const daysDiff = (now.getTime() - updatedDate.getTime()) / (1000 * 60 * 60 * 24);
+            if (daysDiff > parseInt(selectedDays)) {
+              shouldShow = false;
+            }
+          }
+        }
+        
+        // Show/hide card
+        if (shouldShow) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      // Update active filters display
+      updateActiveFilters();
+      
+      // Update count
+      if (filterCount) {
+        filterCount.textContent = `Showing ${visibleCount} of ${allCards.length} apps`;
+      }
+      
+      console.log(`[FilterBar] Filters applied: ${visibleCount}/${allCards.length} apps visible`);
+    }
+    
+    // Update active filters display
+    function updateActiveFilters() {
+      const activeFilters: string[] = [];
+      
+      if (verifiedCheckbox.checked) {
+        activeFilters.push('Verified');
+      }
+      if (unverifiedCheckbox.checked) {
+        activeFilters.push('Unverified');
+      }
+      if (categorySelect.value) {
+        const categoryText = categorySelect.options[categorySelect.selectedIndex].text;
+        activeFilters.push(`Category: ${categoryText}`);
+      }
+      if (dateSelect.value) {
+        const dateText = dateSelect.options[dateSelect.selectedIndex].text;
+        activeFilters.push(`Updated: ${dateText}`);
+      }
+      
+      if (activeFilters.length > 0) {
+        activeFiltersContainer.style.display = 'block';
+        activeFiltersList.innerHTML = activeFilters
+          .map(filter => `<span class="active-filter-tag">${filter}</span>`)
+          .join('');
+      } else {
+        activeFiltersContainer.style.display = 'none';
+      }
+    }
+    
+    // Clear all filters
+    function clearAllFilters() {
+      verifiedCheckbox.checked = false;
+      unverifiedCheckbox.checked = false;
+      categorySelect.value = '';
+      dateSelect.value = '';
+      applyFilters();
+    }
+    
+    // Ensure mutual exclusivity for verification checkboxes
+    function handleVerificationChange(e: Event) {
+      const target = e.target as HTMLInputElement;
+      if (target.checked) {
+        if (target.id === 'filter-verified') {
+          unverifiedCheckbox.checked = false;
+        } else if (target.id === 'filter-unverified') {
+          verifiedCheckbox.checked = false;
+        }
+      }
+      applyFilters();
+    }
+    
+    // Event listeners
+    verifiedCheckbox.addEventListener('change', handleVerificationChange);
+    unverifiedCheckbox.addEventListener('change', handleVerificationChange);
+    categorySelect.addEventListener('change', applyFilters);
+    dateSelect.addEventListener('change', applyFilters);
+    clearAllBtn.addEventListener('click', clearAllFilters);
+    
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      initCards();
+      applyFilters();
+    });
+    
+    // Expose refresh function for dynamic content updates
+    (window as any).refreshFilters = () => {
+      initCards();
+      applyFilters();
+    };
+  })();
+</script>
+
+<style>
+  .filters-container {
+    background: var(--color-bg-default);
+    border: 1px solid var(--color-border-default);
+    border-radius: 6px;
+    padding: 1.5rem;
+  }
+  
+  .filters-heading {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border-default);
+  }
+  
+  .filter-section {
+    margin-bottom: 1.25rem;
+  }
+  
+  .filter-section:last-of-type {
+    margin-bottom: 0;
+  }
+  
+  .filter-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  .filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .filter-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .filter-checkbox:hover {
+    color: var(--color-text-primary);
+  }
+  
+  .filter-checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--color-accent-emphasis);
+  }
+  
+  .filter-select {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    border: 1px solid var(--color-border-default);
+    border-radius: 6px;
+    background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .filter-select:focus {
+    outline: none;
+    border-color: var(--color-accent-emphasis);
+    box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1);
+  }
+  
+  .filter-select option {
+    background: var(--color-bg-default);
+    color: var(--color-text-primary);
+  }
+  
+  .active-filters {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border-default);
+  }
+  
+  .active-filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+  
+  .active-filters-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .clear-all-btn {
+    background: transparent;
+    border: none;
+    color: var(--color-text-link);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  
+  .clear-all-btn:hover {
+    background: var(--color-bg-tertiary);
+    text-decoration: underline;
+  }
+  
+  .active-filters-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .active-filter-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border-default);
+    border-radius: 12px;
+    color: var(--color-text-primary);
+  }
+  
+  .filter-results {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border-default);
+    text-align: center;
+  }
+  
+  #filter-count {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+  }
+  
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .filters-container {
+      padding: 1rem;
+    }
+    
+    .filters-heading {
+      font-size: 0.9375rem;
+    }
+  }
+</style>

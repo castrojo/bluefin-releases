@@ -25,10 +25,10 @@ type Metadata struct {
 
 // Stats contains aggregate statistics
 type Stats struct {
-	AppsTotal            int `json:"appsTotal"`
-	AppsWithGitHubRepo   int `json:"appsWithGitHubRepo"`
-	AppsWithChangelogs   int `json:"appsWithChangelogs"`
-	TotalReleases        int `json:"totalReleases"`
+	AppsTotal          int `json:"appsTotal"`
+	AppsWithGitHubRepo int `json:"appsWithGitHubRepo"`
+	AppsWithChangelogs int `json:"appsWithChangelogs"`
+	TotalReleases      int `json:"totalReleases"`
 }
 
 // Performance contains timing breakdown
@@ -41,21 +41,33 @@ type Performance struct {
 
 // App represents a Flathub application (similar to Release in firehose)
 type App struct {
-	ID              string      `json:"id"`
-	Name            string      `json:"name"`
-	Summary         string      `json:"summary"`
-	Description     string      `json:"description,omitempty"`
-	DeveloperName   string      `json:"developerName,omitempty"`
-	Icon            string      `json:"icon,omitempty"`
-	ProjectLicense  string      `json:"projectLicense,omitempty"`
-	Categories      []string    `json:"categories,omitempty"`
-	UpdatedAt       string      `json:"updatedAt,omitempty"`
-	Version         string      `json:"currentReleaseVersion,omitempty"`
-	ReleaseDate     string      `json:"currentReleaseDate,omitempty"`
-	FlathubURL      string      `json:"flathubUrl"`
-	SourceRepo      *SourceRepo `json:"sourceRepo,omitempty"`
-	Releases        []Release   `json:"releases,omitempty"`
-	FetchedAt       time.Time   `json:"fetchedAt"`
+	ID                string        `json:"id"`
+	Name              string        `json:"name"`
+	Summary           string        `json:"summary"`
+	Description       string        `json:"description,omitempty"`
+	DeveloperName     string        `json:"developerName,omitempty"`
+	Icon              string        `json:"icon,omitempty"`
+	ProjectLicense    string        `json:"projectLicense,omitempty"`
+	Categories        []string      `json:"categories,omitempty"`
+	UpdatedAt         string        `json:"updatedAt,omitempty"`
+	Version           string        `json:"currentReleaseVersion,omitempty"`
+	ReleaseDate       string        `json:"currentReleaseDate,omitempty"`
+	FlathubURL        string        `json:"flathubUrl"`
+	SourceRepo        *SourceRepo   `json:"sourceRepo,omitempty"`
+	Releases          []Release     `json:"releases,omitempty"`
+	FetchedAt         time.Time     `json:"fetchedAt"`
+	InstallsLastMonth int           `json:"installsLastMonth,omitempty"`
+	FavoritesCount    int           `json:"favoritesCount,omitempty"`
+	IsVerified        bool          `json:"isVerified"`
+	VerificationInfo  *Verification `json:"verificationInfo,omitempty"`
+}
+
+// Verification contains app verification details from Flathub
+type Verification struct {
+	Method        string  `json:"method"` // "website", "login_provider", etc.
+	LoginName     *string `json:"loginName,omitempty"`
+	LoginProvider *string `json:"loginProvider,omitempty"`
+	Website       *string `json:"website,omitempty"`
 }
 
 // SourceRepo contains information about the app's source repository
@@ -76,17 +88,55 @@ type Release struct {
 	Type        string    `json:"type"` // "github-release", "appstream"
 }
 
-// FlathubApp represents the raw structure from Flathub API feed
+// FlathubApp represents the raw structure from Flathub API collection endpoint
 type FlathubApp struct {
-	ID                    string   `json:"id"`
-	Name                  string   `json:"name"`
-	Summary               string   `json:"summary"`
-	DeveloperName         string   `json:"developer_name"`
-	Icon                  string   `json:"icon"`
-	ProjectLicense        string   `json:"project_license"`
-	Categories            []string `json:"categories"`
-	CurrentReleaseVersion string   `json:"current_release_version"`
-	CurrentReleaseDate    string   `json:"current_release_date"`
+	AppID                 string        `json:"app_id"`
+	Name                  string        `json:"name"`
+	Summary               string        `json:"summary"`
+	Description           string        `json:"description"`
+	DeveloperName         string        `json:"developer_name"`
+	Icon                  string        `json:"icon"`
+	ProjectLicense        string        `json:"project_license"`
+	MainCategories        StringOrArray `json:"main_categories"`
+	SubCategories         []string      `json:"sub_categories"`
+	UpdatedAt             int64         `json:"updated_at"`
+	InstallsLastMonth     int           `json:"installs_last_month"`
+	FavoritesCount        int           `json:"favorites_count"`
+	VerificationVerified  bool          `json:"verification_verified"`
+	VerificationMethod    string        `json:"verification_method"`
+	VerificationLoginName *string       `json:"verification_login_name"`
+	VerificationWebsite   *string       `json:"verification_website"`
+}
+
+// StringOrArray handles JSON fields that can be either string or array
+type StringOrArray []string
+
+// UnmarshalJSON implements custom unmarshalling for string or array
+func (s *StringOrArray) UnmarshalJSON(data []byte) error {
+	// Try to unmarshal as string first
+	var str string
+	if err := json.Unmarshal(data, &str); err == nil {
+		*s = []string{str}
+		return nil
+	}
+
+	// Try to unmarshal as array
+	var arr []string
+	if err := json.Unmarshal(data, &arr); err == nil {
+		*s = arr
+		return nil
+	}
+
+	return fmt.Errorf("field must be string or array")
+}
+
+// FlathubCollectionResponse represents the response from /api/v2/collection/recently-updated
+type FlathubCollectionResponse struct {
+	Hits        []FlathubApp `json:"hits"`
+	TotalHits   int          `json:"totalHits"`
+	HitsPerPage int          `json:"hitsPerPage"`
+	Page        int          `json:"page"`
+	TotalPages  int          `json:"totalPages"`
 }
 
 // FlathubAppDetails represents detailed app information from Flathub API

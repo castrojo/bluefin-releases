@@ -1,0 +1,381 @@
+---
+// SearchBar component for app name search
+// Shows matching apps, clicking an app scrolls to it
+
+interface Props {
+  apps: string[];
+}
+
+const { apps } = Astro.props;
+---
+
+<div class="search-container" data-all-apps={JSON.stringify(apps)}>
+  <div class="search-wrapper">
+    <input
+      type="search"
+      id="search-input"
+      class="search-input"
+      placeholder="Use / to search for Flatpak apps"
+      aria-label="Search apps"
+      autocomplete="off"
+    />
+    <button
+      type="button"
+      id="search-clear"
+      class="search-clear"
+      aria-label="Clear search"
+      style="display: none;"
+    >
+      ✕
+    </button>
+  </div>
+  
+  <div id="search-results" class="search-results" style="display: none;">
+    <div class="search-results-header">
+      <span id="search-count"></span>
+    </div>
+    <div id="search-results-list" class="search-results-list"></div>
+  </div>
+</div>
+
+<script>
+  // App name search - shows matching apps
+  (function() {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const searchClear = document.getElementById('search-clear') as HTMLButtonElement;
+    const searchResults = document.getElementById('search-results') as HTMLElement;
+    const searchResultsList = document.getElementById('search-results-list') as HTMLElement;
+    const searchCount = document.getElementById('search-count') as HTMLElement;
+    
+    if (!searchInput || !searchClear || !searchResults || !searchResultsList || !searchCount) {
+      console.error('[SearchBar] Required elements not found');
+      return;
+    }
+    
+    // Get all app names from data attribute (passed from server)
+    const searchContainer = document.querySelector('.search-container') as HTMLElement;
+    const allAppsData = searchContainer?.dataset.allApps;
+    let allAppNames: string[] = [];
+    
+    if (allAppsData) {
+      try {
+        allAppNames = JSON.parse(allAppsData);
+        console.log(`[SearchBar] App search initialized with ${allAppNames.length} apps`);
+      } catch (e) {
+        console.error('[SearchBar] Failed to parse apps data:', e);
+        return;
+      }
+    } else {
+      console.error('[SearchBar] No apps data found');
+      return;
+    }
+    
+    let debounceTimer: number | null = null;
+    const DEBOUNCE_MS = 300;
+    const MIN_CHARS = 1;
+    
+    // Perform app name search
+    function performSearch(query: string) {
+      if (query.length < MIN_CHARS) {
+        searchResults.style.display = 'none';
+        return;
+      }
+      
+      const queryLower = query.toLowerCase();
+      
+      // Filter apps by name (case-insensitive partial match)
+      const matchingApps = allAppNames
+        .filter(appName => appName.toLowerCase().includes(queryLower))
+        .sort((a, b) => a.localeCompare(b));
+      
+      console.log(`[SearchBar] Found ${matchingApps.length} apps matching "${query}"`);
+      
+      if (matchingApps.length === 0) {
+        showNoResults(query);
+        return;
+      }
+      
+      displayResults(matchingApps, query);
+    }
+    
+    // Display search results - just app names
+    function displayResults(apps: string[], query: string) {
+      searchResultsList.innerHTML = apps.map(appName => {
+        return `
+          <div class="search-result" data-app-name="${escapeHtml(appName)}">
+            <span class="app-name">${escapeHtml(appName)}</span>
+          </div>
+        `;
+      }).join('');
+      
+      searchCount.textContent = `${apps.length} app${apps.length === 1 ? '' : 's'}`;
+      searchResults.style.display = 'block';
+      
+      // Attach click handlers to results
+      attachResultClickHandlers();
+    }
+    
+    // Attach click handlers to search results
+    function attachResultClickHandlers() {
+      const resultElements = document.querySelectorAll('.search-result[data-app-name]');
+      
+      resultElements.forEach(result => {
+        result.addEventListener('click', () => {
+          const appName = (result as HTMLElement).dataset.appName || '';
+          
+          if (appName) {
+            // Find the app card with this name and scroll to it
+            const allCards = document.querySelectorAll('.app-card');
+            for (const card of allCards) {
+              const cardTitle = card.querySelector('.app-name a')?.textContent?.trim();
+              if (cardTitle === appName) {
+                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                searchResults.style.display = 'none';
+                console.log(`[SearchBar] Scrolled to app: ${appName}`);
+                break;
+              }
+            }
+          }
+        });
+      });
+    }
+    
+    // Show no results message
+    function showNoResults(query: string) {
+      searchResultsList.innerHTML = `
+        <div class="no-results">
+          <p>No apps found matching "${escapeHtml(query)}"</p>
+          <p class="no-results-hint">Try a different app name</p>
+        </div>
+      `;
+      searchCount.textContent = '0 apps';
+      searchResults.style.display = 'block';
+    }
+    
+    // HTML escape utility
+    function escapeHtml(text: string): string {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+    
+    // Clear search
+    function clearSearch() {
+      searchInput.value = '';
+      searchResults.style.display = 'none';
+      searchClear.style.display = 'none';
+    }
+    
+    // Event handlers
+    searchInput.addEventListener('input', (e) => {
+      const query = (e.target as HTMLInputElement).value.trim();
+      
+      // Show/hide clear button
+      searchClear.style.display = query ? 'block' : 'none';
+      
+      // Clear existing timer
+      if (debounceTimer) {
+        window.clearTimeout(debounceTimer);
+      }
+      
+      // Debounce search
+      if (query.length >= MIN_CHARS) {
+        debounceTimer = window.setTimeout(() => {
+          performSearch(query);
+        }, DEBOUNCE_MS);
+      } else {
+        searchResults.style.display = 'none';
+      }
+    });
+    
+    searchClear.addEventListener('click', clearSearch);
+    
+    // Keyboard shortcuts
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (searchInput.value.trim() !== '' || searchResults.style.display === 'block') {
+          clearSearch();
+        } else {
+          searchInput.blur();
+        }
+      }
+    });
+    
+    // Focus search on '/' or 's' key
+    document.addEventListener('keydown', (e) => {
+      if ((e.key === '/' || e.key === 's') && document.activeElement !== searchInput && 
+          !(document.activeElement instanceof HTMLInputElement) &&
+          !(document.activeElement instanceof HTMLTextAreaElement)) {
+        e.preventDefault();
+        searchInput.focus();
+      }
+    });
+    
+    // Close search results when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!searchResults.contains(e.target as Node) && 
+          !searchInput.contains(e.target as Node) &&
+          !searchClear.contains(e.target as Node)) {
+        if (searchResults.style.display === 'block') {
+          searchResults.style.display = 'none';
+        }
+      }
+    });
+  })();
+</script>
+
+<style>
+  .search-container {
+    position: relative;
+  }
+  
+  .search-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--color-border-default, #d0d7de);
+    border-radius: 6px;
+    background: var(--color-bg-default, #ffffff);
+    color: var(--color-text-primary, #24292f);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: var(--color-accent-emphasis, #0969da);
+    box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1);
+  }
+  
+  .search-input::placeholder {
+    color: var(--color-text-tertiary, #6e7781);
+  }
+  
+  .search-clear {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--color-text-secondary, #57606a);
+    font-size: 1.25rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  
+  .search-clear:hover {
+    background: var(--color-bg-secondary, #f6f8fa);
+  }
+  
+  .search-results {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: var(--color-bg-default, #ffffff);
+    border: 1px solid var(--color-border-default, #d0d7de);
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(140, 149, 159, 0.2);
+    max-height: 600px;
+    overflow: hidden;
+    z-index: 1000;
+  }
+  
+  .search-results-header {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-border-default, #d0d7de);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary, #57606a);
+    font-weight: 600;
+  }
+  
+  .search-results-list {
+    max-height: 540px;
+    overflow-y: auto;
+  }
+  
+  .search-result {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-border-default, #d0d7de);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .search-result:last-child {
+    border-bottom: none;
+  }
+  
+  .search-result:hover {
+    background: var(--color-bg-secondary, #f6f8fa);
+  }
+  
+  .app-name {
+    font-weight: 500;
+    color: var(--color-text-primary, #24292f);
+    font-size: 0.9375rem;
+  }
+  
+  .search-result:hover .app-name {
+    color: var(--color-text-link, #4a90e2);
+  }
+  
+  .no-results {
+    padding: 2rem;
+    text-align: center;
+    color: var(--color-text-secondary, #57606a);
+  }
+  
+  .no-results p:first-child {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .no-results-hint {
+    font-size: 0.875rem;
+    color: var(--color-text-tertiary, #6e7781);
+  }
+  
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .search-wrapper {
+      max-width: 100%;
+    }
+    
+    .search-results {
+      max-width: 100%;
+      max-height: 400px;
+    }
+    
+    .search-results-list {
+      max-height: 340px;
+    }
+    
+    .search-input {
+      font-size: 0.9375rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .search-input {
+      padding: 0.625rem 2rem 0.625rem 0.75rem;
+      font-size: 0.875rem;
+    }
+    
+    .search-result {
+      padding: 0.75rem;
+    }
+  }
+</style>

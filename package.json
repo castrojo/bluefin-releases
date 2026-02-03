@@ -1,17 +1,17 @@
 {
-  "name": "flatpak-firehose",
+  "name": "bluefin-releases",
   "type": "module",
   "version": "1.0.0",
-  "description": "A feed reader for Flathub recently updated applications",
+  "description": "A release tracker for Bluefin-specific Flatpak apps and Homebrew packages",
   "scripts": {
     "dev": "astro dev",
-    "build": "go run cmd/flatpak-firehose/main.go && astro build",
+    "build": "go run cmd/bluefin-releases/main.go && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/castrojo/flatpak-firehose.git"
+    "url": "git+https://github.com/castrojo/bluefin-releases.git"
   },
   "keywords": [
     "flathub",
@@ -22,9 +22,9 @@
   "author": "castrojo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/castrojo/flatpak-firehose/issues"
+    "url": "https://github.com/castrojo/bluefin-releases/issues"
   },
-  "homepage": "https://github.com/castrojo/flatpak-firehose#readme",
+  "homepage": "https://github.com/castrojo/bluefin-releases#readme",
   "dependencies": {
     "astro": "^5.17.1",
     "marked": "^17.0.1",
