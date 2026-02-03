@@ -278,12 +278,9 @@ func ExtractSourceRepo(details *models.FlathubAppDetails) *models.SourceRepo {
 		return extractGitHubRepo(repoURL)
 	}
 
-	// Check if it's a GitLab URL
-	if strings.Contains(repoURL, "gitlab.com") {
-		return &models.SourceRepo{
-			Type: "gitlab",
-			URL:  repoURL,
-		}
+	// Check if it's a GitLab URL (gitlab.com or self-hosted like gitlab.gnome.org)
+	if strings.Contains(repoURL, "gitlab") {
+		return extractGitLabRepo(repoURL)
 	}
 
 	// Other repository
@@ -311,6 +308,31 @@ func extractGitHubRepo(url string) *models.SourceRepo {
 
 	return &models.SourceRepo{
 		Type:  "github",
+		URL:   url,
+		Owner: owner,
+		Repo:  repo,
+	}
+}
+
+// extractGitLabRepo extracts owner/repo from a GitLab URL (supports gitlab.com and self-hosted)
+func extractGitLabRepo(url string) *models.SourceRepo {
+	// Match gitlab.*/owner/repo patterns (supports gitlab.com, gitlab.gnome.org, etc.)
+	re := regexp.MustCompile(`gitlab\.[^/]+/([^/]+)/([^/\s?#]+)`)
+	matches := re.FindStringSubmatch(url)
+
+	if len(matches) < 3 {
+		return &models.SourceRepo{
+			Type: "gitlab",
+			URL:  url,
+		}
+	}
+
+	owner := matches[1]
+	repo := strings.TrimSuffix(matches[2], ".git")
+	repo = strings.TrimSuffix(repo, "/") // Remove trailing slash if present
+
+	return &models.SourceRepo{
+		Type:  "gitlab",
 		URL:   url,
 		Owner: owner,
 		Repo:  repo,

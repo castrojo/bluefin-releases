@@ -27,6 +27,7 @@ type Metadata struct {
 type Stats struct {
 	AppsTotal          int `json:"appsTotal"`
 	AppsWithGitHubRepo int `json:"appsWithGitHubRepo"`
+	AppsWithGitLabRepo int `json:"appsWithGitLabRepo"`
 	AppsWithChangelogs int `json:"appsWithChangelogs"`
 	TotalReleases      int `json:"totalReleases"`
 }
@@ -36,6 +37,7 @@ type Performance struct {
 	FlathubFetchDuration string `json:"flathubFetchDuration"`
 	DetailsFetchDuration string `json:"detailsFetchDuration"`
 	GitHubFetchDuration  string `json:"githubFetchDuration"`
+	GitLabFetchDuration  string `json:"gitlabFetchDuration"`
 	OutputDuration       string `json:"outputDuration"`
 }
 
@@ -105,14 +107,14 @@ type SourceRepo struct {
 	Repo  string `json:"repo,omitempty"`
 }
 
-// Release represents a single release/changelog entry (from GitHub or Flathub)
+// Release represents a single release/changelog entry (from GitHub, GitLab, or Flathub)
 type Release struct {
 	Version     string    `json:"version"`
 	Date        time.Time `json:"date"`
 	Title       string    `json:"title"`
 	Description string    `json:"description,omitempty"`
 	URL         string    `json:"url,omitempty"`
-	Type        string    `json:"type"` // "github-release", "appstream"
+	Type        string    `json:"type"` // "github-release", "gitlab-release", "appstream"
 }
 
 // FlathubApp represents the raw structure from Flathub API collection endpoint

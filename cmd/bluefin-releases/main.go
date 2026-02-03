@@ -10,6 +10,7 @@ import (
 	"github.com/castrojo/bluefin-releases/internal/bluefin"
 	"github.com/castrojo/bluefin-releases/internal/flathub"
 	"github.com/castrojo/bluefin-releases/internal/github"
+	"github.com/castrojo/bluefin-releases/internal/gitlab"
 	"github.com/castrojo/bluefin-releases/internal/models"
 )
 
@@ -118,12 +119,20 @@ func main() {
 	githubDuration := time.Since(githubStart)
 	log.Printf("GitHub enrichment complete in %s", githubDuration)
 
+	// Step 5.5: Enrich with GitLab releases (from actual source repos)
+	log.Println("Enriching with GitLab releases from source repositories...")
+	gitlabStart := time.Now()
+	enrichedApps = gitlab.EnrichWithGitLabReleases(enrichedApps)
+	gitlabDuration := time.Since(gitlabStart)
+	log.Printf("GitLab enrichment complete in %s", gitlabDuration)
+
 	// Step 5: Sort by update date (Flatpak apps have updatedAt, Homebrew may not)
 	// For now, just use the order they come in (Flatpak first, then Homebrew)
 	// Future: could sort by latest release date
 
 	// Step 6: Collect statistics
 	appsWithGitHubRepo := 0
+	appsWithGitLabRepo := 0
 	appsWithChangelogs := 0
 	totalReleases := 0
 	flatpakCount := 0
@@ -131,8 +140,12 @@ func main() {
 	osCount := 0
 
 	for _, app := range enrichedApps {
-		if app.SourceRepo != nil && app.SourceRepo.Type == "github" {
-			appsWithGitHubRepo++
+		if app.SourceRepo != nil {
+			if app.SourceRepo.Type == "github" {
+				appsWithGitHubRepo++
+			} else if app.SourceRepo.Type == "gitlab" {
+				appsWithGitLabRepo++
+			}
 		}
 		if len(app.Releases) > 0 {
 			appsWithChangelogs++
@@ -148,6 +161,7 @@ func main() {
 	}
 
 	log.Printf("Apps with GitHub repos: %d", appsWithGitHubRepo)
+	log.Printf("Apps with GitLab repos: %d", appsWithGitLabRepo)
 	log.Printf("Apps with changelogs: %d", appsWithChangelogs)
 	log.Printf("Total releases: %d", totalReleases)
 
@@ -162,6 +176,7 @@ func main() {
 			Stats: models.Stats{
 				AppsTotal:          len(enrichedApps),
 				AppsWithGitHubRepo: appsWithGitHubRepo,
+				AppsWithGitLabRepo: appsWithGitLabRepo,
 				AppsWithChangelogs: appsWithChangelogs,
 				TotalReleases:      totalReleases,
 			},
@@ -169,6 +184,7 @@ func main() {
 				FlathubFetchDuration: flathubDuration.String(),
 				DetailsFetchDuration: flathubDuration.String(), // Combined in FetchAllApps
 				GitHubFetchDuration:  githubDuration.String(),
+				GitLabFetchDuration:  gitlabDuration.String(),
 				OutputDuration:       "0s", // Will be updated
 			},
 		},
@@ -199,6 +215,7 @@ func main() {
 		"homebrew_count":      homebrewCount,
 		"os_count":            osCount,
 		"apps_with_github":    appsWithGitHubRepo,
+		"apps_with_gitlab":    appsWithGitLabRepo,
 		"apps_with_changelog": appsWithChangelogs,
 		"total_releases":      totalReleases,
 	}

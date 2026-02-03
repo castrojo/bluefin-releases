@@ -22,6 +22,7 @@ Inspired by [castrojo/firehose](https://github.com/castrojo/firehose), with an e
 - **Theme Toggle**: Light/dark mode with system preference detection
 - **Inline Changelogs**: Latest 3 releases shown directly (no collapsing)
 - **GitHub Integration**: Optional GitHub API token for enhanced release data
+- **GitLab Integration**: Fetches releases from GitLab repos (gitlab.com and self-hosted)
 - **Static Site**: Fast, deployable to GitHub Pages or any static host
 - **Daily Updates**: Automated builds via GitHub Actions
 
@@ -33,8 +34,14 @@ Inspired by [castrojo/firehose](https://github.com/castrojo/firehose), with an e
 - Node.js 20 or later
 - (Optional) `GITHUB_TOKEN` for enhanced GitHub API access
   - Without token: Uses Flathub/Homebrew metadata only
-  - With token: Fetches rich release notes from 10+ GitHub repositories
+  - With token: Fetches rich release notes from 49+ GitHub repositories
   - Get your token at: https://github.com/settings/tokens (read-only access is sufficient)
+- (Optional) `GITLAB_TOKEN` for enhanced GitLab API access
+  - Without token: Uses public GitLab API (lower rate limits)
+  - With token: Higher rate limits for GitLab release fetching
+  - Supports gitlab.com and self-hosted GitLab (e.g., gitlab.gnome.org)
+  - Enriches 3 GNOME apps: File Roller, Sushi, Firmware
+  - Get your token at: https://gitlab.com/-/profile/personal_access_tokens (read_api scope)
 
 ### Local Development
 
@@ -56,19 +63,30 @@ npm run dev
 ### Running the Pipeline Manually
 
 ```bash
-# Without GitHub integration (uses Flathub/Homebrew metadata only)
+# Without API tokens (uses Flathub/Homebrew metadata only)
 go run cmd/bluefin-releases/main.go
 
-# With GitHub integration (fetches actual release notes from source repos)
-# Creates a GitHub token at: https://github.com/settings/tokens
-export GITHUB_TOKEN=your_token_here
+# With GitHub integration (fetches release notes from GitHub repos)
+export GITHUB_TOKEN=your_github_token
+go run cmd/bluefin-releases/main.go
+
+# With GitLab integration (fetches release notes from GitLab repos)
+export GITLAB_TOKEN=your_gitlab_token
+go run cmd/bluefin-releases/main.go
+
+# With both GitHub and GitLab integration (recommended)
+export GITHUB_TOKEN=your_github_token
+export GITLAB_TOKEN=your_gitlab_token
 go run cmd/bluefin-releases/main.go
 
 # Or in one line:
-GITHUB_TOKEN=your_token_here go run cmd/bluefin-releases/main.go
+GITHUB_TOKEN=your_github_token GITLAB_TOKEN=your_gitlab_token go run cmd/bluefin-releases/main.go
 ```
 
-**Note:** GitHub token enables rich release notes for 10+ Flatpak apps with detected GitHub repos (Flatseal, adw-gtk3, Ignition, DistroShelf, Warehouse, Dev Toolbox, Embellish, Clapgrep, Bazaar, etc.).
+**Notes:**
+- **GitHub token** enables rich release notes for 49+ apps with GitHub repos
+- **GitLab token** enables release notes for 3 GNOME apps (File Roller, Sushi, Firmware) hosted on gitlab.gnome.org
+- Both tokens are optional but recommended for complete release data
 
 ## Architecture
 
@@ -105,6 +123,12 @@ The data pipeline runs in three parallel phases:
    - Rate-limited and concurrent (respects GitHub API limits)
    - Falls back gracefully when token unavailable
 
+5. **GitLab Enrichment** (`internal/gitlab/gitlab.go`)
+   - Fetches actual release notes from detected GitLab repos
+   - Supports both gitlab.com and self-hosted GitLab instances
+   - Rate-limited and concurrent (respects GitLab API limits)
+   - Falls back to public API when token unavailable
+
 **Output:** `src/data/apps.json` (96 packages total)
 
 ### Astro Frontend (`src/pages/index.astro`)
@@ -132,8 +156,10 @@ bluefin-releases/
 │   │   └── releases.go          # Bluefin OS releases fetcher
 │   ├── flathub/
 │   │   └── flathub.go           # Flathub API client
-│   └── github/
-│       └── github.go            # GitHub API client
+│   ├── github/
+│   │   └── github.go            # GitHub API client
+│   └── gitlab/
+│       └── gitlab.go            # GitLab API client
 ├── src/
 │   ├── pages/
 │   │   └── index.astro          # Main page
@@ -163,7 +189,8 @@ bluefin-releases/
 │  2. Fetch Bluefin Flatpak apps (from Brewfiles)           │
 │  3. Fetch Bluefin Homebrew packages (from Brewfiles)      │
 │  4. Enrich with GitHub releases (parallel, rate-limited)   │
-│  5. Output unified JSON → src/data/apps.json               │
+│  5. Enrich with GitLab releases (parallel, rate-limited)   │
+│  6. Output unified JSON → src/data/apps.json               │
 └─────────────────────────────────────────────────────────────┘
                            ↓
 ┌─────────────────────────────────────────────────────────────┐
