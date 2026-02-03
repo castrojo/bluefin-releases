@@ -99,11 +99,7 @@ function getPackageTypeName(type: string): string {
 
   {release.description && (
     <div class="release-notes">
-      <div class="release-description" set:html={
-        release.description.length > 400 
-          ? release.description.substring(0, 400) + '...' 
-          : release.description
-      } />
+      <div class="release-description" set:html={release.description} />
       {release.url && (
         <a href={release.url} target="_blank" rel="noopener" class="release-link">
           View Full Release →
