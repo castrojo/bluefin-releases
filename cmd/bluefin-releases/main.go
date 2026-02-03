@@ -2,10 +2,12 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"log"
 	"time"
 
+	"github.com/castrojo/bluefin-releases/internal/bluefin"
 	"github.com/castrojo/bluefin-releases/internal/flathub"
 	"github.com/castrojo/bluefin-releases/internal/github"
 	"github.com/castrojo/bluefin-releases/internal/models"
@@ -14,15 +16,39 @@ import (
 const version = "1.0.0"
 
 func main() {
+	// Parse command-line flags
+	legacyMode := flag.Bool("legacy", false, "Use legacy mode (fetch recently updated apps instead of Bluefin list)")
+	flag.Parse()
+
 	startTime := time.Now()
 
 	log.Printf("Bluefin Releases Pipeline v%s", version)
+	if *legacyMode {
+		log.Println("Running in LEGACY mode (recently updated apps)")
+	} else {
+		log.Println("Running in BLUEFIN mode (curated app list)")
+	}
 	log.Println("Starting data aggregation...")
 
 	// Step 1: Fetch Flathub apps and enrich with details
-	log.Println("Fetching Flathub apps...")
+	var results *models.FetchResults
 	flathubStart := time.Now()
-	results := flathub.FetchAllApps()
+
+	if *legacyMode {
+		// Legacy mode: fetch recently updated apps
+		log.Println("Fetching recently updated Flathub apps...")
+		results = flathub.FetchAllApps()
+	} else {
+		// Bluefin mode: fetch specific apps from Bluefin Brewfiles
+		log.Println("Fetching Bluefin app list...")
+		appIDs, err := bluefin.FetchFlatpakList()
+		if err != nil {
+			log.Fatalf("Failed to fetch Bluefin app list: %v", err)
+		}
+		log.Printf("Fetching %d Bluefin-curated apps from Flathub...", len(appIDs))
+		results = flathub.FetchAllApps(appIDs...)
+	}
+
 	flathubDuration := time.Since(flathubStart)
 	log.Printf("Fetched and enriched %d apps in %s", len(results.Apps), flathubDuration)
 
