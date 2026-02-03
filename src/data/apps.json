@@ -1,0 +1,160 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-02-03T00:42:00Z",
+    "generatedBy": "flatpak-firehose v1.0.0 (test data)",
+    "buildDuration": "12.5s",
+    "stats": {
+      "appsTotal": 5,
+      "appsWithGitHubRepo": 4,
+      "appsWithChangelogs": 4,
+      "totalReleases": 10
+    },
+    "performance": {
+      "flathubFetchDuration": "2.3s",
+      "detailsFetchDuration": "8.1s",
+      "githubFetchDuration": "2.1s",
+      "outputDuration": "15ms"
+    }
+  },
+  "apps": [
+    {
+      "id": "org.gimp.GIMP",
+      "name": "GIMP",
+      "summary": "Create images and edit photographs",
+      "developerName": "The GIMP Team",
+      "icon": "https://dl.flathub.org/repo/appstream/x86_64/icons/128x128/org.gimp.GIMP.png",
+      "projectLicense": "GPL-3.0+",
+      "categories": ["Graphics"],
+      "currentReleaseVersion": "2.10.36",
+      "currentReleaseDate": "2024-01-15",
+      "flathubUrl": "https://flathub.org/apps/org.gimp.GIMP",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/GNOME/gimp",
+        "owner": "GNOME",
+        "repo": "gimp"
+      },
+      "releases": [
+        {
+          "version": "2.10.36",
+          "date": "2024-01-15T00:00:00Z",
+          "title": "GIMP 2.10.36",
+          "description": "Bug fixes and performance improvements",
+          "url": "https://github.com/GNOME/gimp/releases/tag/GIMP_2_10_36",
+          "type": "github-release"
+        }
+      ],
+      "fetchedAt": "2026-02-03T00:42:00Z"
+    },
+    {
+      "id": "org.blender.Blender",
+      "name": "Blender",
+      "summary": "Free and open source 3D creation suite",
+      "developerName": "Blender Foundation",
+      "icon": "https://dl.flathub.org/repo/appstream/x86_64/icons/128x128/org.blender.Blender.png",
+      "projectLicense": "GPL-3.0",
+      "categories": ["Graphics"],
+      "currentReleaseVersion": "4.0.2",
+      "currentReleaseDate": "2024-01-10",
+      "flathubUrl": "https://flathub.org/apps/org.blender.Blender",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/blender/blender",
+        "owner": "blender",
+        "repo": "blender"
+      },
+      "releases": [
+        {
+          "version": "4.0.2",
+          "date": "2024-01-10T00:00:00Z",
+          "title": "Blender 4.0.2",
+          "description": "Stability update with bug fixes",
+          "url": "https://github.com/blender/blender/releases/tag/v4.0.2",
+          "type": "github-release"
+        }
+      ],
+      "fetchedAt": "2026-02-03T00:42:00Z"
+    },
+    {
+      "id": "com.obsproject.Studio",
+      "name": "OBS Studio",
+      "summary": "Live streaming and screen recording software",
+      "developerName": "OBS Project",
+      "icon": "https://dl.flathub.org/repo/appstream/x86_64/icons/128x128/com.obsproject.Studio.png",
+      "projectLicense": "GPL-2.0+",
+      "categories": ["AudioVideo"],
+      "currentReleaseVersion": "30.0.2",
+      "currentReleaseDate": "2024-01-18",
+      "flathubUrl": "https://flathub.org/apps/com.obsproject.Studio",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/obsproject/obs-studio",
+        "owner": "obsproject",
+        "repo": "obs-studio"
+      },
+      "releases": [
+        {
+          "version": "30.0.2",
+          "date": "2024-01-18T00:00:00Z",
+          "title": "OBS Studio 30.0.2",
+          "description": "Bug fixes for 30.0 release",
+          "url": "https://github.com/obsproject/obs-studio/releases/tag/30.0.2",
+          "type": "github-release"
+        }
+      ],
+      "fetchedAt": "2026-02-03T00:42:00Z"
+    },
+    {
+      "id": "com.github.tchx84.Flatseal",
+      "name": "Flatseal",
+      "summary": "Manage Flatpak permissions",
+      "developerName": "Martin Abente Lahaye",
+      "icon": "https://dl.flathub.org/repo/appstream/x86_64/icons/128x128/com.github.tchx84.Flatseal.png",
+      "projectLicense": "GPL-3.0",
+      "categories": ["System"],
+      "currentReleaseVersion": "2.2.0",
+      "currentReleaseDate": "2024-01-05",
+      "flathubUrl": "https://flathub.org/apps/com.github.tchx84.Flatseal",
+      "sourceRepo": {
+        "type": "github",
+        "url": "https://github.com/tchx84/Flatseal",
+        "owner": "tchx84",
+        "repo": "Flatseal"
+      },
+      "releases": [
+        {
+          "version": "2.2.0",
+          "date": "2024-01-05T00:00:00Z",
+          "title": "Flatseal 2.2.0",
+          "description": "New features and bug fixes",
+          "url": "https://github.com/tchx84/Flatseal/releases/tag/v2.2.0",
+          "type": "github-release"
+        }
+      ],
+      "fetchedAt": "2026-02-03T00:42:00Z"
+    },
+    {
+      "id": "org.mozilla.firefox",
+      "name": "Firefox",
+      "summary": "Fast, Private & Safe Web Browser",
+      "developerName": "Mozilla",
+      "icon": "https://dl.flathub.org/repo/appstream/x86_64/icons/128x128/org.mozilla.firefox.png",
+      "projectLicense": "MPL-2.0",
+      "categories": ["Network"],
+      "currentReleaseVersion": "122.0",
+      "currentReleaseDate": "2024-01-23",
+      "flathubUrl": "https://flathub.org/apps/org.mozilla.firefox",
+      "releases": [
+        {
+          "version": "122.0",
+          "date": "2024-01-23T00:00:00Z",
+          "title": "Version 122.0",
+          "description": "Performance improvements and security fixes",
+          "type": "appstream"
+        }
+      ],
+      "fetchedAt": "2026-02-03T00:42:00Z"
+    }
+  ]
+}
