@@ -1,5 +1,6 @@
 ---
 import AppCard from '../components/AppCard.astro';
+import FeaturedAppBanner from '../components/FeaturedAppBanner.astro';
 import FilterBar from '../components/FilterBar.astro';
 import KeyboardHelp from '../components/KeyboardHelp.astro';
 import SearchBar from '../components/SearchBar.astro';
@@ -77,6 +78,13 @@ const appNames = apps.map(app => app.name).sort();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bluefin Firehose</title>
   <meta name="description" content="Track updates for Bluefin OS, Flatpak applications, and Homebrew packages">
+  
+  <!-- RSS Feed Discovery -->
+  <link rel="alternate" type="application/rss+xml" title="Bluefin Firehose - All Releases" href={`${baseUrl}rss.xml`} />
+  <link rel="alternate" type="application/rss+xml" title="Bluefin Firehose - Flatpak Releases" href={`${baseUrl}rss/flatpak.xml`} />
+  <link rel="alternate" type="application/rss+xml" title="Bluefin Firehose - Homebrew Releases" href={`${baseUrl}rss/homebrew.xml`} />
+  <link rel="alternate" type="application/rss+xml" title="Bluefin Firehose - OS Releases" href={`${baseUrl}rss/os.xml`} />
+  <link rel="alternate" type="application/rss+xml" title="Bluefin Firehose - Verified Apps Only" href={`${baseUrl}rss/verified.xml`} />
   
   <!-- Theme initialization script - runs before page render to prevent FOUC -->
   <script is:inline>
@@ -430,8 +438,16 @@ const appNames = apps.map(app => app.name).sort();
           <div class="info-links">
             <a href="https://projectbluefin.io" target="_blank" rel="noopener" class="info-link">Project Bluefin</a>
             <a href="https://github.com/castrojo/bluefin-releases" target="_blank" rel="noopener" class="info-link">GitHub Repository</a>
+            <a href={`${baseUrl}rss.xml`} class="info-link" title="Subscribe to all releases">📡 RSS Feed (All)</a>
+            <a href={`${baseUrl}rss/flatpak.xml`} class="info-link" title="Flatpak releases only">📡 RSS Feed (Flatpak)</a>
+            <a href={`${baseUrl}rss/homebrew.xml`} class="info-link" title="Homebrew releases only">📡 RSS Feed (Homebrew)</a>
+            <a href={`${baseUrl}rss/os.xml`} class="info-link" title="OS releases only">📡 RSS Feed (OS)</a>
+            <a href={`${baseUrl}rss/verified.xml`} class="info-link" title="Verified apps only">📡 RSS Feed (Verified)</a>
           </div>
         </div>
+
+        <!-- Featured App Banner -->
+        <FeaturedAppBanner apps={apps} />
 
         <!-- Filters -->
         <FilterBar categories={categories} />
