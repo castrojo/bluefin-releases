@@ -143,6 +143,27 @@ function formatDate(dateString: string): string {
         </div>
       ) : release.app.packageType === 'os' && release.app.osInfo?.imageName ? (
         <p class="release-app-id">{release.app.osInfo.imageName}</p>
+      ) : release.app.packageType === 'flatpak' ? (
+        <div class="flatpak-install-section">
+          <p class="release-app-id">{release.app.id}</p>
+          {release.app.flathubUrl && (
+            <a 
+              href={`https://flathub.org/apps/${release.app.id}`} 
+              target="_blank" 
+              rel="noopener"
+              class="flathub-badge-link"
+              title="Install from Flathub"
+            >
+              <img 
+                src="https://flathub.org/api/badge?locale=en&light" 
+                alt="Download on Flathub" 
+                width="160"
+                height="56"
+                class="flathub-badge"
+              />
+            </a>
+          )}
+        </div>
       ) : (
         <p class="release-app-id">{release.app.id}</p>
       )}
@@ -327,6 +348,31 @@ function formatDate(dateString: string): string {
     margin: 0;
     margin-top: 0.25rem;
     font-family: monospace;
+  }
+
+  .flatpak-install-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .flathub-badge-link {
+    display: inline-block;
+    line-height: 0;
+    opacity: 0.85;
+    transition: opacity 0.2s, transform 0.2s;
+    align-self: flex-start;
+  }
+
+  .flathub-badge-link:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+
+  .flathub-badge {
+    height: auto;
+    vertical-align: middle;
   }
 
   .brew-install-row {
