@@ -123,8 +123,13 @@ function formatDate(dateString: string): string {
   {release.description && (
     <div class="release-notes">
       <div class="release-description" set:html={release.description} />
-      {release.url && (
-        <a href={release.url} target="_blank" rel="noopener" class="release-link">
+      {(release.url || release.app.sourceRepo) && (
+        <a 
+          href={release.url || `${release.app.sourceRepo.url}/releases`} 
+          target="_blank" 
+          rel="noopener" 
+          class="release-link"
+        >
           View Full Release →
         </a>
       )}

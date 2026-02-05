@@ -233,8 +233,13 @@ function getPackageTypeName(type: string): string {
     <div class="changelog-section">
       <h3 class="changelog-header">Latest Release</h3>
       <div class="changelog-description" set:html={app.releases[0].description} />
-      {app.releases[0].url && (
-        <a href={app.releases[0].url} target="_blank" rel="noopener" class="changelog-link">
+      {(app.releases[0].url || app.sourceRepo) && (
+        <a 
+          href={app.releases[0].url || `${app.sourceRepo.url}/releases`} 
+          target="_blank" 
+          rel="noopener" 
+          class="changelog-link"
+        >
           View Full Release →
         </a>
       )}
