@@ -50,6 +50,7 @@ interface AppProps {
     fedoraVersion: string;
     buildNumber: string;
     commitHash?: string;
+    imageName?: string;
     kernelVersion?: string;
     gnomeVersion?: string;
     mesaVersion?: string;
@@ -141,7 +142,7 @@ function getPackageTypeName(type: string): string {
       </div>
       <div class="app-id-row">
         <div class="app-id-section">
-          <p class="app-id">{app.id}</p>
+          <p class="app-id">{app.packageType === 'os' && app.osInfo?.imageName ? app.osInfo.imageName : app.id}</p>
           {app.packageType === 'flatpak' && app.flathubUrl && (
             <a 
               href={`https://flathub.org/apps/${app.id}`} 

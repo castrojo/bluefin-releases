@@ -146,6 +146,19 @@ func main() {
 			osDuration = time.Since(osStart)
 			log.Printf("Fetched %d Bluefin OS releases in %s", len(osApps), osDuration)
 		}
+
+		// Also fetch Bluefin LTS releases
+		log.Println("Fetching Bluefin LTS releases...")
+		ltsStart := time.Now()
+		ltsApps, err := bluefin.FetchBluefinLTSApps()
+		if err != nil {
+			log.Printf("⚠️  Failed to fetch Bluefin LTS releases: %v", err)
+		} else {
+			ltsDuration := time.Since(ltsStart)
+			log.Printf("Fetched %d Bluefin LTS releases in %s", len(ltsApps), ltsDuration)
+			osApps = append(osApps, ltsApps...)
+			osDuration += ltsDuration
+		}
 	}
 
 	// Step 4: Merge Flatpak, Homebrew, and OS releases

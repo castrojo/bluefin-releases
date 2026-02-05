@@ -23,6 +23,17 @@ interface Release {
       formula: string;
       homepage?: string;
     };
+    osInfo?: {
+      stream: string;
+      fedoraVersion: string;
+      buildNumber: string;
+      commitHash?: string;
+      imageName?: string;
+      kernelVersion?: string;
+      gnomeVersion?: string;
+      mesaVersion?: string;
+      majorPackages?: Record<string, string>;
+    };
   };
 }
 
@@ -130,6 +141,8 @@ function formatDate(dateString: string): string {
             <i class="fas fa-copy"></i>
           </button>
         </div>
+      ) : release.app.packageType === 'os' && release.app.osInfo?.imageName ? (
+        <p class="release-app-id">{release.app.osInfo.imageName}</p>
       ) : (
         <p class="release-app-id">{release.app.id}</p>
       )}

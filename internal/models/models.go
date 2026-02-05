@@ -82,10 +82,12 @@ type HomebrewInfo struct {
 
 // OSInfo contains Bluefin OS release-specific information
 type OSInfo struct {
-	Stream        string            `json:"stream"`                  // "stable" or "gts"
-	FedoraVersion string            `json:"fedoraVersion"`           // e.g., "43" or "42"
+	Stream        string            `json:"stream"`                  // "stable", "gts", or "lts"
+	FedoraVersion string            `json:"fedoraVersion,omitempty"` // e.g., "43" or "42" (for stable/gts)
+	CentOSVersion string            `json:"centosVersion,omitempty"` // e.g., "10" (for LTS builds)
 	BuildNumber   string            `json:"buildNumber"`             // e.g., "20260203"
 	CommitHash    string            `json:"commitHash,omitempty"`    // Short commit hash
+	ImageName     string            `json:"imageName,omitempty"`     // e.g., "ghcr.io/ublue-os/bluefin:stable"
 	KernelVersion string            `json:"kernelVersion,omitempty"` // e.g., "6.17.12-300"
 	GnomeVersion  string            `json:"gnomeVersion,omitempty"`  // e.g., "49.3-2"
 	MesaVersion   string            `json:"mesaVersion,omitempty"`   // e.g., "25.3.4-1"
