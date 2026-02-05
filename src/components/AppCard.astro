@@ -143,28 +143,22 @@ function getPackageTypeName(type: string): string {
       <div class="app-id-row">
         <div class="app-id-section">
           <p class="app-id">{app.packageType === 'os' && app.osInfo?.imageName ? app.osInfo.imageName : app.id}</p>
-          {app.packageType === 'flatpak' && app.flathubUrl && (
-            <a 
-              href={`https://flathub.org/apps/${app.id}`} 
-              target="_blank" 
-              rel="noopener"
-              class="flathub-badge-link"
-              title="Install from Flathub"
-            >
-              <img 
-                src="https://flathub.org/api/badge?locale=en&light" 
-                alt="Download on Flathub" 
-                width="160"
-                height="56"
-                class="flathub-badge"
-              />
-            </a>
-          )}
         </div>
         <div class="meta-badges">
           <span class={`package-type-badge ${app.packageType}`}>
             {getPackageTypeName(app.packageType)}
           </span>
+          {app.packageType === 'flatpak' && app.flathubUrl && (
+            <a 
+              href={`https://flathub.org/apps/${app.id}`} 
+              target="_blank" 
+              rel="noopener"
+              class="flathub-icon-link"
+              title="Install from Flathub"
+            >
+              <i class="fas fa-download"></i>
+            </a>
+          )}
           {app.sourceRepo && (
             <a 
               href={app.sourceRepo.url} 
@@ -434,21 +428,27 @@ function getPackageTypeName(type: string): string {
     font-family: monospace;
   }
 
-  .flathub-badge-link {
-    display: inline-block;
-    line-height: 0;
+  .flathub-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-link);
+    font-size: 1rem;
+    text-decoration: none;
     opacity: 0.85;
-    transition: opacity 0.2s, transform 0.2s;
+    transition: opacity 0.2s, color 0.2s, transform 0.2s;
+    width: 20px;
+    height: 20px;
   }
 
-  .flathub-badge-link:hover {
+  .flathub-icon-link:hover {
     opacity: 1;
+    color: var(--color-text-link);
     transform: translateY(-1px);
   }
 
-  .flathub-badge {
-    height: auto;
-    vertical-align: middle;
+  .flathub-icon-link i {
+    font-size: 1rem;
   }
 
   .package-type-badge {
@@ -461,9 +461,9 @@ function getPackageTypeName(type: string): string {
   }
 
   .package-type-badge.flatpak {
-    background: rgba(88, 166, 255, 0.15);
+    background: rgba(108, 122, 233, 0.15);
     color: var(--color-text-link);
-    border: 1px solid rgba(88, 166, 255, 0.3);
+    border: 1px solid rgba(108, 122, 233, 0.3);
   }
 
   .package-type-badge.homebrew {
@@ -514,12 +514,12 @@ function getPackageTypeName(type: string): string {
   }
 
   .category-tag {
-    background: rgba(88, 166, 255, 0.1);
+    background: rgba(108, 122, 233, 0.1);
     color: var(--color-text-link);
     padding: 0.25rem 0.75rem;
     border-radius: 12px;
     font-size: 0.75rem;
-    border: 1px solid rgba(88, 166, 255, 0.2);
+    border: 1px solid rgba(108, 122, 233, 0.2);
   }
 
   .changelog-section {
@@ -587,8 +587,8 @@ function getPackageTypeName(type: string): string {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.625rem 1rem;
-    background: rgba(88, 166, 255, 0.1);
-    border: 1px solid rgba(88, 166, 255, 0.3);
+    background: rgba(108, 122, 233, 0.1);
+    border: 1px solid rgba(108, 122, 233, 0.3);
     border-radius: 6px;
     color: var(--color-text-link);
     text-decoration: none;
@@ -598,8 +598,8 @@ function getPackageTypeName(type: string): string {
   }
 
   .view-all-releases:hover {
-    background: rgba(88, 166, 255, 0.2);
-    border-color: rgba(88, 166, 255, 0.5);
+    background: rgba(108, 122, 233, 0.2);
+    border-color: rgba(108, 122, 233, 0.5);
     transform: translateX(2px);
   }
 </style>

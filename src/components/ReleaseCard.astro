@@ -110,6 +110,17 @@ function formatDate(dateString: string): string {
             <span class={`package-type-badge ${release.app.packageType}`}>
               {getPackageTypeName(release.app.packageType)}
             </span>
+            {release.app.packageType === 'flatpak' && release.app.flathubUrl && (
+              <a 
+                href={`https://flathub.org/apps/${release.app.id}`} 
+                target="_blank" 
+                rel="noopener"
+                class="flathub-icon-link"
+                title="Install from Flathub"
+              >
+                <i class="fas fa-download"></i>
+              </a>
+            )}
             {release.app.sourceRepo && (
               <a 
                 href={release.app.sourceRepo.url} 
@@ -143,27 +154,6 @@ function formatDate(dateString: string): string {
         </div>
       ) : release.app.packageType === 'os' && release.app.osInfo?.imageName ? (
         <p class="release-app-id">{release.app.osInfo.imageName}</p>
-      ) : release.app.packageType === 'flatpak' ? (
-        <div class="flatpak-install-section">
-          <p class="release-app-id">{release.app.id}</p>
-          {release.app.flathubUrl && (
-            <a 
-              href={`https://flathub.org/apps/${release.app.id}`} 
-              target="_blank" 
-              rel="noopener"
-              class="flathub-badge-link"
-              title="Install from Flathub"
-            >
-              <img 
-                src="https://flathub.org/api/badge?locale=en&light" 
-                alt="Download on Flathub" 
-                width="160"
-                height="56"
-                class="flathub-badge"
-              />
-            </a>
-          )}
-        </div>
       ) : (
         <p class="release-app-id">{release.app.id}</p>
       )}
@@ -325,9 +315,9 @@ function formatDate(dateString: string): string {
   }
 
   .package-type-badge.flatpak {
-    background: rgba(88, 166, 255, 0.15);
+    background: rgba(108, 122, 233, 0.15);
     color: var(--color-accent-emphasis);
-    border: 1px solid rgba(88, 166, 255, 0.3);
+    border: 1px solid rgba(108, 122, 233, 0.3);
   }
 
   .package-type-badge.homebrew {
@@ -357,22 +347,27 @@ function formatDate(dateString: string): string {
     margin-top: 0.25rem;
   }
 
-  .flathub-badge-link {
-    display: inline-block;
-    line-height: 0;
+  .flathub-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-link);
+    font-size: 1rem;
+    text-decoration: none;
     opacity: 0.85;
-    transition: opacity 0.2s, transform 0.2s;
-    align-self: flex-start;
+    transition: opacity 0.2s, color 0.2s, transform 0.2s;
+    width: 20px;
+    height: 20px;
   }
 
-  .flathub-badge-link:hover {
+  .flathub-icon-link:hover {
     opacity: 1;
+    color: var(--color-text-link);
     transform: translateY(-1px);
   }
 
-  .flathub-badge {
-    height: auto;
-    vertical-align: middle;
+  .flathub-icon-link i {
+    font-size: 1rem;
   }
 
   .brew-install-row {
@@ -386,16 +381,15 @@ function formatDate(dateString: string): string {
     font-size: 0.75rem;
     font-family: 'Courier New', Courier, monospace;
     color: var(--color-text-primary);
-    background: rgba(88, 166, 255, 0.1);
+    background: rgba(108, 122, 233, 0.1);
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
-    border: 1px solid rgba(88, 166, 255, 0.2);
-    flex: 1;
+    border: 1px solid rgba(108, 122, 233, 0.2);
   }
 
   .copy-button {
-    background: rgba(88, 166, 255, 0.15);
-    border: 1px solid rgba(88, 166, 255, 0.3);
+    background: rgba(108, 122, 233, 0.15);
+    border: 1px solid rgba(108, 122, 233, 0.3);
     border-radius: 4px;
     padding: 0.25rem 0.5rem;
     cursor: pointer;
@@ -409,8 +403,8 @@ function formatDate(dateString: string): string {
   }
 
   .copy-button:hover {
-    background: rgba(88, 166, 255, 0.25);
-    border-color: rgba(88, 166, 255, 0.5);
+    background: rgba(108, 122, 233, 0.25);
+    border-color: rgba(108, 122, 233, 0.5);
   }
 
   .copy-button i {
