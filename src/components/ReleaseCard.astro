@@ -95,9 +95,28 @@ function formatDate(dateString: string): string {
         </h3>
         <div class="release-meta">
           <span class="release-date">{formatDate(release.date)}</span>
-          <span class={`package-type-badge ${release.app.packageType}`}>
-            {getPackageTypeName(release.app.packageType)}
-          </span>
+          <div class="meta-badges">
+            <span class={`package-type-badge ${release.app.packageType}`}>
+              {getPackageTypeName(release.app.packageType)}
+            </span>
+            {release.app.sourceRepo && (
+              <a 
+                href={release.app.sourceRepo.url} 
+                target="_blank" 
+                rel="noopener" 
+                class="source-icon-link"
+                title={release.app.sourceRepo.type === 'github' 
+                  ? `${release.app.sourceRepo.owner}/${release.app.sourceRepo.repo}` 
+                  : release.app.sourceRepo.type === 'gitlab'
+                  ? 'GitLab Repository'
+                  : 'Source Repository'}
+              >
+                {release.app.sourceRepo.type === 'github' && <i class="fab fa-github"></i>}
+                {release.app.sourceRepo.type === 'gitlab' && <i class="fab fa-gitlab"></i>}
+                {release.app.sourceRepo.type !== 'github' && release.app.sourceRepo.type !== 'gitlab' && <i class="fas fa-code-branch"></i>}
+              </a>
+            )}
+          </div>
         </div>
       </div>
       <p class="release-app-id">{release.app.id}</p>
@@ -105,20 +124,6 @@ function formatDate(dateString: string): string {
   </div>
 
   <p class="release-summary">{release.app.summary}</p>
-
-  {release.app.sourceRepo && (
-    <div class="source-repo">
-      <span class="repo-icon">
-        {release.app.sourceRepo.type === 'github' ? '⚙' : '🌐'}
-      </span>
-      <a href={release.app.sourceRepo.url} target="_blank" rel="noopener" class="repo-link">
-        {release.app.sourceRepo.type === 'github' 
-          ? `${release.app.sourceRepo.owner}/${release.app.sourceRepo.repo}`
-          : 'Source Repository'
-        }
-      </a>
-    </div>
-  )}
 
   {release.description && (
     <div class="release-notes">
@@ -228,10 +233,38 @@ function formatDate(dateString: string): string {
     gap: 0.5rem;
   }
 
+  .meta-badges {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   .release-date {
     font-size: 0.75rem;
     color: var(--color-text-secondary);
     white-space: nowrap;
+  }
+
+  .source-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+    width: 20px;
+    height: 20px;
+  }
+
+  .source-icon-link:hover {
+    opacity: 1;
+    color: var(--color-text-link);
+  }
+
+  .source-icon-link i {
+    font-size: 1rem;
   }
 
   .package-type-badge {
@@ -274,32 +307,6 @@ function formatDate(dateString: string): string {
     margin-bottom: 0.75rem;
     line-height: 1.5;
     font-size: 0.875rem;
-  }
-
-  .source-repo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    background: var(--color-bg-tertiary);
-    border: 1px solid var(--color-border-default);
-    border-radius: 6px;
-    margin-bottom: 0.75rem;
-  }
-
-  .repo-icon {
-    font-size: 1rem;
-  }
-
-  .repo-link {
-    color: var(--color-text-link);
-    text-decoration: none;
-    font-size: 0.875rem;
-    font-family: monospace;
-  }
-
-  .repo-link:hover {
-    text-decoration: underline;
   }
 
   .release-notes {

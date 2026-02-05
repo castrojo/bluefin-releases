@@ -141,9 +141,28 @@ function getPackageTypeName(type: string): string {
       </div>
       <div class="app-id-row">
         <p class="app-id">{app.id}</p>
-        <span class={`package-type-badge ${app.packageType}`}>
-          {getPackageTypeName(app.packageType)}
-        </span>
+        <div class="meta-badges">
+          <span class={`package-type-badge ${app.packageType}`}>
+            {getPackageTypeName(app.packageType)}
+          </span>
+          {app.sourceRepo && (
+            <a 
+              href={app.sourceRepo.url} 
+              target="_blank" 
+              rel="noopener" 
+              class="source-icon-link"
+              title={app.sourceRepo.type === 'github' 
+                ? `${app.sourceRepo.owner}/${app.sourceRepo.repo}` 
+                : app.sourceRepo.type === 'gitlab'
+                ? 'GitLab Repository'
+                : 'Source Repository'}
+            >
+              {app.sourceRepo.type === 'github' && <i class="fab fa-github"></i>}
+              {app.sourceRepo.type === 'gitlab' && <i class="fab fa-gitlab"></i>}
+              {app.sourceRepo.type !== 'github' && app.sourceRepo.type !== 'gitlab' && <i class="fas fa-code-branch"></i>}
+            </a>
+          )}
+        </div>
       </div>
     </div>
   </div>
@@ -209,14 +228,6 @@ function getPackageTypeName(type: string): string {
         <span class="category-tag">{cat}</span>
       ))}
     </div>
-  )}
-
-  {app.sourceRepo && (
-    <a href={app.sourceRepo.url} target="_blank" rel="noopener" class="source-repo-icon" title={app.sourceRepo.type === 'github' ? `${app.sourceRepo.owner}/${app.sourceRepo.repo}` : 'Source Repository'}>
-      {app.sourceRepo.type === 'github' && <i class="fab fa-github"></i>}
-      {app.sourceRepo.type === 'gitlab' && <i class="fab fa-gitlab"></i>}
-      {app.sourceRepo.type !== 'github' && app.sourceRepo.type !== 'gitlab' && <i class="fas fa-code-branch"></i>}
-    </a>
   )}
 
   {app.releases && app.releases.length > 0 && app.releases[0].description && (
@@ -359,6 +370,34 @@ function getPackageTypeName(type: string): string {
     margin-top: 0.25rem;
   }
 
+  .meta-badges {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .source-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+    width: 20px;
+    height: 20px;
+  }
+
+  .source-icon-link:hover {
+    opacity: 1;
+    color: var(--color-text-link);
+  }
+
+  .source-icon-link i {
+    font-size: 1rem;
+  }
+
   .app-id {
     font-size: 0.75rem;
     color: var(--color-text-secondary);
@@ -435,23 +474,6 @@ function getPackageTypeName(type: string): string {
     border-radius: 12px;
     font-size: 0.75rem;
     border: 1px solid rgba(88, 166, 255, 0.2);
-  }
-
-  .source-repo-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    font-size: 1.125rem;
-    opacity: 0.7;
-    transition: opacity 0.2s, color 0.2s;
-    margin-bottom: 1rem;
-  }
-
-  .source-repo-icon:hover {
-    opacity: 1;
-    color: var(--color-text-link);
   }
 
   .changelog-section {
