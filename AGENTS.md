@@ -199,6 +199,190 @@ The site deploys automatically via GitHub Actions (`.github/workflows/deploy.yml
 - **Process**: Run Go pipeline → Build Astro site → Deploy to GitHub Pages
 - **Environment**: `GITHUB_TOKEN` is auto-provided by GitHub Actions
 
+## Feature Completion Validation Protocol
+
+**CRITICAL**: Before closing ANY beads issue or marking work complete, you MUST follow this protocol. Multiple issues have been falsely marked complete without actual implementation.
+
+### The Problem: False Completions
+
+Past failures have occurred due to:
+1. **Claiming work was done without committing code** - Issues closed with detailed descriptions, but `git log` shows no matching commits
+2. **Partial implementation** - Feature added to one component (e.g., AppCard) but missed in others (e.g., ReleaseCard)
+3. **Incomplete global changes** - CSS color updates that fixed some files but missed others, including fallback values
+4. **No verification** - Work marked complete without building, grep checking, or visual inspection
+5. **Megacommit masking** - Claiming "completed 10 issues" in one commit that only changed JSON files, not actual code
+
+### Mandatory Validation Checklist
+
+**FOR EVERY FEATURE/FIX** you implement, complete this checklist **BEFORE** closing the beads issue:
+
+#### 1. Implementation Verification
+```bash
+# Verify code was actually changed
+git status                    # Shows modified files
+git diff                      # Shows actual changes made
+
+# Verify the feature exists where it should
+grep -r "feature-keyword" src/  # Search for your feature (e.g., "flathub-badge")
+```
+
+**✅ PASS**: Modified files match the issue requirements  
+**❌ FAIL**: No files changed, or wrong files changed → **DO NOT close issue**
+
+#### 2. Global Search for Incomplete Changes
+
+If the change should apply globally (CSS colors, repeated components):
+```bash
+# Find ALL instances that need changing
+grep -rn "#0969da\|#4a90e2" src/ --include="*.astro"  # Example: find wrong colors
+grep -rn "old-pattern" src/                           # Find old patterns
+grep -rn "rgba(9, 105, 218" src/                      # Find rgba form of colors
+```
+
+**✅ PASS**: Zero results for old/wrong patterns (or only acceptable exceptions like gradients)  
+**❌ FAIL**: Old patterns remain → **REOPEN, fix ALL instances**
+
+#### 3. Build Verification
+```bash
+npm run build   # MUST succeed without errors
+```
+
+**✅ PASS**: Build completes successfully  
+**❌ FAIL**: Build errors → **Fix errors before closing issue**
+
+#### 4. Visual Verification
+```bash
+npm run preview  # Start preview server
+# Open browser and CHECK:
+# - Feature appears where expected
+# - Styling is correct (colors, spacing, alignment)
+# - Feature works on both light/dark themes
+# - No console errors
+```
+
+**✅ PASS**: Feature visible and working correctly  
+**❌ FAIL**: Feature missing or broken → **Fix before closing issue**
+
+#### 5. Atomic Commit
+```bash
+# Create ONE commit per feature/fix
+git add <specific-files>     # Only files related to THIS feature
+git commit -m "Detailed message explaining what/why"
+
+# Verify commit contains expected changes
+git show HEAD --stat         # Check files changed
+git show HEAD                # Review actual changes
+```
+
+**Commit message format:**
+```
+<action> <what> - <brief why>
+
+Fixes <beads-issue-id>
+
+<detailed description of changes>
+- Bullet point changes
+- With file names and line numbers where helpful
+
+Verification:
+- Build succeeds
+- grep confirms <old-pattern> removed
+- Feature appears in <location>
+```
+
+**✅ PASS**: Commit contains only this feature's changes, message is detailed  
+**❌ FAIL**: Megacommit with multiple features, vague message → **Split into atomic commits**
+
+#### 6. Issue Closure
+```bash
+# Close issue with verification evidence
+bd close <issue-id> --reason "Completed <feature>. Verified: build passes, grep confirms changes in <files>, visual check confirms feature appears in <location>. Commit: <commit-hash>"
+```
+
+**✅ PASS**: Issue closed with evidence of completion  
+**❌ FAIL**: Closed with vague reason like "done" → **Reopen and add verification**
+
+### Examples of Proper vs Improper Completion
+
+#### ❌ IMPROPER (DO NOT DO THIS):
+```bash
+# Make some changes (maybe)
+bd close issue-123 --reason "Added Flathub badge to components"
+# No build check, no grep, no visual verification
+# Issue closed but feature is actually missing from ReleaseCard!
+```
+
+#### ✅ PROPER (DO THIS):
+```bash
+# 1. Implement feature in ALL required locations
+# 2. Check with grep
+grep -n "flathub-badge" src/components/ReleaseCard.astro
+# Output: 154:  class="flathub-badge-link"  ✅ Confirmed present
+
+grep -n "flathub-badge" src/components/AppCard.astro
+# Output: 151:  class="flathub-badge-link"  ✅ Confirmed present
+
+# 3. Build
+npm run build  # ✅ Success
+
+# 4. Visual check
+npm run preview  # ✅ Badge appears on both card types
+
+# 5. Atomic commit
+git add src/components/ReleaseCard.astro
+git commit -m "Add Flathub install badge to ReleaseCard component
+
+Fixes bluefin-releases-hhy
+
+- Add badge HTML and CSS to ReleaseCard
+- Matches AppCard implementation
+- Only shows for packageType === 'flatpak'
+
+Verification:
+- Build succeeds
+- grep confirms badge in both AppCard and ReleaseCard
+- Visual check: badge appears in Recent Releases view"
+
+# 6. Close with evidence
+bd close bluefin-releases-hhy --reason "Completed. Build passes, grep confirms flathub-badge in ReleaseCard.astro:154, AppCard.astro:151. Visual check confirms badge appears. Commit: 3e8bf1b"
+```
+
+### Red Flags That Indicate False Completion
+
+Watch for these warning signs:
+- ⚠️ Issue closed but `git log` shows no recent commits for that feature
+- ⚠️ Commit message says "completed 10 issues" but changes only 1-2 files
+- ⚠️ Close reason is vague: "done", "fixed", "added feature"
+- ⚠️ No verification commands were run (no build, no grep, no preview)
+- ⚠️ `git diff` before commit showed changes, but after commit those files aren't in git history
+- ⚠️ CSS changes that updated variables but ignored fallback values like `var(--color, #fallback)`
+
+### When to Reopen Issues
+
+Immediately reopen an issue if:
+1. **Feature is missing** - grep/visual check shows feature isn't actually there
+2. **Partial implementation** - Feature in some locations but not all required locations
+3. **Build fails** - npm run build errors after "completed" work
+4. **No commit** - Issue closed but no git commit exists for the feature
+5. **Wrong commit** - Commit message claims feature but `git show` doesn't show the actual code
+
+**Example reopen command:**
+```bash
+bd reopen issue-123
+bd update issue-123 --notes "Reopened: Feature claimed complete but grep shows missing from ReleaseCard.astro. AppCard has it (line 151) but ReleaseCard does not. Need to add badge HTML+CSS to ReleaseCard."
+```
+
+### Root Cause: Why Validations Were Skipped
+
+Understanding why false completions happen:
+1. **Overpromising** - Trying to complete too many issues at once leads to corners cut
+2. **Trust without verification** - Assuming if you wrote the code, it must be correct
+3. **Preview skipping** - Thinking "build passed" means feature works (it doesn't - build success ≠ feature present)
+4. **Grep laziness** - Not searching for ALL instances of a pattern (e.g., forgetting rgba form of hex colors)
+5. **Pressure to close** - Feeling pressure to show progress leads to premature closure
+
+**Solution**: Slow down. One feature at a time. Verify thoroughly. Never close without evidence.
+
 ## Landing the Plane (Session Completion)
 
 **When ending a work session**, you MUST complete ALL steps below. Work is NOT complete until `git push` succeeds.
