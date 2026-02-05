@@ -1,0 +1,193 @@
+---
+import { Image } from 'astro:assets';
+import SearchBar from '../components/SearchBar.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import KeyboardHelp from '../components/KeyboardHelp.astro';
+
+// Import global styles
+import '../styles/tokens.css';
+import '../styles/global.css';
+
+// Import local images
+import angryDinosaur from '../assets/angry-dinosaur.webp';
+
+interface Props {
+  title?: string;
+  description?: string;
+  appNames?: string[];
+  metadata?: any;
+  totalApps?: number;
+}
+
+const { 
+  title = 'Bluefin Firehose',
+  description = 'Track updates for Bluefin OS, Flathub applications, and Homebrew packages',
+  appNames = [],
+  metadata,
+  totalApps = 0
+} = Astro.props;
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  
+  <!-- Open Graph meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ublue-os.github.io/bluefin-releases/">
+  <meta property="og:title" content="Bluefin Firehose - Track Bluefin OS, Flathub & Homebrew Updates">
+  <meta property="og:description" content="Real-time release dashboard aggregating updates from Bluefin OS, Flathub applications, and Homebrew packages. Stay current with your favorite tools.">
+  <meta property="og:image" content="https://ublue-os.github.io/bluefin-releases/angry-dinosaur.webp">
+  
+  <!-- Twitter Card meta tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://ublue-os.github.io/bluefin-releases/">
+  <meta name="twitter:title" content="Bluefin Firehose - Track Bluefin OS, Flathub & Homebrew Updates">
+  <meta name="twitter:description" content="Real-time release dashboard aggregating updates from Bluefin OS, Flathub applications, and Homebrew packages. Stay current with your favorite tools.">
+  <meta name="twitter:image" content="https://ublue-os.github.io/bluefin-releases/angry-dinosaur.webp">
+  
+  <!-- RSS Feed Discovery -->
+  <link rel="alternate" type="application/rss+xml" title="Bluefin Firehose - All Releases" href={`${baseUrl}rss.xml`} />
+  <link rel="alternate" type="application/rss+xml" title="Bluefin Firehose - Flatpak Releases" href={`${baseUrl}rss/flatpak.xml`} />
+  <link rel="alternate" type="application/rss+xml" title="Bluefin Firehose - Homebrew Releases" href={`${baseUrl}rss/homebrew.xml`} />
+  <link rel="alternate" type="application/rss+xml" title="Bluefin Firehose - OS Releases" href={`${baseUrl}rss/os.xml`} />
+  <link rel="alternate" type="application/rss+xml" title="Bluefin Firehose - Verified Apps Only" href={`${baseUrl}rss/verified.xml`} />
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Theme initialization script - runs before page render to prevent FOUC -->
+  <script is:inline>
+    (function() {
+      const getTheme = () => {
+        // Check localStorage first
+        const stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') {
+          return stored;
+        }
+        // Fall back to system preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      };
+      
+      const theme = getTheme();
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 2rem;">
+        <div style="display: flex; align-items: center; gap: 2rem; flex: 1;">
+          <div>
+            <h1 class="site-title">
+              <a href={baseUrl} id="home-link" class="home-link">
+                <Image src={angryDinosaur} alt="Bluefin angry dinosaur mascot" height={48} style="width: auto; display: inline-block; vertical-align: middle; margin-right: 0.5rem; object-fit: contain;" />
+                Bluefin Firehose
+              </a>
+            </h1>
+            <p class="site-subtitle">Track updates for Bluefin OS, Flathub apps, and Homebrew packages</p>
+          </div>
+          <div style="flex: 1; max-width: 600px;">
+            <SearchBar apps={appNames} />
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <ThemeToggle />
+          <button 
+            id="help-button" 
+            class="keyboard-help-button"
+            aria-label="Keyboard shortcuts"
+            title="Keyboard shortcuts (Press ?)"
+          >
+            ?
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Aggregating {totalApps} packages from Project Bluefin{metadata ? ` • ${metadata.stats.totalReleases} releases tracked` : ''}</p>
+      <p>Updated daily • <a href="https://github.com/castrojo/bluefin-releases" target="_blank" rel="noopener">View on GitHub</a></p>
+      {metadata && (
+        <p style="font-size: 0.75rem; opacity: 0.6; margin-top: 0.5rem;">
+          Generated {metadata.generatedAt} by {metadata.generatedBy} in {metadata.buildDuration}
+        </p>
+      )}
+    </div>
+  </footer>
+
+  <!-- Keyboard shortcuts help modal -->
+  <KeyboardHelp />
+
+  <!-- Screen reader live region for keyboard navigation announcements -->
+  <div id="kbd-live-region" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <!-- Keyboard navigation script -->
+  <script>
+    import { initKeyboardNav } from '../scripts/keyboard-nav';
+    
+    // Initialize keyboard navigation on DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+      initKeyboardNav('.release-card', '.search-bar input');
+    });
+  </script>
+
+  <!-- Help button handler -->
+  <script>
+    document.getElementById('help-button')?.addEventListener('click', () => {
+      document.getElementById('keyboard-help-modal')?.classList.add('visible');
+      document.getElementById('keyboard-help-backdrop')?.classList.add('visible');
+    });
+  </script>
+
+  <!-- Home link handler - scroll to top -->
+  <script>
+    document.getElementById('home-link')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <style>
+    /* Help button in header */
+    .keyboard-help-button {
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      padding: 0.5rem;
+      cursor: pointer;
+      color: var(--color-text-secondary);
+      font-size: 1rem;
+      font-weight: 600;
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+
+    .keyboard-help-button:hover {
+      background: var(--color-bg-default);
+      color: var(--color-text-primary);
+      border-color: var(--color-text-primary);
+    }
+  </style>
+</body>
+</html>
