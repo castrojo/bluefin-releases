@@ -276,11 +276,27 @@ func extractSection(html, sectionName string) string {
 
 // extractReleaseDate extracts the release date from the HTML
 func extractReleaseDate(html string) string {
+	// Try <time datetime="..."> first (old format)
 	dateRe := regexp.MustCompile(`<time[^>]*datetime="([^"]+)"`)
 	matches := dateRe.FindStringSubmatch(html)
 	if len(matches) > 1 {
 		return matches[1]
 	}
+
+	// Try Firefox format: <p class="c-release-date">February 4, 2026</p>
+	firefoxRe := regexp.MustCompile(`<p class="c-release-date">([^<]+)</p>`)
+	matches = firefoxRe.FindStringSubmatch(html)
+	if len(matches) > 1 {
+		return strings.TrimSpace(matches[1])
+	}
+
+	// Try generic "Released DATE" pattern (Thunderbird and others)
+	releasedRe := regexp.MustCompile(`Released\s+((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d+,\s+\d{4})`)
+	matches = releasedRe.FindStringSubmatch(html)
+	if len(matches) > 1 {
+		return strings.TrimSpace(matches[1])
+	}
+
 	return ""
 }
 
