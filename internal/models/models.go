@@ -186,6 +186,7 @@ type FlathubAppDetails struct {
 type FlathubReleaseEntry struct {
 	Version     string `json:"version"`
 	Date        string `json:"date"`
+	Timestamp   string `json:"timestamp"`
 	Description string `json:"description"`
 }
 

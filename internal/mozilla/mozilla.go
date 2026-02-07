@@ -91,8 +91,18 @@ func fetchFirefoxReleases() ([]models.Release, error) {
 	dateStr := extractReleaseDate(html)
 	releaseDate := time.Now()
 	if dateStr != "" {
-		if parsed, err := time.Parse("January 2, 2006", dateStr); err == nil {
-			releaseDate = parsed
+		// Try ISO 8601 format first (from datetime attribute)
+		formats := []string{"2006-01-02", time.RFC3339, "January 2, 2006"}
+		parsed := false
+		for _, fmt := range formats {
+			if parsedDate, err := time.Parse(fmt, dateStr); err == nil {
+				releaseDate = parsedDate
+				parsed = true
+				break
+			}
+		}
+		if !parsed {
+			log.Printf("⚠️  Could not parse Firefox release date: %s", dateStr)
 		}
 	}
 
@@ -153,8 +163,18 @@ func fetchThunderbirdReleases() ([]models.Release, error) {
 	dateStr := extractReleaseDate(html)
 	releaseDate := time.Now()
 	if dateStr != "" {
-		if parsed, err := time.Parse("January 2, 2006", dateStr); err == nil {
-			releaseDate = parsed
+		// Try ISO 8601 format first (from datetime attribute)
+		formats := []string{"2006-01-02", time.RFC3339, "January 2, 2006"}
+		parsed := false
+		for _, fmt := range formats {
+			if parsedDate, err := time.Parse(fmt, dateStr); err == nil {
+				releaseDate = parsedDate
+				parsed = true
+				break
+			}
+		}
+		if !parsed {
+			log.Printf("⚠️  Could not parse Thunderbird release date: %s", dateStr)
 		}
 	}
 

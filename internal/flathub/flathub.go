@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"regexp"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -220,7 +221,17 @@ func enrichApp(flathubApp models.FlathubApp) models.App {
 			app.Releases = ConvertFlathubReleases(details.Releases[:1]) // Only take the first (latest) release
 			// Set current version and release date from first release
 			app.Version = details.Releases[0].Version
-			app.ReleaseDate = details.Releases[0].Date
+
+			// Parse timestamp for release date (prefer timestamp over date string)
+			if details.Releases[0].Timestamp != "" {
+				if ts, err := strconv.ParseInt(details.Releases[0].Timestamp, 10, 64); err == nil {
+					app.ReleaseDate = time.Unix(ts, 0).UTC().Format(time.RFC3339)
+				}
+			}
+			// Fall back to date string if timestamp parsing failed or was empty
+			if app.ReleaseDate == "" && details.Releases[0].Date != "" {
+				app.ReleaseDate = details.Releases[0].Date
+			}
 		}
 	}
 
@@ -397,14 +408,28 @@ func ConvertFlathubReleases(releases []models.FlathubReleaseEntry) []models.Rele
 	var result []models.Release
 
 	for _, release := range releases {
-		// Parse date
-		date, err := time.Parse("2006-01-02", release.Date)
-		if err != nil {
-			// Try timestamp format
-			date, err = time.Parse(time.RFC3339, release.Date)
+		var date time.Time
+		var err error
+		parsed := false
+
+		// Prefer Unix timestamp from Flathub API (most reliable)
+		if release.Timestamp != "" {
+			ts, parseErr := strconv.ParseInt(release.Timestamp, 10, 64)
+			if parseErr == nil {
+				date = time.Unix(ts, 0).UTC()
+				parsed = true
+			}
+		}
+
+		// Try date string formats if timestamp didn't work
+		if !parsed {
+			date, err = time.Parse("2006-01-02", release.Date)
 			if err != nil {
-				// Default to now if parsing fails
-				date = time.Now()
+				date, err = time.Parse(time.RFC3339, release.Date)
+				if err != nil {
+					log.Printf("⚠️  No valid date for release %s, using current time", release.Version)
+					date = time.Now()
+				}
 			}
 		}
 

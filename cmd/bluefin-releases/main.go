@@ -17,6 +17,32 @@ import (
 
 const version = "1.0.0"
 
+// normalizeReleaseDates propagates the latest release date to top-level app fields
+// Ensures app.ReleaseDate and app.UpdatedAt are populated from the actual latest release
+func normalizeReleaseDates(apps []models.App) []models.App {
+	for i := range apps {
+		app := &apps[i]
+
+		if len(app.Releases) > 0 {
+			latest := app.Releases[0]
+
+			// Always update ReleaseDate from latest release
+			app.ReleaseDate = latest.Date.Format(time.RFC3339)
+
+			// Update Version from latest release if present
+			if latest.Version != "" {
+				app.Version = latest.Version
+			}
+
+			// Update UpdatedAt if empty
+			if app.UpdatedAt == "" {
+				app.UpdatedAt = latest.Date.Format(time.RFC3339)
+			}
+		}
+	}
+	return apps
+}
+
 // deduplicateReleases removes appstream releases when actual repo releases (GitHub/GitLab/Mozilla) exist
 // This prevents duplicate entries for the same version showing different dates
 func deduplicateReleases(apps []models.App) []models.App {
@@ -193,6 +219,13 @@ func main() {
 	enrichedApps = deduplicateReleases(enrichedApps)
 	dedupeDuration := time.Since(dedupeStart)
 	log.Printf("Release deduplication complete in %s", dedupeDuration)
+
+	// Step 5.8: Normalize top-level fields from latest release
+	log.Println("Normalizing top-level date fields from latest releases...")
+	normalizeStart := time.Now()
+	enrichedApps = normalizeReleaseDates(enrichedApps)
+	normalizeDuration := time.Since(normalizeStart)
+	log.Printf("Date normalization complete in %s", normalizeDuration)
 
 	// Step 5: Sort by update date (Flatpak apps have updatedAt, Homebrew may not)
 	// For now, just use the order they come in (Flatpak first, then Homebrew)
