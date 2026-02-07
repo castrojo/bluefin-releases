@@ -141,24 +141,25 @@ function formatDate(dateString: string): string {
           </div>
         </div>
       </div>
-      {release.app.packageType === 'homebrew' && release.app.homebrewInfo?.formula ? (
-        <div class="brew-install-row">
-          <code class="brew-command">brew install {release.app.homebrewInfo.formula}</code>
-          <button 
-            class="copy-button" 
-            data-command={`brew install ${release.app.homebrewInfo.formula}`}
-            aria-label="Copy brew install command"
-          >
-            <i class="fas fa-copy"></i>
-          </button>
-        </div>
-      ) : release.app.packageType === 'os' && release.app.osInfo?.imageName ? (
-        <p class="release-app-id">{release.app.osInfo.imageName}</p>
-      ) : (
-        <p class="release-app-id">{release.app.id}</p>
-      )}
     </div>
   </div>
+
+  {release.app.packageType === 'homebrew' && release.app.homebrewInfo?.formula ? (
+    <div class="brew-install-row">
+      <code class="brew-command">brew install {release.app.homebrewInfo.formula}</code>
+      <button 
+        class="copy-button" 
+        data-command={`brew install ${release.app.homebrewInfo.formula}`}
+        aria-label="Copy brew install command"
+      >
+        <i class="fas fa-copy"></i>
+      </button>
+    </div>
+  ) : release.app.packageType === 'os' && release.app.osInfo?.imageName ? (
+    <p class="release-app-id">{release.app.osInfo.imageName}</p>
+  ) : release.app.packageType === 'flatpak' && release.app.id ? (
+    <p class="release-app-id">{release.app.id}</p>
+  ) : null}
 
   <p class="release-summary">{release.app.summary}</p>
 
@@ -167,7 +168,7 @@ function formatDate(dateString: string): string {
       <div class="release-description" set:html={release.description} />
       {(release.url || release.app.sourceRepo) && (
         <a 
-          href={release.url || `${release.app.sourceRepo.url}/releases`} 
+          href={release.url || (release.app.sourceRepo ? `${release.app.sourceRepo.url}/releases` : '#')} 
           target="_blank" 
           rel="noopener" 
           class="release-link"
@@ -335,8 +336,7 @@ function formatDate(dateString: string): string {
   .release-app-id {
     font-size: 0.75rem;
     color: var(--color-text-secondary);
-    margin: 0;
-    margin-top: 0.25rem;
+    margin: 0 0 0.75rem 0;
     font-family: monospace;
   }
 
@@ -374,7 +374,7 @@ function formatDate(dateString: string): string {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 0.25rem;
+    margin: 0 0 0.75rem 0;
   }
 
   .brew-command {
@@ -435,6 +435,8 @@ function formatDate(dateString: string): string {
     color: var(--color-text-secondary);
     margin: 0 0 0.75rem 0;
     line-height: 1.6;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .release-description p {
@@ -443,6 +445,32 @@ function formatDate(dateString: string): string {
 
   .release-description p:last-child {
     margin-bottom: 0;
+  }
+
+  .release-description h2,
+  .release-description h3,
+  .release-description h4 {
+    margin: 1rem 0 0.5rem 0;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .release-description h2 {
+    font-size: 1.25rem;
+  }
+
+  .release-description h3 {
+    font-size: 1.125rem;
+  }
+
+  .release-description h4 {
+    font-size: 1rem;
+  }
+
+  .release-description h2:first-child,
+  .release-description h3:first-child,
+  .release-description h4:first-child {
+    margin-top: 0;
   }
 
   .release-description ul,
@@ -462,6 +490,64 @@ function formatDate(dateString: string): string {
 
   .release-description a:hover {
     text-decoration: underline;
+  }
+
+  .release-description pre {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border-default);
+    border-radius: 4px;
+    padding: 0.75rem;
+    margin: 0.75rem 0;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .release-description code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85em;
+    background: var(--color-bg-subtle);
+    padding: 0.125rem 0.375rem;
+    border-radius: 3px;
+    border: 1px solid var(--color-border-default);
+  }
+
+  .release-description pre code {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .release-description table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.75rem 0;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .release-description table thead {
+    background: var(--color-bg-subtle);
+  }
+
+  .release-description table th,
+  .release-description table td {
+    border: 1px solid var(--color-border-default);
+    padding: 0.5rem;
+    text-align: left;
+  }
+
+  .release-description table th {
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .release-description blockquote {
+    border-left: 3px solid var(--color-border-default);
+    padding-left: 1rem;
+    margin: 0.75rem 0;
+    color: var(--color-text-secondary);
+    font-style: italic;
   }
 
   .release-link {
