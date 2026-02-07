@@ -85,7 +85,7 @@ function formatDate(dateString: string): string {
 }
 ---
 
-<article class="release-card" data-package-type={release.app.packageType}>
+<article class="release-card" data-package-type={release.app.packageType} data-release-title={release.title}>
   <div class="release-header">
     {release.app.icon && (
       <img src={release.app.icon} alt={`${release.app.name} icon`} class="release-icon" />

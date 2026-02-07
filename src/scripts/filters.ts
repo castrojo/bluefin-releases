@@ -11,6 +11,7 @@ export interface FilterState {
   category: string;
   appSet: string;
   days: string;
+  hideBeta: boolean;
 }
 
 export interface FilterStats {
@@ -81,6 +82,26 @@ export const matchesDateRange = (
   return daysDiff <= parseInt(days);
 };
 
+// Pure function: Check if card matches release type filter (beta/alpha)
+export const matchesReleaseType = (
+  card: HTMLElement,
+  hideBeta: boolean
+): boolean => {
+  if (!hideBeta) return true;
+  
+  const releaseTitle = card.dataset.releaseTitle || '';
+  const lowerTitle = releaseTitle.toLowerCase();
+  
+  // Check if title contains beta, alpha, rc (release candidate), or dev
+  return !(
+    lowerTitle.includes('beta') ||
+    lowerTitle.includes('alpha') ||
+    lowerTitle.includes('.rc') ||
+    lowerTitle.includes('-rc') ||
+    lowerTitle.includes('dev')
+  );
+};
+
 // Pure function: Apply all filters to a single card
 export const cardMatchesFilters = (
   card: HTMLElement,
@@ -92,7 +113,8 @@ export const cardMatchesFilters = (
     matchesPackageType(card, state.packageType) &&
     matchesCategory(card, state.category) &&
     matchesAppSet(card, state.appSet) &&
-    matchesDateRange(card, state.days, now)
+    matchesDateRange(card, state.days, now) &&
+    matchesReleaseType(card, state.hideBeta)
   );
 };
 
@@ -142,6 +164,7 @@ export const getActiveFilters = (
   if (state.category) filters.push(`Category: ${getSelectText('filter-category')}`);
   if (state.appSet) filters.push(`App Set: ${getSelectText('filter-app-set')}`);
   if (state.days) filters.push(`Updated: ${getSelectText('filter-date')}`);
+  if (state.hideBeta) filters.push('Hide beta/alpha');
   
   return filters;
 };
@@ -244,9 +267,10 @@ export const initFilters = (container: HTMLElement): void => {
   const categorySelect = document.getElementById('filter-category') as HTMLSelectElement;
   const appSetSelect = document.getElementById('filter-app-set') as HTMLSelectElement;
   const dateSelect = document.getElementById('filter-date') as HTMLSelectElement;
+  const hideBetaCheckbox = document.getElementById('filter-hide-beta') as HTMLInputElement;
   const clearAllBtn = document.getElementById('clear-all-filters') as HTMLButtonElement;
   
-  if (!verifiedCheckbox || !packageTypeSelect || !categorySelect || !appSetSelect || !dateSelect) {
+  if (!verifiedCheckbox || !packageTypeSelect || !categorySelect || !appSetSelect || !dateSelect || !hideBetaCheckbox) {
     console.error('[Filters] Required filter elements not found');
     return;
   }
@@ -270,6 +294,7 @@ export const initFilters = (container: HTMLElement): void => {
     category: categorySelect.value,
     appSet: appSetSelect.value,
     days: dateSelect.value,
+    hideBeta: hideBetaCheckbox.checked,
   });
   
   // Get selected option text
@@ -306,6 +331,7 @@ export const initFilters = (container: HTMLElement): void => {
     categorySelect.value = '';
     appSetSelect.value = '';
     dateSelect.value = '';
+    hideBetaCheckbox.checked = false;
     handleApplyFilters();
   };
   
@@ -318,6 +344,7 @@ export const initFilters = (container: HTMLElement): void => {
   categorySelect.addEventListener('change', handleApplyFilters);
   appSetSelect.addEventListener('change', handleApplyFilters);
   dateSelect.addEventListener('change', handleApplyFilters);
+  hideBetaCheckbox.addEventListener('change', handleApplyFilters);
   if (clearAllBtn) {
     clearAllBtn.addEventListener('click', handleClearAll);
   }
