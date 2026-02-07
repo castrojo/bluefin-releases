@@ -162,6 +162,7 @@ func fetchGitLabReleases(ctx context.Context, token, repoURL, owner, repo string
 		}
 		if date.IsZero() {
 			date = time.Now()
+			log.Printf("⚠️  GitLab release %s for %s has no released_at or created_at date, using current time", gr.TagName, repoURL)
 		}
 
 		title := gr.TagName

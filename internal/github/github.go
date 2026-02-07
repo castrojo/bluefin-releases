@@ -91,6 +91,8 @@ func fetchGitHubReleases(ctx context.Context, client *github.Client, owner, repo
 		date := time.Now()
 		if gr.PublishedAt != nil {
 			date = gr.PublishedAt.Time
+		} else {
+			log.Printf("⚠️  GitHub release %s for %s has no PublishedAt date, using current time", *gr.TagName, repo)
 		}
 
 		title := *gr.TagName
