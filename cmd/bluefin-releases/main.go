@@ -154,6 +154,19 @@ func main() {
 			homebrewDuration = time.Since(homebrewStart)
 			log.Printf("Fetched %d Homebrew packages in %s", len(homebrewApps), homebrewDuration)
 		}
+
+		// Step 2b: Fetch ublue-os tap packages
+		log.Println("Fetching ublue-os tap packages...")
+		tapStart := time.Now()
+		tapApps, err := bluefin.FetchUblueOSTapPackages()
+		if err != nil {
+			log.Printf("⚠️  Failed to fetch tap packages: %v", err)
+		} else {
+			tapDuration := time.Since(tapStart)
+			log.Printf("Fetched %d tap packages in %s", len(tapApps), tapDuration)
+			homebrewApps = append(homebrewApps, tapApps...)
+			homebrewDuration += tapDuration
+		}
 	}
 
 	// Step 3: Fetch Bluefin OS releases (Bluefin mode only)
