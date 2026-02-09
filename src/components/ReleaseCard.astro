@@ -12,6 +12,7 @@ interface Release {
     icon?: string;
     packageType: string;
     summary: string;
+    experimental?: boolean;
     flathubUrl?: string;
     sourceRepo?: {
       type: string;
@@ -103,6 +104,11 @@ function formatDate(dateString: string): string {
             {release.app.name}
             <span class="version-inline">{formatVersion(release.version, release.app.packageType)}</span>
           </a>
+          {release.app.experimental && (
+            <span class="experimental-badge" title="Experimental package - may be unstable">
+              ⚠️ Experimental
+            </span>
+          )}
         </h3>
         <div class="release-meta">
           <span class="release-date">{formatDate(release.date)}</span>
@@ -562,6 +568,27 @@ function formatDate(dateString: string): string {
 
   .release-link:hover {
     text-decoration: underline;
+  }
+
+  .experimental-badge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    background: rgba(255, 193, 7, 0.15);
+    border: 1px solid rgba(255, 193, 7, 0.4);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #ffa726;
+    font-weight: 500;
+    vertical-align: middle;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .experimental-badge {
+      background: rgba(255, 193, 7, 0.2);
+      border-color: rgba(255, 193, 7, 0.5);
+      color: #ffb74d;
+    }
   }
 </style>
 
