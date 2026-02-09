@@ -1,5 +1,7 @@
 # Bluefin Firehose
 
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
+
 A unified update dashboard for Bluefin OS releases, Flatpak applications, and Homebrew packages with real-time changelogs from source repositories.
 
 ## Overview
