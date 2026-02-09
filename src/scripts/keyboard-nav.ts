@@ -59,9 +59,11 @@ const scrollToItem = (item: HTMLElement): void => {
   // Scroll so item appears at top of viewport (below header) with small breathing room
   const targetScrollY = absoluteTop - headerHeight - 8;
   
+  // Use instant scroll for vim-like behavior - smooth scroll causes race conditions
+  // when user rapidly presses j/k keys (getBoundingClientRect() samples mid-animation)
   window.scrollTo({
     top: targetScrollY,
-    behavior: 'smooth',
+    behavior: 'instant',
   });
 };
 
