@@ -161,7 +161,7 @@ const appsVerified = apps.filter(app => app.isVerified).length;
 
 // Count package types
 const flatpakApps = apps.filter((app: any) => app.packageType === 'flatpak').length;
-const homebrewApps = apps.filter((app: any) => app.packageType === 'homebrew').length;
+const homebrewApps = apps.filter((app: any) => app.packageType === 'homebrew').length; // Now includes core + taps (~85 total)
 const osReleases = apps.filter((app: any) => app.packageType === 'os').length;
 
 // Calculate total installs and favorites
