@@ -28,3 +28,6 @@ rss-poc
 # bv (beads viewer) local config and caches
 .bv/
 bluefin-releases
+coverage/
+playwright-report/
+test-results/
