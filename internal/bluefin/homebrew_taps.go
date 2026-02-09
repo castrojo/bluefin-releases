@@ -146,3 +146,68 @@ func fetchTapDirectory(owner, repo, directory, pkgType string, experimental bool
 
 	return apps, nil
 }
+
+// parseTapPackage fetches and parses a .rb file to extract metadata
+func parseTapPackage(owner, repo, directory, filename, pkgName, pkgType string, experimental bool) (models.App, error) {
+	// Fetch raw .rb file
+	url := fmt.Sprintf("https://raw.githubusercontent.com/%s/%s/main/%s/%s", owner, repo, directory, filename)
+
+	resp, err := http.Get(url)
+	if err != nil {
+		return models.App{}, fmt.Errorf("fetch file: %w", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != 200 {
+		return models.App{}, fmt.Errorf("unexpected status code: %d", resp.StatusCode)
+	}
+
+	content, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return models.App{}, fmt.Errorf("read file: %w", err)
+	}
+
+	// Parse metadata from Ruby file
+	metadata := parseRubyFormula(string(content))
+
+	// Build tap name (e.g., "ublue-os/tap")
+	tapName := fmt.Sprintf("%s/%s", owner, strings.TrimPrefix(repo, "homebrew-"))
+	fullName := fmt.Sprintf("%s/%s", tapName, pkgName)
+
+	app := models.App{
+		ID:           fmt.Sprintf("homebrew-%s", strings.ReplaceAll(fullName, "/", "-")),
+		Name:         pkgName,
+		Summary:      metadata.Description,
+		Description:  metadata.Description,
+		Version:      metadata.Version,
+		PackageType:  "homebrew",
+		Experimental: experimental,
+		FetchedAt:    time.Now(),
+		HomebrewInfo: &models.HomebrewInfo{
+			Formula:  fullName,
+			Tap:      tapName,
+			Homepage: metadata.Homepage,
+			Versions: []string{metadata.Version},
+		},
+	}
+
+	// Use description as fallback if empty
+	if app.Summary == "" {
+		app.Summary = fmt.Sprintf("Homebrew %s: %s", pkgType, pkgName)
+	}
+
+	// Extract GitHub repo if present
+	if metadata.GitHubRepo != "" {
+		parts := strings.Split(metadata.GitHubRepo, "/")
+		if len(parts) == 2 {
+			app.SourceRepo = &models.SourceRepo{
+				Type:  "github",
+				Owner: parts[0],
+				Repo:  parts[1],
+				URL:   fmt.Sprintf("https://github.com/%s", metadata.GitHubRepo),
+			}
+		}
+	}
+
+	return app, nil
+}
