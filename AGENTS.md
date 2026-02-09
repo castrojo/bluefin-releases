@@ -8,6 +8,9 @@ This project uses **bd** (beads) for issue tracking. Run `bd onboard` to get sta
 - **Bluefin OS releases** (from ublue-os/bluefin repository)
 - **Flatpak applications** (42 curated apps from Bluefin's system Brewfiles)
 - **Homebrew packages** (44 packages from Bluefin's CLI, AI, K8s, and IDE tool collections)
+- **ublue-os tap packages** (41 packages from ublue-os/homebrew-tap and experimental-tap)
+
+**Total: ~137 packages tracked**
 
 The project uses a **hybrid architecture**: Go backend for data aggregation + Astro frontend for static site generation.
 
@@ -47,12 +50,19 @@ The pipeline runs in three parallel phases:
    - Parses release notes for version info and changelogs
    - ~10 releases total
 
-4. **GitHub Enrichment** (`internal/github/github.go`)
+4. **ublue-os Tap Packages** (`internal/bluefin/homebrew_taps.go`)
+   - Discovers packages from ublue-os/homebrew-tap and experimental-tap GitHub repos
+   - Uses GitHub Contents API to list .rb formula/cask files
+   - Parses metadata with regex: desc, homepage, version, GitHub repo
+   - Marks experimental-tap packages with flag
+   - ~41 packages total
+
+5. **GitHub Enrichment** (`internal/github/github.go`)
    - Fetches actual release notes from detected GitHub repos
    - Rate-limited and concurrent (respects GitHub API limits)
    - Falls back gracefully when token unavailable
 
-**Output:** `src/data/apps.json` (unified data structure, ~96 packages total)
+**Output:** `src/data/apps.json` (unified data structure, ~137 packages total)
 
 ### Frontend (Astro)
 
@@ -73,6 +83,7 @@ internal/
   ├── bluefin/
   │   ├── flatpaks.go           # Bluefin Flatpak fetcher
   │   ├── homebrew.go           # Bluefin Homebrew fetcher
+  │   ├── homebrew_taps.go      # ublue-os tap fetcher
   │   └── releases.go           # Bluefin OS releases fetcher
   ├── flathub/flathub.go        # Flathub API client
   └── github/github.go          # GitHub API client
@@ -182,10 +193,11 @@ GITHUB_TOKEN=your_token_here go run cmd/bluefin-releases/main.go
 Typical build times:
 - **Flatpak fetch**: ~600-800ms (42 apps, parallel)
 - **Homebrew fetch**: ~200-300ms (44 packages, parallel)
+- **Tap fetch**: ~3-5s (41 packages, GitHub API + file fetching)
 - **Bluefin OS fetch**: ~300ms (10 releases)
 - **GitHub enrichment**: ~10-20s with token (rate-limited)
 - **Astro build**: ~600ms
-- **Total**: ~1-2s (no GitHub) or ~20-30s (with GitHub)
+- **Total**: ~5-8s (no GitHub) or ~25-35s (with GitHub)
 
 To optimize:
 1. Reduce GitHub API calls (cache, batch, or filter repos)
