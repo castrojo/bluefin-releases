@@ -66,7 +66,8 @@ type App struct {
 	AppSet            string        `json:"appSet,omitempty"` // "core" or "dx"
 	PackageType       string        `json:"packageType"`      // "flatpak", "homebrew", or "os"
 	HomebrewInfo      *HomebrewInfo `json:"homebrewInfo,omitempty"`
-	OSInfo            *OSInfo       `json:"osInfo,omitempty"` // OS release-specific info
+	OSInfo            *OSInfo       `json:"osInfo,omitempty"`       // OS release-specific info
+	Experimental      bool          `json:"experimental,omitempty"` // Marks packages from experimental-tap as unstable
 }
 
 // HomebrewInfo contains Homebrew-specific package information
