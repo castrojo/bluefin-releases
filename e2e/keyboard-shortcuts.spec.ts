@@ -164,7 +164,7 @@ test.describe('Keyboard Navigation', () => {
     const initialScroll = await page.evaluate(() => window.scrollY);
     
     await page.keyboard.press('Space');
-    await page.waitForTimeout(500); // Wait for smooth scroll
+    await page.waitForTimeout(500); // Space uses smooth scroll, needs longer wait
     
     const newScroll = await page.evaluate(() => window.scrollY);
     expect(newScroll).toBeGreaterThan(initialScroll);
@@ -173,14 +173,14 @@ test.describe('Keyboard Navigation', () => {
   test('h scrolls to top', async ({ page }) => {
     // Scroll down first
     await page.keyboard.press('Space');
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(500); // Space uses smooth scroll, needs time
     
     const scrolledPosition = await page.evaluate(() => window.scrollY);
     expect(scrolledPosition).toBeGreaterThan(0);
     
     // Scroll to top
     await page.keyboard.press('h');
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(500); // h uses smooth scroll, needs time
     
     const scroll = await page.evaluate(() => window.scrollY);
     expect(scroll).toBeLessThan(50); // Should be near top (allowing for header)
@@ -240,13 +240,13 @@ test.describe('Keyboard Navigation', () => {
   test('Shift+Space scrolls page up', async ({ page }) => {
     // Scroll down first
     await page.keyboard.press('Space');
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(500); // Space uses smooth scroll, needs time
     
     const scrolledPosition = await page.evaluate(() => window.scrollY);
     
     // Scroll up
     await page.keyboard.press('Shift+Space');
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(500); // Shift+Space uses smooth scroll, needs time
     
     const newScroll = await page.evaluate(() => window.scrollY);
     expect(newScroll).toBeLessThan(scrolledPosition);
@@ -298,23 +298,24 @@ test.describe('Keyboard Navigation', () => {
     // Press j multiple times to focus cards further down
     for (let i = 0; i < 5; i++) {
       await page.keyboard.press('j');
-      await page.waitForTimeout(300); // Increased wait time for scroll animation
+      await page.waitForTimeout(50); // Instant scroll, minimal wait
     }
     
-    // Wait a bit longer for the final scroll to complete
-    await page.waitForTimeout(500);
+    // Brief wait for DOM updates
+    await page.waitForTimeout(100);
     
     // Get the focused card
     const focusedCard = page.locator('.kbd-focused').first();
     
-    // Verify it's visible in viewport
+    // Verify it's visible in viewport - should be at top with scrollIntoView
     const boundingBox = await focusedCard.boundingBox();
     expect(boundingBox).not.toBeNull();
     
     if (boundingBox) {
       const viewportSize = page.viewportSize();
+      // Card should be at or near top of viewport (allowing some margin)
       expect(boundingBox.y).toBeGreaterThanOrEqual(0);
-      expect(boundingBox.y).toBeLessThan(viewportSize!.height);
+      expect(boundingBox.y).toBeLessThan(100); // Should be near top, not middle/bottom
     }
   });
 
