@@ -45,6 +45,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Expose apps.json as public static asset
+        run: cp src/data/apps.json public/apps.json
+
       - name: Build Astro site
         run: npm run astro build
 
