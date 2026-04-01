@@ -46,7 +46,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Expose apps.json as public static asset
-        run: cp src/data/apps.json public/apps.json
+        run: mkdir -p public && cp src/data/apps.json public/apps.json
 
       - name: Build Astro site
         run: npm run astro build
