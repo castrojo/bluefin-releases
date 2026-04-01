@@ -283,8 +283,9 @@ func extractReleaseDate(html string) string {
 		return matches[1]
 	}
 
-	// Try Firefox format: <p class="c-release-date">February 4, 2026</p>
-	firefoxRe := regexp.MustCompile(`<p class="c-release-date">([^<]+)</p>`)
+	// Try Firefox format: <p class="c-release-date ...">February 4, 2026</p>
+	// Note: extra CSS classes may be present (e.g. "c-release-date fl-c-release-date fl-l-release-notes-sidebar")
+	firefoxRe := regexp.MustCompile(`<p class="c-release-date[^"]*">([^<]+)</p>`)
 	matches = firefoxRe.FindStringSubmatch(html)
 	if len(matches) > 1 {
 		return strings.TrimSpace(matches[1])
